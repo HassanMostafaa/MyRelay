@@ -1,6 +1,6 @@
 import { routes } from "./http/routes";
 const server = Bun.serve({
-  port: process.env.PORT || 3003,
+  port: process.env.PORT || 3004,
   routes,
 });
 
