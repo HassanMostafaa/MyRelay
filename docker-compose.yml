@@ -1,0 +1,12 @@
+services:
+  server:
+    build:
+      context: ./server
+    ports:
+      - "3003:3003"
+    environment:
+      PORT: 3003
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    command: bun run dev

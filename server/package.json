@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "dev": "bun --watch src/index.ts",
+    "docker:up": "docker compose up",
+    "docker:up:build": "docker compose up --build",
+    "docker:down": "docker compose down",
+    "docker:stop": "docker compose stop",
+    "docker:restart": "docker compose down && docker compose up",
+    "docker:logs": "docker compose logs -f",
+    "docker:ps": "docker ps",
+    "docker:clean": "docker compose down --rmi all",
+    "docker:reset": "docker system prune -a -f"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

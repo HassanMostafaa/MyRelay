@@ -1,0 +1,84 @@
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Dependencies
+# =========================
+node_modules
+**/node_modules
+
+# =========================
+# Build outputs
+# =========================
+dist
+build
+.out
+
+# =========================
+# Next.js
+# =========================
+.next
+**/.next
+
+# =========================
+# Logs
+# =========================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# =========================
+# OS / system files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Editor / IDE
+# =========================
+.vscode
+.idea
+
+# =========================
+# Docker
+# =========================
+.dockerignore
+**/.dockerignore
+
+# =========================
+# Testing / coverage
+# =========================
+coverage
+
+# =========================
+# Cache / temp
+# =========================
+.tmp
+.cache
+.temp
+
+# =========================
+# Database files / dumps
+# =========================
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.sql
+*.dump
+*.bak
+
+# =========================
+# MongoDB / Postgres local data dirs
+# =========================
+mongodb_data
+mongo_data
+postgres_data
+pgdata
+data/db
