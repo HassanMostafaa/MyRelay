@@ -1,16 +1,7 @@
 // src/http/routes/register/db.ts
 import { Pool } from "pg";
 import type { PublicUser } from "../utils/types";
-
-const connectionString = process.env.DATABASE_URL;
-
-if (!connectionString) {
-  throw new Error("DATABASE_URL is missing");
-}
-
-const pool = new Pool({
-  connectionString,
-});
+import { pool } from "@/db/utils/pool";
 
 type CreateUserParams = {
   email: string;

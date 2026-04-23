@@ -1,15 +1,6 @@
 import { Pool } from "pg";
 import bcrypt from "bcrypt";
-
-export const dbConnectionString = process.env.DATABASE_URL;
-
-if (!dbConnectionString) {
-  throw new Error("DATABASE_URL is missing");
-}
-
-const pool = new Pool({
-  connectionString: dbConnectionString,
-});
+import { pool } from "./utils/pool";
 
 async function seed() {
   const email = process.env.ADMIN_EMAIL;
