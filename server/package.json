@@ -17,7 +17,8 @@
     "docker:reset": "docker system prune -a -f",
     "db:seed": "bun run src/db/seed.ts",
     "db:schema": "dotenv -e .env -- sh -c 'psql \"$DATABASE_URL\" -f src/db/schema.sql'",
-    "tree": "tree -I \"node_modules\""
+    "tree": "tree -I \"node_modules\"",
+    "db:schema:docker": "docker compose exec db psql -U postgres -d myrelay_db -f /db/schema.sql"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",

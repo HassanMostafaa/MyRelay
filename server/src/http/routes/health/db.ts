@@ -9,8 +9,8 @@ export const dbHealthCheck =
   async (): Promise<DBHealthCheckResponse | null> => {
     const result = await pool.query<DBHealthCheckResponse>(
       `
-    SELECT * FROM db_health
-    `,
+      SELECT * FROM db_health
+      `,
     );
 
     return result?.rows?.[0] || null;
