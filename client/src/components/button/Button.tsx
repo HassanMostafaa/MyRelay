@@ -1,16 +1,30 @@
 import React, { ButtonHTMLAttributes, forwardRef } from "react";
+import Link, { LinkProps } from "next/link";
 
 type ButtonVariant = "primary" | "secondary";
 
-interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+type BaseProps = {
   className?: string;
   variant?: ButtonVariant;
-}
+  children?: React.ReactNode;
+};
+
+type ButtonProps = BaseProps &
+  ButtonHTMLAttributes<HTMLButtonElement> & {
+    href?: undefined;
+  };
+
+type LinkButtonProps = BaseProps &
+  LinkProps & {
+    href: string;
+  };
+
+type IButtonProps = ButtonProps | LinkButtonProps;
 
 export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
   ({ className = "", variant = "secondary", children, ...props }, ref) => {
     const baseStyles =
-      "hover:scale-104 active:scale-95 transition-all flex items-center justify-center gap-2 px-3 py-1.5";
+      "hover:scale-104 active:scale-95 transition-all flex items-center justify-center gap-2 px-4 py-1.5  disabled:opacity-50 disabled:pointer-events-none";
 
     const variants: Record<ButtonVariant, string> = {
       secondary: "border border-border bg-transparent text-foreground",
@@ -18,11 +32,23 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
         "bg-primary text-primary-foreground border border-primary hover:opacity-90",
     };
 
+    const classes = `${baseStyles} ${variants[variant]} ${className}`;
+
+    // 👉 If href exists → render Link
+    if ("href" in props && props.href) {
+      return (
+        <Link href={props.href} className={classes}>
+          {children}
+        </Link>
+      );
+    }
+
+    // 👉 Otherwise → render button
     return (
       <button
         ref={ref}
-        className={`${baseStyles} ${variants[variant]} ${className}`}
-        {...props}
+        className={classes}
+        {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
       >
         {children}
       </button>

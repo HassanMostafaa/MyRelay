@@ -9,11 +9,18 @@ export const Header: FunctionComponent = () => {
   const t = useTranslations();
   return (
     <nav className="rounded items-center justar flex gap-2 py-2 justify-between">
-      <Logo />
+      <div className="flex gap-2 items-center">
+        <Logo />
+        <ThemeSwitcher />
+      </div>
       <div className="flex items-center gap-2">
         <LangSwitcher />
-        <ThemeSwitcher />
-        <Button variant="primary">{t("login")}</Button>
+        <Button href={"/login"} variant="primary">
+          {t("login")}
+        </Button>
+        <Button href={"/register"} variant="secondary">
+          {t("register")}
+        </Button>
       </div>
     </nav>
   );

@@ -1,6 +1,8 @@
-import { RegisterPage } from "@/src/page/Register/Register";
+import { RegisterPage } from "@/src/page/Register/RegisterPage";
 import React from "react";
 
-export const NextjsPage = () => {
+const NextjsPage = () => {
   return <RegisterPage />;
 };
+
+export default NextjsPage;

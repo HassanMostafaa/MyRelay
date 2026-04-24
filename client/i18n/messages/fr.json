@@ -1,1 +1,36 @@
-{}
+{
+  "home": "Accueil",
+  "login": "Connexion",
+  "logout": "Déconnexion",
+  "register": "Créer un compte",
+  "locale": "Langue",
+  "validation": {
+    "username_required": "Le nom d'utilisateur est requis",
+    "username_min": "Le nom d'utilisateur doit contenir au moins 3 caractères",
+    "email_required": "L'adresse e-mail est requise",
+    "email_invalid": "Entrez une adresse e-mail valide",
+    "password_required": "Le mot de passe est requis",
+    "password_min": "Le mot de passe doit contenir au moins 8 caractères",
+    "password_confirmed_required": "Vous devez confirmer le mot de passe",
+    "passwords_must_match": "La confirmation du mot de passe doit correspondre"
+  },
+  "forms": {
+    "username": "Nom d'utilisateur",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "confirm_password": "Confirmer le mot de passe",
+    "submit": "Envoyer"
+  },
+  "registerPage": {
+    "eyebrow": "Nouveau compte",
+    "title": "Créez votre compte MyRelay",
+    "description": "Utilisez les informations que vous garderez sur la plateforme. Un nom d'utilisateur clair et un e-mail valide rendent l'intégration et la gestion des accès plus simples.",
+    "guideTitle": "Avant de valider",
+    "guideItem1": "Utilisez une adresse e-mail accessible immédiatement pour la vérification et la récupération.",
+    "guideItem2": "Choisissez un nom d'utilisateur que votre équipe reconnaîtra rapidement dans les espaces partagés.",
+    "guideItem3": "Définissez un mot de passe d'au moins 8 caractères et confirmez-le exactement.",
+    "guideItem4": "Gardez ces informations personnelles pour conserver une traçabilité claire des accès et de l'activité.",
+    "nextTitle": "Ensuite",
+    "nextBody": "Une fois le compte créé, vous pourrez vous connecter et continuer vers l'espace adapté à votre rôle."
+  }
+}

@@ -1,4 +1,4 @@
-import { LoginPage } from "@/src/page/Login/Login";
+import { LoginPage } from "@/src/page/Login/LoginPage";
 import React from "react";
 
 const NextjsPage = () => {
