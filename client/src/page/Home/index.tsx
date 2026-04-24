@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
-export const Home = async () => {
+export const HomePage = async () => {
   const t = await getTranslations();
   return (
     <div>

@@ -1,4 +1,4 @@
-import { Home } from "@/src/page/Home";
+import { HomePage } from "@/src/page/Home";
 import { Metadata } from "next";
 
 // Fallback to localhost if the variable isn't defined
@@ -21,5 +21,5 @@ export const metadata: Metadata = {
 };
 
 export default async function NextjsPage() {
-  return <Home />;
+  return <HomePage />;
 }

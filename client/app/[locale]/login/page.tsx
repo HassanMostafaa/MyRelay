@@ -1,7 +1,8 @@
+import { LoginPage } from "@/src/page/Login/Login";
 import React from "react";
 
 const NextjsPage = () => {
-  return <div>login</div>;
+  return <LoginPage />;
 };
 
 export default NextjsPage;
