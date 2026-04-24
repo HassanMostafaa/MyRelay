@@ -1,6 +1,7 @@
 {
   "home": "Home",
-  "login": "login",
-  "logout": "logout",
-  "register": "register"
+  "login": "Login",
+  "logout": "Logout",
+  "register": "Register",
+  "locale": "Locale"
 }

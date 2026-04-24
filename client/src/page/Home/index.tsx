@@ -1,13 +1,10 @@
 import { getTranslations } from "next-intl/server";
 
-export const Home = async ({ locale }: { locale: string }) => {
+export const Home = async () => {
   const t = await getTranslations();
   return (
     <div>
-      <p>Home Page </p>
-      <p>
-        locale: {locale} | translation: {t("home")}
-      </p>
+      <p>{t("home")}</p>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import { Home } from "@/src/page/Home";
 import { Metadata } from "next";
-import { getLocale } from "next-intl/server";
 
 // Fallback to localhost if the variable isn't defined
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
@@ -22,12 +21,5 @@ export const metadata: Metadata = {
 };
 
 export default async function NextjsPage() {
-  const locale = await getLocale();
-
-  return (
-    <>
-      {JSON.stringify({ locale })}
-      <Home locale={locale} />
-    </>
-  );
+  return <Home />;
 }

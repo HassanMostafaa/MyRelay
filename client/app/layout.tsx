@@ -1,10 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Playfair_Display,
+  IBM_Plex_Sans,
+} from "next/font/google";
 import "./globals.css";
 import { MainLayout } from "@/src/components/main-layout/MainLayout";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { rtlLocales } from "@/i18n/routing";
+import { cn } from "@/src/lib/utils";
+import { ThemeProvider } from "@/src/components/theme-switcher/ThemeProvider";
+import { getThemeScript } from "@/src/components/theme-switcher/utils/theme";
+
+const playfairDisplayHeading = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-heading",
+});
+
+const ibmPlexSans = IBM_Plex_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,11 +50,24 @@ export default async function RootLayout({
 
   return (
     <html
+      suppressHydrationWarning
       lang="en"
       dir={rtl ? "rtl" : "ltr"}
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={cn(
+        "h-full",
+        "antialiased",
+        geistSans.variable,
+        geistMono.variable,
+        "font-sans",
+        ibmPlexSans.variable,
+        playfairDisplayHeading.variable,
+      )}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: getThemeScript() }} />
+      </head>
       <body>
+        <ThemeProvider />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <MainLayout>{children}</MainLayout>
         </NextIntlClientProvider>
