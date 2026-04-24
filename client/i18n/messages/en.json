@@ -8,6 +8,7 @@
   "validation": {
     "username_required": "Username is required",
     "username_min": "Username must be at least 3 characters",
+    "username_taken": "Username is already taken",
 
     "email_required": "Email is required",
     "email_invalid": "Enter a valid email",
@@ -23,7 +24,10 @@
     "email": "Email",
     "password": "Password",
     "confirm_password": "Confirm Password",
-    "submit": "Submit"
+    "submit": "Submit",
+    "username_checking": "Checking username...",
+    "username_available": "Username is available",
+    "username_check_failed": "Couldn't verify username right now"
   },
   "registerPage": {
     "eyebrow": "New account",

@@ -1,5 +1,5 @@
 import { cn } from "@/src/lib/utils";
-import { useField } from "formik";
+import { Field, useField } from "formik";
 import React, { ReactNode } from "react";
 
 export const FormikField = ({
@@ -43,7 +43,7 @@ export const FormikField = ({
           </div>
         )}
 
-        <input
+        <Field
           {...field}
           id={name}
           type={type}

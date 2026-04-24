@@ -7,6 +7,7 @@
   "validation": {
     "username_required": "Le nom d'utilisateur est requis",
     "username_min": "Le nom d'utilisateur doit contenir au moins 3 caractères",
+    "username_taken": "Ce nom d'utilisateur est déjà pris",
     "email_required": "L'adresse e-mail est requise",
     "email_invalid": "Entrez une adresse e-mail valide",
     "password_required": "Le mot de passe est requis",
@@ -19,7 +20,10 @@
     "email": "E-mail",
     "password": "Mot de passe",
     "confirm_password": "Confirmer le mot de passe",
-    "submit": "Envoyer"
+    "submit": "Envoyer",
+    "username_checking": "Vérification du nom d'utilisateur...",
+    "username_available": "Ce nom d'utilisateur est disponible",
+    "username_check_failed": "Impossible de vérifier le nom d'utilisateur pour le moment"
   },
   "registerPage": {
     "eyebrow": "Nouveau compte",

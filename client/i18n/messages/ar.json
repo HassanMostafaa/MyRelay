@@ -8,6 +8,7 @@
   "validation": {
     "username_required": "اسم المستخدم مطلوب",
     "username_min": "يجب أن يتكون اسم المستخدم من 3 أحرف على الأقل",
+    "username_taken": "اسم المستخدم مستخدم بالفعل",
 
     "email_required": "البريد الإلكتروني مطلوب",
     "email_invalid": "يرجى إدخال بريد إلكتروني صالح",
@@ -24,7 +25,10 @@
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
     "confirm_password": "تأكيد كلمة المرور",
-    "submit": "إرسال"
+    "submit": "إرسال",
+    "username_checking": "جارٍ التحقق من اسم المستخدم...",
+    "username_available": "اسم المستخدم متاح",
+    "username_check_failed": "تعذر التحقق من اسم المستخدم الآن"
   },
   "registerPage": {
     "eyebrow": "حساب جديد",
