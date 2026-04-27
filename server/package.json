@@ -6,19 +6,9 @@
   "scripts": {
     "start": "bun run src/index.ts",
     "dev": "bun --watch src/index.ts",
-    "docker:up": "docker compose up",
-    "docker:up:build": "docker compose up --build",
-    "docker:down": "docker compose down",
-    "docker:stop": "docker compose stop",
-    "docker:restart": "docker compose down && docker compose up",
-    "docker:logs": "docker compose logs -f",
-    "docker:ps": "docker ps",
-    "docker:clean": "docker compose down --rmi all",
-    "docker:reset": "docker system prune -a -f",
     "db:seed": "bun run src/db/seed.ts",
     "db:schema": "dotenv -e .env -- sh -c 'psql \"$DATABASE_URL\" -f src/db/schema.sql'",
-    "tree": "tree -I \"node_modules\"",
-    "db:schema:docker": "docker compose exec db psql -U postgres -d myrelay_db -f /db/schema.sql"
+    "tree": "tree -I \"node_modules\""
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
@@ -31,6 +21,7 @@
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "jose": "^6.2.2",
     "pg": "^8.20.0"
   }
 }

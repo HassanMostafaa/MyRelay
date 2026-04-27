@@ -27,7 +27,9 @@ const RegisterFormFields = ({
   }, [onUsernameStatusChange, status]);
 
   return (
-    <Form className="grid w-full grid-cols-1 gap-4 border border-border p-5 sm:p-6 md:grid-cols-2">
+    <Form className="grid w-full p-4 border grid-cols-1 gap-4 md:grid-cols-2">
+      {/* <FormikWatcher /> DEBUGGING COMPONTNE */}
+
       <UsernameInput status={status} />
 
       <EmailInput />
@@ -48,7 +50,7 @@ const RegisterFormFields = ({
 };
 
 export const RegisterForm: FunctionComponent = () => {
-  const validationT = useTranslations("validation");
+  const t = useTranslations("validation");
   const { initialValues, validationSchema, handleSubmitRegister } =
     useRegisterForm();
   const [usernameStatus, setUsernameStatus] =
@@ -65,7 +67,7 @@ export const RegisterForm: FunctionComponent = () => {
         }
 
         if (usernameStatus === "taken") {
-          helpers.setFieldError("username", validationT("username_taken"));
+          helpers.setFieldError("username", t("username_taken"));
           helpers.setSubmitting(false);
           return;
         }

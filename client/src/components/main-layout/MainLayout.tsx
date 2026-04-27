@@ -6,7 +6,7 @@ export const MainLayout: FunctionComponent<PropsWithChildren> = async ({
   children,
 }) => {
   return (
-    <main className="min-h-dvh container mx-auto px-4 flex flex-col">
+    <main className="min-h-dvh flex flex-col">
       <Header />
       <section className="flex-1">{children}</section>
       <Footer />

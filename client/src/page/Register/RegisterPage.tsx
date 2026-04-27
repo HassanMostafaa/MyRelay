@@ -5,10 +5,10 @@ import { RegisterGuideAside } from "./components/register-guide-aside/RegisterGu
 
 export const RegisterPage = () => {
   return (
-    <div className="space-y-6 py-6 lg:space-y-8 lg:py-12">
+    <div className="my-container space-y-6 py-6 lg:space-y-8 lg:py-12">
       <RegisterHeader />
 
-      <div className="flex items-start gap-4 xl:gap-10">
+      <div className="flex lg:items-start lg:flex-row flex-col gap-4 xl:gap-10">
         <RegisterForm />
         <RegisterGuideAside />
       </div>

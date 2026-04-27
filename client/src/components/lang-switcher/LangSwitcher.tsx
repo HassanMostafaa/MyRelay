@@ -15,7 +15,7 @@ export const LangSwitcher = () => {
   if (!isDropdown) {
     return (
       <Button
-        className="border-0!"
+        className="cursor-pointer border-0!"
         onClick={() => switchLocale(targetLocale ?? locale)}
       >
         <Languages size={16} /> {(targetLocale ?? locale).toUpperCase()}

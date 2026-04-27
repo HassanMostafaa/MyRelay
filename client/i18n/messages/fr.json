@@ -25,6 +25,34 @@
     "username_available": "Ce nom d'utilisateur est disponible",
     "username_check_failed": "Impossible de vérifier le nom d'utilisateur pour le moment"
   },
+  "heroSection": {
+    "eyebrow": "Tickets support + chat en direct",
+    "title": "Un seul espace pour les tickets support, les actions par rôle et les réponses en temps réel.",
+    "subtitle": "MyRelay réunit la gestion des tickets et le chat lié à chaque ticket dans un seul produit, afin que les utilisateurs, agents et administrateurs travaillent dans le même système avec les permissions adaptées à leur rôle.",
+    "primaryCta": "Créer un compte",
+    "secondaryCta": "Se connecter",
+    "featureTicketsTitle": "Cycle du ticket",
+    "featureTicketsBody": "Suivez le support de la création à la fermeture avec un flux de statuts clair.",
+    "featureChatTitle": "Chat en temps réel",
+    "featureChatBody": "Gardez chaque conversation en direct et rattachée au ticket concerné.",
+    "featureRolesTitle": "Accès selon le rôle",
+    "featureRolesBody": "Affichez uniquement les écrans et actions utiles à l'utilisateur, à l'agent ou à l'administrateur.",
+    "workflowEyebrow": "Flux produit",
+    "workflowTitle": "Pensé autour du ticket",
+    "workflowSubtitle": "Le flux principal commence avec la création du ticket via HTTP, puis continue avec la communication en direct et le traitement selon le rôle dans la même application.",
+    "rolesLabel": "Conçu pour",
+    "roles": {
+      "user": "Utilisateur",
+      "agent": "Agent",
+      "admin": "Admin"
+    },
+    "status": {
+      "open": "Ouvert",
+      "assigned": "Attribué",
+      "resolved": "Résolu",
+      "closed": "Fermé"
+    }
+  },
   "registerPage": {
     "eyebrow": "Nouveau compte",
     "title": "Créez votre compte MyRelay",

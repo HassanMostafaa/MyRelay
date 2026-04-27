@@ -12,7 +12,7 @@ export const RegisterGuideAside = () => {
   ];
 
   return (
-    <aside className="space-y-4 border border-border bg-card p-5 sm:p-6">
+    <aside className="space-y-4  border border-border bg-card p-5 sm:p-6">
       <h2 className="text-base font-semibold text-foreground">
         {t("guideTitle")}
       </h2>

@@ -16,9 +16,13 @@ export const PasswordInput = () => {
       name="password"
       startIcon={<Shield size={16} />}
       endIcon={
-        <span onClick={() => setHidden((prev) => !prev)}>
+        <button
+          type="button"
+          className="cursor-pointer"
+          onClick={() => setHidden((prev) => !prev)}
+        >
           {hidden ? <Eye size={14} /> : <EyeClosed size={14} />}
-        </span>
+        </button>
       }
       wrapperClassName="w-full"
       placeholder={t("password")}

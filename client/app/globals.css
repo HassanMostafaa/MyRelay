@@ -129,3 +129,7 @@
     @apply font-sans;
   }
 }
+
+.my-container {
+  @apply mx-auto w-full max-w-360 px-4;
+}

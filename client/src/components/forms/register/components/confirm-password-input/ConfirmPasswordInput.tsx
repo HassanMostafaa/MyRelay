@@ -5,7 +5,6 @@ import { useState } from "react";
 
 export const ConfirmPasswordInput = () => {
   const t = useTranslations("forms");
-
   const [hidden, setHidden] = useState<boolean>(true);
 
   return (
@@ -17,9 +16,13 @@ export const ConfirmPasswordInput = () => {
       placeholder={t("confirm_password")}
       startIcon={<ShieldPlus size={16} />}
       endIcon={
-        <span onClick={() => setHidden((prev) => !prev)}>
+        <button
+          type="button"
+          className="cursor-pointer"
+          onClick={() => setHidden((prev) => !prev)}
+        >
           {hidden ? <Eye size={14} /> : <EyeClosed size={14} />}
-        </span>
+        </button>
       }
     />
   );

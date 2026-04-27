@@ -1,4 +1,4 @@
-import { HomePage } from "@/src/page/Home";
+import { HomePage } from "@/src/page/Home/HomePage";
 import { Metadata } from "next";
 
 // Fallback to localhost if the variable isn't defined

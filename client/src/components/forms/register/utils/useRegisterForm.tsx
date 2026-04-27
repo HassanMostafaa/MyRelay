@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 export const initialValues = {
   email: "",
   password: "",
-  passwordConfirm: false,
+  passwordConfirm: "",
   username: "",
 };
 

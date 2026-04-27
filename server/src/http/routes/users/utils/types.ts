@@ -29,3 +29,8 @@ export const SUPPORTED_LOCALES = ["en", "ar"] as const;
 export type TLocale = (typeof SUPPORTED_LOCALES)[number];
 
 export type RouteMessage = Record<TLocale, string>;
+
+export type LoginBody = {
+  identifier: string;
+  password: string;
+};

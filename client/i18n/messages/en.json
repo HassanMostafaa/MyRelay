@@ -29,6 +29,34 @@
     "username_available": "Username is available",
     "username_check_failed": "Couldn't verify username right now"
   },
+  "heroSection": {
+    "eyebrow": "Ticket support + live chat",
+    "title": "One workspace for support tickets, role-based actions, and real-time replies.",
+    "subtitle": "MyRelay brings ticket management and per-ticket chat into one product so users, agents, and admins can move through the same system with the permissions each role needs.",
+    "primaryCta": "Create account",
+    "secondaryCta": "Sign in",
+    "featureTicketsTitle": "Ticket lifecycle",
+    "featureTicketsBody": "Track support work from creation to closure with a clear status flow.",
+    "featureChatTitle": "Real-time ticket chat",
+    "featureChatBody": "Keep every ticket conversation live and attached to the issue it belongs to.",
+    "featureRolesTitle": "Role-aware access",
+    "featureRolesBody": "Expose only the screens and actions each user, agent, or admin should see.",
+    "workflowEyebrow": "Product flow",
+    "workflowTitle": "Built around the ticket",
+    "workflowSubtitle": "The core flow starts with HTTP ticket creation, then continues with live communication and role-based handling inside the same app.",
+    "rolesLabel": "Built for",
+    "roles": {
+      "user": "User",
+      "agent": "Agent",
+      "admin": "Admin"
+    },
+    "status": {
+      "open": "Open",
+      "assigned": "Assigned",
+      "resolved": "Resolved",
+      "closed": "Closed"
+    }
+  },
   "registerPage": {
     "eyebrow": "New account",
     "title": "Create your MyRelay account",
