@@ -24,7 +24,7 @@ type IButtonProps = ButtonProps | LinkButtonProps;
 export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
   ({ className = "", variant = "secondary", children, ...props }, ref) => {
     const baseStyles =
-      "hover:scale-104 active:scale-95 transition-all flex items-center justify-center gap-2 px-4 py-1.5  disabled:opacity-50 disabled:pointer-events-none";
+      "hover:scale-102 active:scale-98 transition-all flex items-center justify-center gap-2 px-4 py-1.5  disabled:opacity-50 disabled:pointer-events-none";
 
     const variants: Record<ButtonVariant, string> = {
       secondary: "border border-border bg-transparent text-foreground",

@@ -18,6 +18,8 @@ export const ConfirmPasswordInput = () => {
       endIcon={
         <button
           type="button"
+          unselectable="on"
+          tabIndex={-1}
           className="cursor-pointer"
           onClick={() => setHidden((prev) => !prev)}
         >

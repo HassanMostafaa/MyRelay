@@ -8,7 +8,7 @@ import { createUser } from "./db";
 const METHOD = "POST";
 
 const registerSuccessMessage: RouteMessage = {
-  en: "Account created successfully",
+  en: "Account created successfully, logged in automatically",
   ar: "تم إنشاء الحساب بنجاح",
 };
 
@@ -18,7 +18,7 @@ const validationFailedMessage: RouteMessage = {
 };
 
 const emailExistsMessage: RouteMessage = {
-  en: "Email already exists",
+  en: "Email address already exists",
   ar: "البريد الإلكتروني مستخدم بالفعل",
 };
 
@@ -89,7 +89,7 @@ export const registerRoute = async (req: Request) => {
         );
       } catch (err) {
         const errorCode = err as { code?: string; constraint?: string };
-        console.log({ err });
+
         if (errorCode.code === "23505") {
           if (errorCode.constraint === "users_email_key") {
             return error(emailExistsMessage[locale], err, 409);

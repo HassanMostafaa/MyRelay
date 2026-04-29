@@ -38,7 +38,10 @@ export const FormikField = ({
 
       <div className="relative w-full">
         {startIcon && (
-          <div className="absolute inset-s-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+          <div
+            unselectable="on"
+            className="absolute inset-s-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+          >
             {startIcon}
           </div>
         )}
@@ -59,7 +62,10 @@ export const FormikField = ({
         />
 
         {endIcon && (
-          <div className="absolute inset-e-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+          <div
+            unselectable="on"
+            className="absolute inset-e-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+          >
             {endIcon}
           </div>
         )}

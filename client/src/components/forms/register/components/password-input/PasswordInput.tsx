@@ -17,6 +17,8 @@ export const PasswordInput = () => {
       startIcon={<Shield size={16} />}
       endIcon={
         <button
+          unselectable="on"
+          tabIndex={-1}
           type="button"
           className="cursor-pointer"
           onClick={() => setHidden((prev) => !prev)}

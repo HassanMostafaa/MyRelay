@@ -1,2 +1,2 @@
-export { default } from "./[locale]/page";
-export { metadata } from "./[locale]/page";
+export { default } from "./[locale]/(public)/page";
+export { metadata } from "./[locale]/(public)/page";

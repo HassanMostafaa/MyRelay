@@ -1,8 +1,8 @@
 import { jwtVerify } from "jose";
-
-const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
+import { getJwtSecret } from "../utils/getJwtSecret";
 
 export const verifyAuthToken = async (token: string) => {
-  const { payload } = await jwtVerify(token, secret);
+  const { payload } = await jwtVerify(token, getJwtSecret());
+
   return payload;
 };

@@ -46,7 +46,7 @@ export const HeroSection = async () => {
               </div>
             </div>
 
-            <aside className="space-y-5 border border-border bg-background/85 p-5 shadow-sm backdrop-blur sm:p-6">
+            <aside className="space-y-5 border border-border bg-background/85 p-5 backdrop-blur sm:p-6">
               <div className="space-y-2">
                 <p className="text-xs font-semibold uppercase tracking-[0.26em] text-primary">
                   {t("workflowEyebrow")}

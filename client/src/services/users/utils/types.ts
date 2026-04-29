@@ -6,15 +6,14 @@ export type User = {
   id: string;
   email: string;
   username: string;
-  password_hash: string;
   role: UserRole;
   phone: string | null;
-  email_verified: boolean;
-  phone_verified: boolean;
   country: string | null;
   city: string | null;
   date_of_birth: string | null;
   address: string | null;
+  email_verified: boolean;
+  phone_verified: boolean;
   created_at: string;
   updated_at: string;
 };
@@ -27,12 +26,15 @@ export type RegisterBody = {
   username: string;
 };
 
-export const SUPPORTED_LOCALES = ["en", "ar"] as const;
-export type TLocale = (typeof SUPPORTED_LOCALES)[number];
-
-export type RouteMessage = Record<TLocale, string>;
-
 export type LoginBody = {
   identifier: string;
   password: string;
+};
+
+// GLOBAL RESPONSE TYPE
+export type ApiStatus = "success" | "error";
+export type ApiResponse<T = unknown> = {
+  status: ApiStatus;
+  message?: string;
+  data?: T;
 };
