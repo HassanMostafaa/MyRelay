@@ -13,14 +13,17 @@
     "password_required": "Le mot de passe est requis",
     "password_min": "Le mot de passe doit contenir au moins 8 caractères",
     "password_confirmed_required": "Vous devez confirmer le mot de passe",
-    "passwords_must_match": "La confirmation du mot de passe doit correspondre"
+    "passwords_must_match": "La confirmation du mot de passe doit correspondre",
+    "identifier_required": "Le nom d'utilisateur ou l'adresse e-mail est requis"
   },
   "forms": {
+    "identifier": "Nom d'utilisateur ou e-mail",
     "username": "Nom d'utilisateur",
     "email": "E-mail",
     "password": "Mot de passe",
     "confirm_password": "Confirmer le mot de passe",
     "submit": "Envoyer",
+    "login_submit": "Se connecter",
     "username_checking": "Vérification du nom d'utilisateur...",
     "username_available": "Ce nom d'utilisateur est disponible",
     "username_check_failed": "Impossible de vérifier le nom d'utilisateur pour le moment"
@@ -64,5 +67,17 @@
     "guideItem4": "Gardez ces informations personnelles pour conserver une traçabilité claire des accès et de l'activité.",
     "nextTitle": "Ensuite",
     "nextBody": "Une fois le compte créé, vous pourrez vous connecter et continuer vers l'espace adapté à votre rôle."
+  },
+  "loginPage": {
+    "eyebrow": "Accès sécurisé",
+    "title": "Connectez-vous pour reprendre votre flux de support",
+    "description": "Accédez au même espace MyRelay avec les écrans et actions disponibles selon votre rôle, que vous ouvriez des tickets, répondiez aux clients ou gériez les opérations.",
+    "guideTitle": "Avant de vous connecter",
+    "guideItem1": "Utilisez le nom d'utilisateur ou l'adresse e-mail lié à votre compte.",
+    "guideItem2": "Les agents et administrateurs entrent par la même application et voient leurs zones selon leur rôle après connexion.",
+    "guideItem3": "L'accès aux tickets, à la boîte de réception et au tableau de bord dépend des permissions attribuées à votre compte.",
+    "registerTitle": "Besoin d'un compte d'abord ?",
+    "registerBody": "Créez un nouveau compte pour commencer à soumettre des tickets et continuer dans le produit avec votre propre accès.",
+    "registerCta": "Créer un compte"
   }
 }

@@ -22,11 +22,13 @@
     "identifier_required": "Username or Email Address required"
   },
   "forms": {
+    "identifier": "Username or email",
     "username": "Username",
     "email": "Email",
     "password": "Password",
     "confirm_password": "Confirm Password",
     "submit": "Submit",
+    "login_submit": "Sign in",
     "username_checking": "Checking username...",
     "username_available": "Username is available",
     "username_check_failed": "Couldn't verify username right now"
@@ -70,5 +72,17 @@
     "guideItem4": "Keep these details personal so permissions and activity stay traceable.",
     "nextTitle": "What happens next",
     "nextBody": "After registration, you can sign in and continue into the workspace and actions available for your role."
+  },
+  "loginPage": {
+    "eyebrow": "Secure access",
+    "title": "Sign in to continue your support workflow",
+    "description": "Access the same MyRelay workspace with the screens and actions available for your role, whether you are opening tickets, replying to customers, or managing operations.",
+    "guideTitle": "Before you sign in",
+    "guideItem1": "Use the username or email address tied to your account.",
+    "guideItem2": "Agents and admins enter through the same app and see their role-based areas after login.",
+    "guideItem3": "Your tickets, inbox, and dashboard access depend on the permissions assigned to your account.",
+    "registerTitle": "Need an account first?",
+    "registerBody": "Create a new account to start submitting tickets and continue into the product with your own workspace access.",
+    "registerCta": "Create account"
   }
 }
