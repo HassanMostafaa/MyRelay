@@ -2,6 +2,7 @@
   "home": "Accueil",
   "login": "Connexion",
   "logout": "Déconnexion",
+  "profile": "Profil",
   "register": "Créer un compte",
   "locale": "Langue",
   "validation": {
@@ -79,5 +80,61 @@
     "registerTitle": "Besoin d'un compte d'abord ?",
     "registerBody": "Créez un nouveau compte pour commencer à soumettre des tickets et continuer dans le produit avec votre propre accès.",
     "registerCta": "Créer un compte"
+  },
+  "profilePage": {
+    "eyebrow": "Vue du profil",
+    "title": "Les détails de votre compte au même endroit",
+    "description": "Consultez les informations liées à votre compte MyRelay, y compris votre rôle, vos coordonnées, votre état de vérification et l'historique du compte.",
+    "loading": "Chargement des détails de votre profil...",
+    "emptyValue": "Non renseigné",
+    "summaryEyebrow": "Résumé du compte",
+    "sections": {
+      "account": "Détails du compte",
+      "contact": "Coordonnées",
+      "location": "Localisation",
+      "verification": "Vérification",
+      "meta": "Historique du compte",
+      "danger": "Zone sensible"
+    },
+    "fields": {
+      "firstName": "Prénom",
+      "lastName": "Nom de famille",
+      "username": "Nom d'utilisateur",
+      "email": "Adresse e-mail",
+      "role": "Rôle",
+      "phone": "Téléphone",
+      "address": "Adresse",
+      "country": "Pays",
+      "city": "Ville",
+      "dateOfBirth": "Date de naissance",
+      "createdAt": "Créé le",
+      "updatedAt": "Dernière mise à jour"
+    },
+    "roles": {
+      "admin": "Admin",
+      "user": "Utilisateur",
+      "agent": "Agent"
+    },
+    "verification": {
+      "email": "Vérification e-mail",
+      "phone": "Vérification téléphone"
+    },
+    "status": {
+      "verified": "Vérifié",
+      "notVerified": "Non vérifié"
+    },
+  "danger": {
+    "description": "Supprimer votre compte supprimera votre accès et les données de votre compte de cet espace de travail.",
+    "deleteAccount": "Supprimer le compte",
+    "modal": {
+      "title": "Supprimer ce compte ?",
+      "subtitle": "Cette action est définitive et ne peut pas être annulée.",
+      "description": "Si vous continuez, vous perdrez l'accès à MyRelay et les données de profil liées à ce compte seront supprimées.",
+      "accountLabel": "Compte à supprimer",
+      "cancel": "Conserver le compte",
+      "confirm": "Confirmer la suppression",
+      "close": "Fermer la fenêtre de suppression du compte"
+    }
   }
+}
 }

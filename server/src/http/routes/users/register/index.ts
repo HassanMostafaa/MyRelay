@@ -44,6 +44,8 @@ export const registerRoute = async (req: Request) => {
         "email",
         "password",
         "username",
+        "first_name",
+        "last_name",
       ];
 
       const missing = requiredFields.filter((field) => {
@@ -58,6 +60,8 @@ export const registerRoute = async (req: Request) => {
       const email = body.email!.trim().toLowerCase();
       const username = body.username!.trim();
       const password = body.password!;
+      const first_name = body.first_name!;
+      const last_name = body.last_name!;
 
       if (password.length < 6) {
         return error(
@@ -76,6 +80,8 @@ export const registerRoute = async (req: Request) => {
           email,
           username,
           passwordHash,
+          first_name,
+          last_name,
         });
 
         return success(

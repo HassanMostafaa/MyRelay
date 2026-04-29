@@ -3,6 +3,7 @@ import { useGlobalLinks } from "@/src/hooks/useGlobalLinks";
 import { Button } from "@/src/components/button/Button";
 import { useTranslations } from "next-intl";
 import { useAuthStore } from "@/src/store/useAuthStore";
+import { UserMenu } from "../user-menu/UserMenu";
 
 export const DesktopMenu = () => {
   const t = useTranslations();
@@ -12,7 +13,7 @@ export const DesktopMenu = () => {
   });
 
   const loggedInLinks = useGlobalLinks({
-    include: ["logout"],
+    include: ["profile", "logout"],
   });
 
   const { user, state } = useAuthStore((s) => ({
@@ -22,6 +23,7 @@ export const DesktopMenu = () => {
 
   return (
     <div className="ms-auto max-md:hidden">
+      {/* LOGGED OUT */}
       {!user && state !== "loading" && loggedOutLinks?.length > 0 && (
         <div className="flex gap-2 ms-auto">
           {loggedOutLinks.map((link, idx) => (
@@ -38,25 +40,10 @@ export const DesktopMenu = () => {
         </div>
       )}
 
+      {/* LOGGED IN */}
       {user && state !== "loading" && loggedInLinks?.length > 0 && (
         <div className="flex gap-2 ms-auto">
-          {user?.username && (
-            <span className="inline-flex items-center gap-2 border border-border bg-background/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-primary">
-              <span className="size-2 rounded-full bg-primary" />
-              {user?.username}
-            </span>
-          )}
-          {loggedInLinks.map((link, idx) => (
-            <Button
-              key={link.key}
-              variant={idx === 0 ? "secondary" : "secondary"}
-              href={link.href}
-              onClick={link?.onClick}
-            >
-              {link.startIcon}
-              {t(link.key)}
-            </Button>
-          ))}
+          <UserMenu user={user} links={loggedInLinks} />
         </div>
       )}
     </div>

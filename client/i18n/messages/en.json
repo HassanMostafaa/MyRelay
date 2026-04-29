@@ -2,6 +2,7 @@
   "home": "Home",
   "login": "Login",
   "logout": "Logout",
+  "profile": "Profile",
   "register": "Register",
   "locale": "Locale",
 
@@ -84,5 +85,61 @@
     "registerTitle": "Need an account first?",
     "registerBody": "Create a new account to start submitting tickets and continue into the product with your own workspace access.",
     "registerCta": "Create account"
+  },
+  "profilePage": {
+    "eyebrow": "Profile overview",
+    "title": "Your account details in one place",
+    "description": "Review the information attached to your MyRelay account, including your role, contact details, verification state, and account history.",
+    "loading": "Loading your profile details...",
+    "emptyValue": "Not provided",
+    "summaryEyebrow": "Account summary",
+    "sections": {
+      "account": "Account details",
+      "contact": "Contact details",
+      "location": "Location",
+      "verification": "Verification",
+      "meta": "Account history",
+      "danger": "Danger zone"
+    },
+    "fields": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "username": "Username",
+      "email": "Email address",
+      "role": "Role",
+      "phone": "Phone",
+      "address": "Address",
+      "country": "Country",
+      "city": "City",
+      "dateOfBirth": "Date of birth",
+      "createdAt": "Created at",
+      "updatedAt": "Last updated"
+    },
+    "roles": {
+      "admin": "Admin",
+      "user": "User",
+      "agent": "Agent"
+    },
+    "verification": {
+      "email": "Email verification",
+      "phone": "Phone verification"
+    },
+    "status": {
+      "verified": "Verified",
+      "notVerified": "Not verified"
+    },
+  "danger": {
+    "description": "Deleting your account removes your access and account data from this workspace.",
+    "deleteAccount": "Delete account",
+    "modal": {
+      "title": "Delete this account?",
+      "subtitle": "This action is permanent and cannot be undone.",
+      "description": "If you continue, you will lose access to MyRelay and the profile data connected to this account will be removed.",
+      "accountLabel": "Account to remove",
+      "cancel": "Keep account",
+      "confirm": "Confirm deletion",
+      "close": "Close delete account modal"
+    }
   }
+}
 }

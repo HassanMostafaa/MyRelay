@@ -1,7 +1,7 @@
 import React, { ButtonHTMLAttributes, forwardRef } from "react";
 import Link, { LinkProps } from "next/link";
 
-type ButtonVariant = "primary" | "secondary";
+type ButtonVariant = "primary" | "secondary" | "danger";
 
 type BaseProps = {
   className?: string;
@@ -30,6 +30,8 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
       secondary: "border border-border bg-transparent text-foreground",
       primary:
         "bg-primary text-primary-foreground border border-primary hover:opacity-90",
+      danger:
+        "border border-destructive/20 bg-destructive/10 text-destructive hover:bg-destructive/16",
     };
 
     const classes = `${baseStyles} ${variants[variant]} ${className}`;

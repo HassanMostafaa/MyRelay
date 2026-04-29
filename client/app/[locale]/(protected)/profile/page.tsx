@@ -1,3 +1,5 @@
+import { ProfilePage } from "@/src/page/Profile/ProfilePage";
+
 export default async function NextjsPage() {
-  return <div>protected Profile</div>;
+  return <ProfilePage />;
 }

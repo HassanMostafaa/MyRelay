@@ -7,17 +7,21 @@ type CreateUserParams = {
   email: string;
   username: string;
   passwordHash: string;
+  first_name: string;
+  last_name: string;
 };
 
 export const createUser = async ({
   email,
   username,
   passwordHash,
+  first_name,
+  last_name,
 }: CreateUserParams): Promise<PublicUser | undefined> => {
   const result = await pool.query<PublicUser>(
     `
-    INSERT INTO users (email, username, password_hash)
-    VALUES ($1, $2, $3)
+    INSERT INTO users (email, username, password_hash, first_name, last_name)
+    VALUES ($1, $2, $3, $4, $5)
     RETURNING
       id,
       email,
@@ -29,9 +33,11 @@ export const createUser = async ({
       date_of_birth,
       address,
       created_at,
-      updated_at
+      updated_at,
+      first_name,
+      last_name
     `,
-    [email, username, passwordHash],
+    [email, username, passwordHash, first_name, last_name],
   );
 
   return result.rows[0];

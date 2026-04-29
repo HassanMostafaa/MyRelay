@@ -16,6 +16,9 @@ export type User = {
   phone_verified: boolean;
   created_at: string;
   updated_at: string;
+  first_name: string;
+  last_name: string;
+  last_mame?: string;
 };
 
 export type PublicUser = Omit<User, "password_hash">;

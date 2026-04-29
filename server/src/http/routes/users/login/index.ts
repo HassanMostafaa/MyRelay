@@ -47,8 +47,6 @@ export const loginRoute = async (req: Request) => {
 
       const token = await signAuthToken(publicUser);
 
-      console.log("Logged in token sent to cookies 'access_token'");
-
       return Response.json(
         {
           status: "success",

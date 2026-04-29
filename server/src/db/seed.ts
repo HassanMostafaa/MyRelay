@@ -15,15 +15,17 @@ async function seed() {
 
   await pool.query(
     `
-  INSERT INTO users (email, username, password_hash, role)
-  VALUES ($1, $2, $3, $4)
+  INSERT INTO users (email, username, password_hash, role, first_name, last_name)
+  VALUES ($1, $2, $3, $4, $5, $6)
   ON CONFLICT (email) DO UPDATE
   SET 
     username = EXCLUDED.username,
     password_hash = EXCLUDED.password_hash,
-    role = EXCLUDED.role
+    role = EXCLUDED.role,
+    first_name = EXCLUDED.first_name,
+    last_name = EXCLUDED.last_name
   `,
-    [email, username, passwordHash, "admin"],
+    [email, username, passwordHash, "admin", "Admin", "Admin_l"],
   );
   console.log("Admin user seeded with hashed password");
   await pool.end();
