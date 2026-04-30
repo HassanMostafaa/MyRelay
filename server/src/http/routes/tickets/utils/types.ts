@@ -19,8 +19,8 @@ export type Ticket = {
 };
 
 export type CreateTicketBody = {
-  subject?: string;
-  description: string;
+  ticket: { subject: string; description: string };
+  userId: string;
 };
 
 export type PublicTicket = {
