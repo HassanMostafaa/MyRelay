@@ -21,7 +21,7 @@ export const ThemeSwitcher = () => {
       type="button"
       onClick={toggleTheme}
       aria-label={`Switch to ${nextTheme} theme`}
-      className="border-0!"
+      className="border-0! text-muted-foreground"
     >
       {isDark ? <SunIcon /> : <MoonStarIcon />}
     </Button>
