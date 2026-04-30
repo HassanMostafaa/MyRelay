@@ -49,21 +49,21 @@ export const MobileMenu: FunctionComponent = () => {
           </Button>
 
           <div className="mt-4 flex flex-col gap-4">
+            {publicLinks?.map((link) =>
+              link.href ? (
+                <Link
+                  key={link.key}
+                  href={link.href}
+                  onClick={handleCloseMenu}
+                  className="inline-flex w-full items-center gap-2 border border-border bg-card px-4 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-foreground"
+                >
+                  {t(link.key)}
+                </Link>
+              ) : null,
+            )}
+
             {!user && state !== "loading" && (
               <div className="flex flex-col gap-3">
-                {publicLinks?.map((link) =>
-                  link.href ? (
-                    <Link
-                      key={link.key}
-                      href={link.href}
-                      onClick={handleCloseMenu}
-                      className="inline-flex w-full items-center gap-2 border border-border bg-card px-4 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-foreground"
-                    >
-                      {t(link.key)}
-                    </Link>
-                  ) : null,
-                )}
-
                 {loggedOutLinks?.map((link, idx) => (
                   <Button
                     key={link.key}
@@ -93,7 +93,11 @@ export const MobileMenu: FunctionComponent = () => {
                   </span>
                   <ChevronDown
                     size={14}
-                    className={accountOpen ? "rotate-180 transition-transform" : "transition-transform"}
+                    className={
+                      accountOpen
+                        ? "rotate-180 transition-transform"
+                        : "transition-transform"
+                    }
                   />
                 </button>
 

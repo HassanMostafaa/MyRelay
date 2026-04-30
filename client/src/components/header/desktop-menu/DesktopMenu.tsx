@@ -17,7 +17,7 @@ export const DesktopMenu = () => {
   });
 
   const loggedInLinks = useGlobalLinks({
-    include: ["profile", "logout"],
+    include: ["profile", "about", "logout"],
   });
 
   const { user, state } = useAuthStore((s) => ({
@@ -26,12 +26,12 @@ export const DesktopMenu = () => {
   }));
 
   return (
-    <div className="ms-auto max-md:hidden">
+    <div className="ms-auto flex gap-2 max-md:hidden">
       {/* LOGGED OUT */}
       {!user && state !== "loading" && (
         <div className="ms-auto flex items-center gap-2">
           {publicLinks?.map((link) =>
-            link.href ? (
+            link?.href ? (
               <Link
                 key={link.key}
                 href={link.href}
@@ -41,7 +41,6 @@ export const DesktopMenu = () => {
               </Link>
             ) : null,
           )}
-
           {loggedOutLinks?.map((link, idx) => (
             <Button
               key={link.key}

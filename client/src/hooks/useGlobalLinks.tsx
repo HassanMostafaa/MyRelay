@@ -1,4 +1,4 @@
-import { LogIn, LogOut, UserRound, UserRoundPlus } from "lucide-react";
+import { Info, LogIn, LogOut, UserRound, UserRoundPlus } from "lucide-react";
 import { useMemo } from "react";
 import type { ReactNode } from "react";
 import { useLogout } from "./useLogout";
@@ -43,6 +43,7 @@ export const useGlobalLinks = (options?: UseGlobalLinksOptions) => {
         key: "about",
         label: "About",
         href: "/about",
+        startIcon: <Info size={16} />,
       },
       privacy: {
         key: "privacy",
