@@ -13,6 +13,7 @@ import { useTranslations } from "next-intl";
 export const MobileMenu: FunctionComponent = () => {
   const [open, setOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
+  const publicLinks = useGlobalLinks({ include: ["about"] });
   const loggedOutLinks = useGlobalLinks({ include: ["login", "register"] });
   const loggedInLinks = useGlobalLinks({ include: ["profile", "logout"] });
   const t = useTranslations();
@@ -48,9 +49,22 @@ export const MobileMenu: FunctionComponent = () => {
           </Button>
 
           <div className="mt-4 flex flex-col gap-4">
-            {!user && state !== "loading" && loggedOutLinks?.length > 0 && (
+            {!user && state !== "loading" && (
               <div className="flex flex-col gap-3">
-                {loggedOutLinks.map((link, idx) => (
+                {publicLinks?.map((link) =>
+                  link.href ? (
+                    <Link
+                      key={link.key}
+                      href={link.href}
+                      onClick={handleCloseMenu}
+                      className="inline-flex w-full items-center gap-2 border border-border bg-card px-4 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-foreground"
+                    >
+                      {t(link.key)}
+                    </Link>
+                  ) : null,
+                )}
+
+                {loggedOutLinks?.map((link, idx) => (
                   <Button
                     key={link.key}
                     variant={idx === 0 ? "primary" : "secondary"}

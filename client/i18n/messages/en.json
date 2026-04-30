@@ -1,5 +1,6 @@
 {
   "home": "Home",
+  "about": "About",
   "login": "Login",
   "logout": "Logout",
   "profile": "Profile",
@@ -61,6 +62,84 @@
       "resolved": "Resolved",
       "closed": "Closed"
     }
+  },
+  "aboutPage": {
+    "eyebrow": "Business transformation",
+    "title": "We turn support operations into a connected service workflow.",
+    "description": "MyRelay helps businesses replace scattered requests, disconnected conversations, and unclear ownership with a single support workspace built around the ticket.",
+    "highlightLabel": "Transformation we create",
+    "highlightTitle": "From fragmented service work to accountable execution",
+    "highlightBody": "One app, one support workflow, and one source of truth for every issue moving across users, agents, and admins.",
+    "highlightItems": {
+      "intake": "Centralize requests across the business",
+      "handoffs": "Keep every reply attached to the ticket",
+      "ownership": "Make responsibility visible at every stage"
+    },
+    "pillarsEyebrow": "What changes",
+    "pillarsTitle": "The shift businesses feel after moving into MyRelay",
+    "pillarsDescription": "The platform is designed around the ticket lifecycle, live communication, and role-based permissions so support stops living in scattered tools.",
+    "pillars": {
+      "visibility": {
+        "title": "From scattered intake to one operating queue",
+        "body": "Instead of losing requests across inboxes, chats, and ad-hoc notes, teams capture every issue in a persistent ticket record."
+      },
+      "collaboration": {
+        "title": "From disconnected updates to live collaboration",
+        "body": "Real-time ticket chat keeps users and support teams aligned in the same thread while work continues through each status."
+      },
+      "governance": {
+        "title": "From generic tooling to role-based control",
+        "body": "Users, agents, and admins share one product while only seeing the screens, actions, and data relevant to their role."
+      }
+    },
+    "journeyEyebrow": "How the model works",
+    "journeyTitle": "Each ticket becomes a reliable business record",
+    "journeyDescription": "MyRelay combines HTTP-based ticket management with Socket.IO chat so operational work moves with both structure and speed.",
+    "journeySteps": {
+      "capture": {
+        "title": "Capture the issue",
+        "body": "A customer or internal user creates a ticket with the context the team needs to start work."
+      },
+      "route": {
+        "title": "Route the ownership",
+        "body": "Agents pick up, assign, and manage the ticket lifecycle with clear status changes from open to closed."
+      },
+      "resolve": {
+        "title": "Collaborate in real time",
+        "body": "The live chat stays attached to the ticket so replies, clarifications, and decisions remain connected to the case."
+      },
+      "improve": {
+        "title": "Close with accountability",
+        "body": "The business keeps a durable record of what happened, who handled it, and how quickly support moved."
+      }
+    },
+    "rolesEyebrow": "Role-based structure",
+    "rolesTitle": "One system with distinct responsibilities",
+    "rolesDescription": "The same platform adapts to the people involved in service delivery without splitting work across separate tools.",
+    "roles": {
+      "user": {
+        "title": "Users",
+        "body": "Submit tickets, follow their own cases, and stay inside a clear support experience."
+      },
+      "agent": {
+        "title": "Agents",
+        "body": "Manage inbox work, join ticket conversations, and move issues through resolution."
+      },
+      "admin": {
+        "title": "Admins",
+        "body": "Oversee access, operations, and the broader system visibility the business needs as the workflow grows."
+      }
+    },
+    "ctaEyebrow": "Move the workflow forward",
+    "ctaTitle": "Build a support operation your business can actually run on.",
+    "ctaDescription": "If support matters to revenue, retention, or service quality, the workflow needs more than messages. MyRelay gives the business a structured, real-time operating layer.",
+    "ctaItems": {
+      "lifecycle": "Structured ticket lifecycle",
+      "chat": "Real-time communication per ticket",
+      "roles": "Role-aware access and actions"
+    },
+    "primaryCta": "Create account",
+    "secondaryCta": "Sign in"
   },
   "registerPage": {
     "eyebrow": "New account",

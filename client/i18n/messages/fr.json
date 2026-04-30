@@ -1,5 +1,6 @@
 {
   "home": "Accueil",
+  "about": "À propos",
   "login": "Connexion",
   "logout": "Déconnexion",
   "profile": "Profil",
@@ -56,6 +57,84 @@
       "resolved": "Résolu",
       "closed": "Fermé"
     }
+  },
+  "aboutPage": {
+    "eyebrow": "Transformation métier",
+    "title": "Nous transformons les opérations de support en un workflow de service connecté.",
+    "description": "MyRelay aide les entreprises à remplacer les demandes dispersées, les conversations déconnectées et le manque de clarté sur la responsabilité par un espace de support unique construit autour du ticket.",
+    "highlightLabel": "La transformation créée",
+    "highlightTitle": "Passer d'un service fragmenté à une exécution responsable",
+    "highlightBody": "Une seule application, un seul workflow de support et une seule source de vérité pour chaque sujet traité par les utilisateurs, agents et administrateurs.",
+    "highlightItems": {
+      "intake": "Centraliser les demandes dans toute l'entreprise",
+      "handoffs": "Conserver chaque réponse attachée au ticket",
+      "ownership": "Rendre la responsabilité visible à chaque étape"
+    },
+    "pillarsEyebrow": "Ce qui change",
+    "pillarsTitle": "Le changement que les entreprises ressentent avec MyRelay",
+    "pillarsDescription": "La plateforme est pensée autour du cycle de vie du ticket, de la communication en direct et des permissions par rôle afin que le support quitte enfin les outils dispersés.",
+    "pillars": {
+      "visibility": {
+        "title": "Des demandes éparpillées à une seule file opérationnelle",
+        "body": "Au lieu de perdre des demandes dans des boîtes mail, chats ou notes improvisées, les équipes capturent chaque sujet dans un ticket persistant."
+      },
+      "collaboration": {
+        "title": "Des mises à jour déconnectées à une collaboration en direct",
+        "body": "Le chat en temps réel garde les utilisateurs et les équipes de support alignés dans le même fil pendant que le ticket avance d'un statut à l'autre."
+      },
+      "governance": {
+        "title": "D'outils génériques à un contrôle par rôle",
+        "body": "Utilisateurs, agents et administrateurs partagent le même produit tout en voyant uniquement les écrans, actions et données utiles à leur rôle."
+      }
+    },
+    "journeyEyebrow": "Comment le modèle fonctionne",
+    "journeyTitle": "Chaque ticket devient un enregistrement métier fiable",
+    "journeyDescription": "MyRelay combine la gestion des tickets via HTTP et le chat Socket.IO pour faire avancer le travail avec structure et rapidité.",
+    "journeySteps": {
+      "capture": {
+        "title": "Capturer le besoin",
+        "body": "Un client ou un utilisateur interne crée un ticket avec le contexte nécessaire pour démarrer le traitement."
+      },
+      "route": {
+        "title": "Affecter la responsabilité",
+        "body": "Les agents prennent en charge, assignent et gèrent le cycle du ticket avec des statuts clairs de l'ouverture à la fermeture."
+      },
+      "resolve": {
+        "title": "Collaborer en temps réel",
+        "body": "Le chat en direct reste attaché au ticket afin que réponses, clarifications et décisions restent liées au dossier."
+      },
+      "improve": {
+        "title": "Clore avec responsabilité",
+        "body": "L'entreprise conserve une trace durable de ce qui s'est passé, de la personne en charge et de la rapidité du support."
+      }
+    },
+    "rolesEyebrow": "Structure par rôle",
+    "rolesTitle": "Un seul système avec des responsabilités distinctes",
+    "rolesDescription": "La même plateforme s'adapte aux personnes impliquées dans la prestation de service sans répartir le travail dans plusieurs outils.",
+    "roles": {
+      "user": {
+        "title": "Utilisateurs",
+        "body": "Soumettent des tickets, suivent leurs propres dossiers et bénéficient d'une expérience de support claire."
+      },
+      "agent": {
+        "title": "Agents",
+        "body": "Gèrent la file, rejoignent les conversations et font progresser les sujets jusqu'à la résolution."
+      },
+      "admin": {
+        "title": "Administrateurs",
+        "body": "Supervisent les accès, les opérations et la visibilité globale nécessaire quand le workflow se développe."
+      }
+    },
+    "ctaEyebrow": "Faites avancer le workflow",
+    "ctaTitle": "Construisez une opération de support sur laquelle l'entreprise peut réellement s'appuyer.",
+    "ctaDescription": "Si le support a un impact sur le revenu, la rétention ou la qualité de service, le workflow a besoin de plus que des messages. MyRelay apporte une couche opérationnelle structurée et en temps réel.",
+    "ctaItems": {
+      "lifecycle": "Cycle de ticket structuré",
+      "chat": "Communication en temps réel par ticket",
+      "roles": "Accès et actions selon le rôle"
+    },
+    "primaryCta": "Créer un compte",
+    "secondaryCta": "Se connecter"
   },
   "registerPage": {
     "eyebrow": "Nouveau compte",
