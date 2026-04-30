@@ -19,6 +19,7 @@ const logoVariants = [
 
 export const Logo = async () => {
   const locale = await getLocale();
+
   return (
     <Link href={`/${locale}`}>
       {logoVariants.map(({ src, className, sizes }) => (

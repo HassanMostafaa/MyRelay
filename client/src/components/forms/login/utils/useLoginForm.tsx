@@ -3,7 +3,7 @@ import { ApiStatus } from "@/src/services/users/utils/types";
 import { useAuthStore } from "@/src/store/useAuthStore";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import * as Yup from "yup";
 
 export const initialValues = {
@@ -13,44 +13,57 @@ export const initialValues = {
 
 export const useLoginForm = () => {
   const t = useTranslations();
-  const { setUser } = useAuthStore((s) => ({
-    setUser: s.setUser,
-  }));
+  const setUser = useAuthStore((s) => s.setUser);
   const router = useRouter();
+
   const [formStatus, setFormStatus] = useState<{
     status: ApiStatus;
     message: string;
   } | null>(null);
 
-  const submit = async (values: typeof initialValues) => {
-    try {
-      const login = await handleLoginService(values);
+  const validationSchema = useMemo(
+    () =>
+      Yup.object({
+        identifier: Yup.string()
+          .trim()
+          .min(3, t("validation.username_min"))
+          .required(t("validation.username_required")),
 
-      if (login?.status === "success" && login?.user) {
-        setUser(login.user);
-        // router.replace("/");
-      }
+        password: Yup.string()
+          .min(6, t("validation.password_min"))
+          .required(t("validation.password_required")),
+      }),
+    [t],
+  );
 
-      if (login?.status === "error") {
+  const submit = useCallback(
+    async (values: typeof initialValues) => {
+      setFormStatus(null);
+
+      try {
+        const login = await handleLoginService(values);
+
+        if (login?.status === "success" && login?.user) {
+          setUser(login.user);
+          router.replace("/");
+          return;
+        }
+
         setFormStatus({
           status: "error",
-          message: login?.message ?? "LOGIN ERR STATUS ERROR AND NO MESSAGE",
+          message: login?.message ?? "Login failed",
+        });
+      } catch (error) {
+        console.error(error);
+
+        setFormStatus({
+          status: "error",
+          message: "Something went wrong. Please try again.",
         });
       }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    },
+    [setUser, router],
+  );
 
-  const validationSchema = Yup.object({
-    identifier: Yup.string()
-      .trim()
-      .min(3, t("validation.username_min"))
-      .required(t("validation.username_required")),
-
-    password: Yup.string()
-      .min(6, t("validation.password_min"))
-      .required(t("validation.password_required")),
-  });
   return { submit, validationSchema, formStatus };
 };

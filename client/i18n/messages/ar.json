@@ -20,7 +20,15 @@
 
     "password_confirmed_required": "يرجى تأكيد كلمة المرور",
     "passwords_must_match": "تأكيد كلمة المرور غير مطابق",
-    "identifier_required": "اسم المستخدم أو البريد الإلكتروني مطلوب"
+    "identifier_required": "اسم المستخدم أو البريد الإلكتروني مطلوب",
+
+    "subject_required": "الموضوع مطلوب",
+    "subject_min": "يجب أن يتكون الموضوع من 3 أحرف على الأقل",
+
+    "description_required": "الوصف مطلوب",
+    "description_min": "يجب أن يتكون الوصف من 3 أحرف على الأقل",
+
+    "login_required": "تسجيل الدخول مطلوب"
   },
 
   "forms": {
@@ -33,7 +41,11 @@
     "login_submit": "تسجيل الدخول",
     "username_checking": "جارٍ التحقق من اسم المستخدم...",
     "username_available": "اسم المستخدم متاح",
-    "username_check_failed": "تعذر التحقق من اسم المستخدم الآن"
+    "username_check_failed": "تعذر التحقق من اسم المستخدم الآن",
+    "subject": "الموضوع",
+    "description": "الوصف",
+    "create_ticket": "إنشاء تذكرة",
+    "ticket_created_successfully": "تم إنشاء التذكرة بنجاح"
   },
   "heroSection": {
     "eyebrow": "تذاكر دعم + محادثة مباشرة",
@@ -176,6 +188,7 @@
       "account": "بيانات الحساب",
       "contact": "بيانات التواصل",
       "location": "الموقع",
+      "ticketActions": "إجراءات التذاكر",
       "verification": "التحقق",
       "meta": "سجل الحساب",
       "danger": "منطقة حساسة"
@@ -206,6 +219,10 @@
     "status": {
       "verified": "تم التحقق",
       "notVerified": "غير موثق"
+    },
+    "ticketActions": {
+      "description": "أنشئ طلب دعم جديدًا عندما تحتاج إلى مساعدة أو تريد الإبلاغ عن مشكلة.",
+      "createTicket": "إنشاء تذكرة"
     },
     "danger": {
       "description": "حذف حسابك سيزيل وصولك وبيانات حسابك من مساحة العمل هذه.",

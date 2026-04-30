@@ -13,7 +13,8 @@ import {
   UsernameAvailabilityStatus,
 } from "./utils/useUsernameAvailability";
 import { ApiStatus } from "@/src/services/users/utils/types";
-import { cn } from "@/src/lib/utils";
+
+import { FormStatusMessage } from "@/src/components/form-status-message/FormStatusMessage";
 
 const RegisterFormFields = ({
   onUsernameStatusChange,
@@ -37,19 +38,7 @@ const RegisterFormFields = ({
     <>
       <Form className="grid w-full p-4 border grid-cols-1 gap-4 md:grid-cols-2">
         {/* <FormikWatcher /> DEBUGGING COMPONTNE */}
-        {formStatus?.message && (
-          <p
-            className={cn(
-              "text-xs col-span-full p-4 bg-linear-to-r to-transparent font-bold",
-              formStatus?.status === "success"
-                ? "from-primary/50"
-                : "from-red-800/30",
-            )}
-            aria-live="polite"
-          >
-            {formStatus?.message}
-          </p>
-        )}
+        <FormStatusMessage formStatus={formStatus} />
 
         <UsernameInput status={status} />
 

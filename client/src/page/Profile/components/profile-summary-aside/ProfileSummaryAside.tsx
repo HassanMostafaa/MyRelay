@@ -2,7 +2,7 @@
 
 import { Button } from "@/src/components/button/Button";
 import { User } from "@/src/services/users/utils/types";
-import { Trash } from "lucide-react";
+import { Ticket, Trash } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { DeleteAccountConfirmationModal } from "../delete-account-confirmation-modal/DeleteAccountConfirmationModal";
@@ -134,6 +134,19 @@ export const ProfileSummaryAside = ({ user }: { user: User }) => {
           </div>
         </div>
       </aside>
+
+      <section className="space-y-3 border border-border bg-card p-5 sm:p-6">
+        <p className="text-primary text-xs font-semibold uppercase tracking-[0.22em]">
+          {t("sections.ticketActions")}
+        </p>
+        <p className="text-sm leading-6 text-muted-foreground">
+          {t("ticketActions.description")}
+        </p>
+        <Button variant="primary" href="/new-ticket" className="w-full">
+          <Ticket size={16} />
+          {t("ticketActions.createTicket")}
+        </Button>
+      </section>
 
       <section className="space-y-3 border border-border bg-card p-5 sm:p-6">
         <p className="text-destructive text-xs font-semibold uppercase tracking-[0.22em]">

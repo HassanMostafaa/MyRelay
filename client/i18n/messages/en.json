@@ -21,8 +21,17 @@
     "password_confirmed_required": "You must confirm your password",
     "passwords_must_match": "Password confirmation must match",
 
-    "identifier_required": "Username or Email Address required"
+    "identifier_required": "Username or Email Address required",
+
+    "subject_required": "Subject is required",
+    "subject_min": "Subject must be at least 3 characters",
+
+    "description_required": "Description is required",
+    "description_min": "Description must be at least 3 characters",
+
+    "login_required": "Login is required"
   },
+
   "forms": {
     "identifier": "Username or email",
     "username": "Username",
@@ -33,7 +42,11 @@
     "login_submit": "Sign in",
     "username_checking": "Checking username...",
     "username_available": "Username is available",
-    "username_check_failed": "Couldn't verify username right now"
+    "username_check_failed": "Couldn't verify username right now",
+    "subject": "Subject",
+    "description": "Description",
+    "create_ticket": "Create Ticket",
+    "ticket_created_successfully": "Ticket created successfully"
   },
   "heroSection": {
     "eyebrow": "Ticket support + live chat",
@@ -176,6 +189,7 @@
       "account": "Account details",
       "contact": "Contact details",
       "location": "Location",
+      "ticketActions": "Ticket actions",
       "verification": "Verification",
       "meta": "Account history",
       "danger": "Danger zone"
@@ -207,18 +221,22 @@
       "verified": "Verified",
       "notVerified": "Not verified"
     },
-  "danger": {
-    "description": "Deleting your account removes your access and account data from this workspace.",
-    "deleteAccount": "Delete account",
-    "modal": {
-      "title": "Delete this account?",
-      "subtitle": "This action is permanent and cannot be undone.",
-      "description": "If you continue, you will lose access to MyRelay and the profile data connected to this account will be removed.",
-      "accountLabel": "Account to remove",
-      "cancel": "Keep account",
-      "confirm": "Confirm deletion",
-      "close": "Close delete account modal"
+    "ticketActions": {
+      "description": "Start a new support request when you need help or want to report an issue.",
+      "createTicket": "Create ticket"
+    },
+    "danger": {
+      "description": "Deleting your account removes your access and account data from this workspace.",
+      "deleteAccount": "Delete account",
+      "modal": {
+        "title": "Delete this account?",
+        "subtitle": "This action is permanent and cannot be undone.",
+        "description": "If you continue, you will lose access to MyRelay and the profile data connected to this account will be removed.",
+        "accountLabel": "Account to remove",
+        "cancel": "Keep account",
+        "confirm": "Confirm deletion",
+        "close": "Close delete account modal"
+      }
     }
   }
-}
 }

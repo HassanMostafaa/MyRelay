@@ -3,10 +3,9 @@
 import { Button } from "../../button/Button";
 import { FormikField } from "../../formil-field/FormikField";
 import { Form, Formik } from "formik";
-import React from "react";
 import { initialValues, useLoginForm } from "./utils/useLoginForm";
-import { cn } from "@/src/lib/utils";
 import { useTranslations } from "next-intl";
+import { FormStatusMessage } from "@/src/components/form-status-message/FormStatusMessage";
 
 export const LoginForm = () => {
   const t = useTranslations("forms");
@@ -21,19 +20,7 @@ export const LoginForm = () => {
       >
         {({ isSubmitting }) => (
           <Form className="flex w-full flex-col gap-4 border border-border bg-card p-5 sm:p-6">
-            {formStatus?.message && (
-              <p
-                className={cn(
-                  "text-xs col-span-full p-4 bg-linear-to-r to-transparent font-bold",
-                  formStatus?.status === "success"
-                    ? "from-primary/50"
-                    : "from-red-800/30",
-                )}
-                aria-live="polite"
-              >
-                {formStatus?.message}
-              </p>
-            )}
+            <FormStatusMessage formStatus={formStatus} />
 
             <FormikField
               type="text"

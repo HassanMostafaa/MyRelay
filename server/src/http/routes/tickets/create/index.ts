@@ -35,7 +35,7 @@ export const createTicketRoute = async (req: Request) => {
         return error("Failed inserting ticket in the database", null, 400);
       }
 
-      return success("TRIGGER SUCCESS");
+      return success(insertedTicket, { status: 201 });
     }
 
     default:

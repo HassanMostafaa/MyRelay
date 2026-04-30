@@ -16,7 +16,12 @@
     "password_min": "Le mot de passe doit contenir au moins 8 caractères",
     "password_confirmed_required": "Vous devez confirmer le mot de passe",
     "passwords_must_match": "La confirmation du mot de passe doit correspondre",
-    "identifier_required": "Le nom d'utilisateur ou l'adresse e-mail est requis"
+    "identifier_required": "Le nom d'utilisateur ou l'adresse e-mail est requis",
+    "subject_required": "Le sujet est requis",
+    "subject_min": "Le sujet doit contenir au moins 3 caractères",
+    "description_required": "La description est requise",
+    "description_min": "La description doit contenir au moins 3 caractères",
+    "login_required": "La connexion est requise"
   },
   "forms": {
     "identifier": "Nom d'utilisateur ou e-mail",
@@ -28,7 +33,11 @@
     "login_submit": "Se connecter",
     "username_checking": "Vérification du nom d'utilisateur...",
     "username_available": "Ce nom d'utilisateur est disponible",
-    "username_check_failed": "Impossible de vérifier le nom d'utilisateur pour le moment"
+    "username_check_failed": "Impossible de vérifier le nom d'utilisateur pour le moment",
+    "subject": "Sujet",
+    "description": "Description",
+    "create_ticket": "Créer un ticket",
+    "ticket_created_successfully": "Ticket créé avec succès"
   },
   "heroSection": {
     "eyebrow": "Tickets support + chat en direct",
@@ -171,6 +180,7 @@
       "account": "Détails du compte",
       "contact": "Coordonnées",
       "location": "Localisation",
+      "ticketActions": "Actions ticket",
       "verification": "Vérification",
       "meta": "Historique du compte",
       "danger": "Zone sensible"
@@ -201,6 +211,10 @@
     "status": {
       "verified": "Vérifié",
       "notVerified": "Non vérifié"
+    },
+    "ticketActions": {
+      "description": "Créez une nouvelle demande de support lorsque vous avez besoin d'aide ou souhaitez signaler un problème.",
+      "createTicket": "Créer un ticket"
     },
   "danger": {
     "description": "Supprimer votre compte supprimera votre accès et les données de votre compte de cet espace de travail.",
