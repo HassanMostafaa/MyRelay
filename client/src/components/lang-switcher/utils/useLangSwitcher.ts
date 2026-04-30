@@ -1,9 +1,8 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { usePathname } from "next/navigation";
-import { useRouter } from "@/i18n/navigations";
-import { locales } from "@/i18n/routing";
+import { usePathname, useRouter } from "@/i18n/navigations";
+import { routing } from "@/i18n/routing";
 
 const getTargetLocale = (locale: string, availableLocales: readonly string[]) => {
   const currentLocaleIndex = availableLocales.indexOf(locale);
@@ -17,28 +16,22 @@ const getTargetLocale = (locale: string, availableLocales: readonly string[]) =>
   );
 };
 
-const getPathnameWithoutLocale = (pathname: string) => {
-  return pathname.replace(new RegExp(`^/(${locales.join("|")})(?=/|$)`), "") || "/";
-};
-
 export const useLangSwitcher = () => {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
-  const availableLocales = locales;
+  const availableLocales = routing.locales;
   const targetLocale =
     availableLocales.length === 2
       ? getTargetLocale(locale, availableLocales)
       : null;
-  const pathnameWithoutLocale = getPathnameWithoutLocale(pathname);
 
   const switchLocale = (nextLocale: string) => {
     if (!nextLocale || nextLocale === locale) {
       return;
     }
 
-    router.replace(pathnameWithoutLocale, { locale: nextLocale });
-    router.refresh();
+    router.replace(pathname, { locale: nextLocale });
   };
 
   return {

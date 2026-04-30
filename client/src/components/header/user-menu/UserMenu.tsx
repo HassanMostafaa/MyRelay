@@ -84,7 +84,7 @@ export const UserMenu = ({
           id={menuId}
           role="menu"
           className={cn(
-            "absolute top-full z-50 mt-2 border border-border bg-card p-2 shadow-sm",
+            "absolute top-full z-50 mt-2 border border-border bg-card backdrop-blur-lg p-2 shadow-sm",
             fullWidth ? "inset-s-0 w-full" : "inset-e-0 min-w-56",
           )}
         >
