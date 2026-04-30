@@ -2,16 +2,15 @@ import { Info, LogIn, LogOut, UserRound, UserRoundPlus } from "lucide-react";
 import { useMemo } from "react";
 import type { ReactNode } from "react";
 import { useLogout } from "./useLogout";
+import { useTranslations } from "next-intl";
 
 export type GlobalLinkKey =
   | "about"
-  | "privacy"
-  | "terms"
-  | "contact"
   | "profile"
   | "register"
   | "login"
-  | "logout";
+  | "logout"
+  | "create_ticket";
 
 type UseGlobalLinksOptions =
   | {
@@ -35,53 +34,45 @@ export type GlobalLink = {
 
 export const useGlobalLinks = (options?: UseGlobalLinksOptions) => {
   const { include, exclude } = options ?? {};
+  const t = useTranslations();
   const { logout } = useLogout();
 
   return useMemo(() => {
     const GLOBAL_LINKS: Record<GlobalLinkKey, GlobalLink> = {
       about: {
         key: "about",
-        label: "About",
+        label: t("about"),
         href: "/about",
         startIcon: <Info size={16} />,
       },
-      privacy: {
-        key: "privacy",
-        label: "Privacy",
-        href: "/privacy",
-      },
-      terms: {
-        key: "terms",
-        label: "Terms",
-        href: "/terms",
-      },
-      contact: {
-        key: "contact",
-        label: "Contact",
-        href: "/contact",
-      },
       profile: {
         key: "profile",
-        label: "Profile",
+        label: t("profile"),
         href: "/profile",
         startIcon: <UserRound size={16} />,
       },
       login: {
         key: "login",
-        label: "Login",
+        label: t("login"),
         href: "/login",
         startIcon: <LogIn size={16} />,
       },
       logout: {
         key: "logout",
-        label: "Logout",
+        label: t("logout"),
         startIcon: <LogOut size={16} />,
         onClick: logout,
       },
       register: {
         key: "register",
-        label: "Register",
+        label: t("register"),
         href: "/register",
+        startIcon: <UserRoundPlus size={16} />,
+      },
+      create_ticket: {
+        key: "create_ticket",
+        label: t("forms.create_ticket"),
+        href: "/new-ticket",
         startIcon: <UserRoundPlus size={16} />,
       },
     };
@@ -97,5 +88,5 @@ export const useGlobalLinks = (options?: UseGlobalLinksOptions) => {
     }
 
     return allLinks;
-  }, [include, exclude, logout]);
+  }, [include, exclude, logout, t]);
 };

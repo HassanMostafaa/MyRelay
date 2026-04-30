@@ -6,6 +6,7 @@ import { getMeService } from "@/src/services/users/me/me.service";
 
 export const AuthInit = () => {
   const setUser = useAuthStore((s) => s.setUser);
+  // const user = useAuthStore((s) => s.user);
 
   useLayoutEffect(() => {
     const init = async () => {

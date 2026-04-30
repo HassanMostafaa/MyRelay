@@ -1,13 +1,74 @@
 {
   "home": "Home",
-  "about": "About",
+  "about": "About Us",
   "login": "Login",
   "logout": "Logout",
   "profile": "Profile",
   "register": "Register",
   "locale": "Locale",
+  "notFoundPage": {
+    "eyebrow": "Not found",
+    "title": "This page is outside the current route map.",
+    "description": "The address you opened does not point to a live MyRelay page. Head back to the main workspace entry and continue from there.",
+    "primaryCta": "Back home",
+    "panelEyebrow": "Next step",
+    "panelTitle": "What you can do now",
+    "tips": {
+      "route": {
+        "title": "Check the path",
+        "body": "The URL may be incomplete, outdated, or pointing to a route that no longer exists."
+      },
+      "home": {
+        "title": "Start from home",
+        "body": "Use the main landing page to move back into the correct public, auth, or protected area."
+      },
+      "retry": {
+        "title": "Try again",
+        "body": "If this link came from another screen, refresh your navigation path and reopen the intended page."
+      }
+    }
+  },
+  "metadata": {
+    "pages": {
+      "home": {
+        "title": "MyRelay",
+        "description": "The product has one app, one backend, and one database, but different users see different areas and actions depending on their role."
+      },
+      "about": {
+        "title": "About | MyRelay",
+        "description": "Learn how MyRelay transforms business support operations with structured ticket workflows, real-time conversations, and role-based collaboration."
+      },
+      "login": {
+        "title": "Login | MyRelay",
+        "description": "Sign in to access your MyRelay workspace, tickets, and role-based support actions."
+      },
+      "register": {
+        "title": "Register | MyRelay",
+        "description": "Create a MyRelay account to start submitting tickets and continue into the support workspace for your role."
+      },
+      "newTicket": {
+        "title": "New Ticket | MyRelay",
+        "description": "Create a new support ticket in MyRelay and capture the issue with the context your team needs."
+      },
+      "profile": {
+        "title": "Profile | MyRelay",
+        "description": "Review your MyRelay account details, verification status, and profile actions in one place."
+      },
+      "security": {
+        "title": "Security | MyRelay",
+        "description": "Manage security access and protection settings for your MyRelay workspace account."
+      },
+      "test": {
+        "title": "Test | MyRelay",
+        "description": "Internal MyRelay test page used for validating public route rendering and behavior."
+      }
+    }
+  },
 
   "validation": {
+    "first_name_required": "First name is required",
+    "last_name_required": "Last name is required",
+
     "username_required": "Username is required",
     "username_min": "Username must be at least 3 characters",
     "username_taken": "Username is already taken",
@@ -29,12 +90,16 @@
     "description_required": "Description is required",
     "description_min": "Description must be at least 3 characters",
 
-    "login_required": "Login is required"
+    "login_required": "Login is required",
+
+    "missing_values": "Missing values"
   },
 
   "forms": {
     "identifier": "Username or email",
     "username": "Username",
+    "first_name": "First name",
+    "last_name": "Last name",
     "email": "Email",
     "password": "Password",
     "confirm_password": "Confirm Password",

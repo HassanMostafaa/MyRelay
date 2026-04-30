@@ -1,8 +1,9 @@
 import { ProtectedAuthWatcher } from "@/src/components/protected-auth-watcher/ProtectedAuthWatcher";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 
-export default async function AuthLayout({
+async function AuthLayoutContent({
   children,
 }: {
   children: React.ReactNode;
@@ -15,4 +16,16 @@ export default async function AuthLayout({
   }
 
   return <ProtectedAuthWatcher mode="auth">{children}</ProtectedAuthWatcher>;
+}
+
+export default function AuthLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <Suspense fallback={null}>
+      <AuthLayoutContent>{children}</AuthLayoutContent>
+    </Suspense>
+  );
 }

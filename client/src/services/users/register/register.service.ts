@@ -4,10 +4,15 @@ import { handleLoginService } from "../login/login.service";
 
 type RegisterRequestBody = Omit<RegisterFormValues, "passwordConfirm">;
 
+type RegisterErrorData = {
+  missing?: string[];
+};
+
 type RegisterResponseData = {
-  message: string;
+  message?: string;
   user?: User;
   status: ApiStatus;
+  data?: RegisterErrorData;
   loginResponse?: { status: ApiStatus; message?: string; user: User | null };
 };
 
@@ -32,7 +37,7 @@ export const handleRegisterService = async (
   const json = await res.json();
 
   if (json.status === "error") {
-    return { message: json.message, status: json.status };
+    return { message: json.message, status: json.status, data: json.data };
   }
 
   const loginResponse = await handleLoginService({

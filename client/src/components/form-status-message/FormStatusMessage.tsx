@@ -1,9 +1,13 @@
+"use client";
+
 import { cn } from "@/src/lib/utils";
 import { ApiStatus } from "@/src/services/users/utils/types";
+import { useTranslations } from "next-intl";
 
-type FormStatus = {
+export type FormStatus = {
   status: ApiStatus;
-  message: string;
+  message?: string;
+  missing?: string[];
 } | null;
 
 type Props = {
@@ -12,20 +16,45 @@ type Props = {
 };
 
 export const FormStatusMessage = ({ formStatus, className }: Props) => {
-  if (!formStatus?.message) return null;
+  const t = useTranslations();
+
+  if (!formStatus?.message && !formStatus?.missing?.length) return null;
 
   const isSuccess = formStatus.status === "success";
+  const getMissingFieldLabel = (field: string) => {
+    try {
+      return t(`forms.${field}`);
+    } catch {
+      return field.replaceAll("_", " ");
+    }
+  };
 
   return (
-    <p
+    <div
       className={cn(
-        "text-xs col-span-full p-4 bg-linear-to-r to-transparent font-bold",
+        "col-span-full space-y-3 bg-linear-to-r p-4 text-xs to-transparent",
         isSuccess ? "from-primary/50" : "from-red-800/30",
         className,
       )}
       aria-live="polite"
     >
-      {formStatus.message}
-    </p>
+      {formStatus.message ? (
+        <p className="font-bold">⦾ {formStatus.message}</p>
+      ) : null}
+
+      {formStatus.missing?.length ? (
+        <>
+          <hr />
+          <div className="space-y-2">
+            <p className="font-bold">{t("validation.missing_values")}</p>
+            <ul className="list-disc space-y-1 ps-4">
+              {formStatus.missing.map((field) => (
+                <li key={field}>{getMissingFieldLabel(field)}</li>
+              ))}
+            </ul>
+          </div>
+        </>
+      ) : null}
+    </div>
   );
 };

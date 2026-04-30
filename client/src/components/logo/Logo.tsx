@@ -1,8 +1,7 @@
 import Image from "next/image";
 import LogoLarge from "@/public/brand/logo-large.png";
 import LogoSmall from "@/public/brand/logo-small.png";
-import Link from "next/link";
-import { getLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigations";
 
 const logoVariants = [
   {
@@ -17,11 +16,9 @@ const logoVariants = [
   },
 ];
 
-export const Logo = async () => {
-  const locale = await getLocale();
-
+export const Logo = () => {
   return (
-    <Link href={`/${locale}`}>
+    <Link href="/">
       {logoVariants.map(({ src, className, sizes }) => (
         <Image
           key={src.src}

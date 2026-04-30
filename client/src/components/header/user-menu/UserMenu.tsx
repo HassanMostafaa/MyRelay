@@ -5,7 +5,6 @@ import type { GlobalLink } from "@/src/hooks/useGlobalLinks";
 import { cn } from "@/src/lib/utils";
 import type { User } from "@/src/services/users/utils/types";
 import { ChevronDown } from "lucide-react";
-import { useTranslations } from "next-intl";
 import { useEffect, useId, useRef, useState } from "react";
 
 type UserMenuProps = {
@@ -21,7 +20,6 @@ export const UserMenu = ({
   fullWidth = false,
   onItemSelect,
 }: UserMenuProps) => {
-  const t = useTranslations();
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const menuId = useId();
@@ -59,10 +57,7 @@ export const UserMenu = ({
   };
 
   return (
-    <div
-      ref={wrapperRef}
-      className={cn("relative", fullWidth && "w-full")}
-    >
+    <div ref={wrapperRef} className={cn("relative", fullWidth && "w-full")}>
       <button
         type="button"
         aria-haspopup="menu"
@@ -80,10 +75,7 @@ export const UserMenu = ({
         </span>
         <ChevronDown
           size={14}
-          className={cn(
-            "transition-transform",
-            open && "rotate-180",
-          )}
+          className={cn("transition-transform", open && "rotate-180")}
         />
       </button>
 
@@ -93,9 +85,7 @@ export const UserMenu = ({
           role="menu"
           className={cn(
             "absolute top-full z-50 mt-2 border border-border bg-card p-2 shadow-sm",
-            fullWidth
-              ? "start-0 w-full"
-              : "end-0 min-w-56",
+            fullWidth ? "inset-s-0 w-full" : "inset-e-0 min-w-56",
           )}
         >
           <div className="flex flex-col gap-2">
@@ -109,7 +99,7 @@ export const UserMenu = ({
                   className="inline-flex items-center gap-2 border border-transparent bg-background/65 px-3 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-foreground transition-all hover:border-border hover:bg-background"
                 >
                   {link.startIcon}
-                  {t(link.key)}
+                  {link.label}
                 </Link>
               ) : (
                 <button
@@ -120,7 +110,7 @@ export const UserMenu = ({
                   className="inline-flex items-center gap-2 border border-transparent bg-background/65 px-3 py-2 text-start text-xs font-semibold uppercase tracking-[0.22em] text-foreground transition-all hover:border-border hover:bg-background"
                 >
                   {link.startIcon}
-                  {t(link.key)}
+                  {link.label}
                 </button>
               ),
             )}

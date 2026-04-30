@@ -63,75 +63,81 @@ export const MobileMenu: FunctionComponent = () => {
             )}
 
             {!user && state !== "loading" && (
-              <div className="flex flex-col gap-3">
-                {loggedOutLinks?.map((link, idx) => (
-                  <Button
-                    key={link.key}
-                    variant={idx === 0 ? "primary" : "secondary"}
-                    href={link.href}
-                    onClick={handleCloseMenu}
-                    className="w-full justify-start"
-                  >
-                    {link.startIcon}
-                    {t(link.key)}
-                  </Button>
-                ))}
-              </div>
+              <>
+                <hr />
+                <div className="flex flex-col gap-3">
+                  {loggedOutLinks?.map((link, idx) => (
+                    <Button
+                      key={link.key}
+                      variant={idx === 0 ? "primary" : "secondary"}
+                      href={link.href}
+                      onClick={handleCloseMenu}
+                      className="w-full justify-start"
+                    >
+                      {link.startIcon}
+                      {t(link.key)}
+                    </Button>
+                  ))}
+                </div>
+              </>
             )}
 
             {user && state !== "loading" && loggedInLinks?.length > 0 && (
-              <div className="border border-border bg-card p-3">
-                <button
-                  type="button"
-                  aria-expanded={accountOpen}
-                  onClick={() => setAccountOpen((previous) => !previous)}
-                  className="inline-flex w-full items-center justify-between gap-3 bg-background px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-[0.28em] text-primary"
-                >
-                  <span className="inline-flex min-w-0 items-center gap-2">
-                    <span className="size-2 shrink-0 rounded-full bg-primary" />
-                    <span className="truncate">{user.username}</span>
-                  </span>
-                  <ChevronDown
-                    size={14}
-                    className={
-                      accountOpen
-                        ? "rotate-180 transition-transform"
-                        : "transition-transform"
-                    }
-                  />
-                </button>
+              <>
+                <hr />
+                <div className="border border-border bg-card p-3">
+                  <button
+                    type="button"
+                    aria-expanded={accountOpen}
+                    onClick={() => setAccountOpen((previous) => !previous)}
+                    className="inline-flex w-full items-center justify-between gap-3 bg-background px-3 py-2 text-left text-[11px] font-semibold uppercase tracking-[0.28em] text-primary"
+                  >
+                    <span className="inline-flex min-w-0 items-center gap-2">
+                      <span className="size-2 shrink-0 rounded-full bg-primary" />
+                      <span className="truncate">{user.username}</span>
+                    </span>
+                    <ChevronDown
+                      size={14}
+                      className={
+                        accountOpen
+                          ? "rotate-180 transition-transform"
+                          : "transition-transform"
+                      }
+                    />
+                  </button>
 
-                {accountOpen && (
-                  <div className="mt-3 flex flex-col gap-2 border-t border-border pt-3">
-                    {loggedInLinks.map((link) =>
-                      link.href ? (
-                        <Link
-                          key={link.key}
-                          href={link.href}
-                          onClick={handleCloseMenu}
-                          className="inline-flex items-center gap-2 bg-background px-3 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-foreground"
-                        >
-                          {link.startIcon}
-                          {t(link.key)}
-                        </Link>
-                      ) : (
-                        <button
-                          key={link.key}
-                          type="button"
-                          onClick={async () => {
-                            handleCloseMenu();
-                            await link.onClick?.();
-                          }}
-                          className="inline-flex items-center gap-2 bg-background px-3 py-2 text-start text-xs font-semibold uppercase tracking-[0.22em] text-foreground"
-                        >
-                          {link.startIcon}
-                          {t(link.key)}
-                        </button>
-                      ),
-                    )}
-                  </div>
-                )}
-              </div>
+                  {accountOpen && (
+                    <div className="mt-3 flex flex-col gap-2 border-t border-border pt-3">
+                      {loggedInLinks.map((link) =>
+                        link.href ? (
+                          <Link
+                            key={link.key}
+                            href={link.href}
+                            onClick={handleCloseMenu}
+                            className="inline-flex items-center gap-2 bg-background px-3 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-foreground"
+                          >
+                            {link.startIcon}
+                            {t(link.key)}
+                          </Link>
+                        ) : (
+                          <button
+                            key={link.key}
+                            type="button"
+                            onClick={async () => {
+                              handleCloseMenu();
+                              await link.onClick?.();
+                            }}
+                            className="inline-flex items-center gap-2 bg-background px-3 py-2 text-start text-xs font-semibold uppercase tracking-[0.22em] text-foreground"
+                          >
+                            {link.startIcon}
+                            {t(link.key)}
+                          </button>
+                        ),
+                      )}
+                    </div>
+                  )}
+                </div>
+              </>
             )}
 
             <div className="flex items-center justify-between border-t border-border pt-4">

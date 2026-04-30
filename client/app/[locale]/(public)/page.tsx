@@ -1,25 +1,18 @@
 import { HomePage } from "@/src/page/Home/HomePage";
-import { Metadata } from "next";
+import { createPageMetadata } from "@/src/lib/page-metadata";
 
-// Fallback to localhost if the variable isn't defined
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: "MyRelay",
-  description:
-    "The product has one app, one backend, and one database, but different users see different areas and actions depending on their role.",
-  openGraph: {
-    title: "MyRelay",
-    description:
-      "The product has one app, one backend, and one database, but different users see different areas and actions depending on their role.",
-    images: "/brand/logo-emblem-large.png",
-    url: SITE_URL,
-  },
-  alternates: {
-    canonical: SITE_URL,
-  },
-};
+  return createPageMetadata({
+    locale,
+    page: "home",
+  });
+}
 
 export default async function NextjsPage() {
   return <HomePage />;

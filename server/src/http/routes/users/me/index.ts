@@ -12,7 +12,11 @@ export const meRoute = async (req: Request) => {
         const token = getAuthTokenFromRequest(req);
 
         if (!token) {
-          return error("Unauthorized or no token passed", null, 401);
+          return error(
+            "Logged out, unauthorized, or no token passed",
+            null,
+            401,
+          );
         }
 
         const payload = await verifyAuthToken(token);

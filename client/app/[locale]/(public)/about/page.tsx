@@ -1,24 +1,19 @@
 import { AboutPage } from "@/src/page/About/AboutPage";
-import { Metadata } from "next";
+import { createPageMetadata } from "@/src/lib/page-metadata";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: "About | MyRelay",
-  description:
-    "Learn how MyRelay transforms business support operations with structured ticket workflows, real-time conversations, and role-based collaboration.",
-  openGraph: {
-    title: "About | MyRelay",
-    description:
-      "Learn how MyRelay transforms business support operations with structured ticket workflows, real-time conversations, and role-based collaboration.",
-    images: "/brand/logo-emblem-large.png",
-    url: `${SITE_URL}/about`,
-  },
-  alternates: {
-    canonical: `${SITE_URL}/about`,
-  },
-};
+  return createPageMetadata({
+    locale,
+    page: "about",
+    path: "/about",
+  });
+}
 
 export default function NextjsAboutPage() {
   return <AboutPage />;

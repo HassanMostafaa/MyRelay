@@ -6,7 +6,68 @@
   "profile": "Profil",
   "register": "Créer un compte",
   "locale": "Langue",
+  "notFoundPage": {
+    "eyebrow": "Page introuvable",
+    "title": "Cette page est en dehors des routes actives de l'application.",
+    "description": "L'adresse ouverte ne correspond à aucune page active de MyRelay. Revenez à l'entrée principale puis poursuivez depuis là.",
+    "primaryCta": "Retour à l'accueil",
+    "panelEyebrow": "Étape suivante",
+    "panelTitle": "Ce que vous pouvez faire",
+    "tips": {
+      "route": {
+        "title": "Vérifier l'URL",
+        "body": "L'adresse peut être incomplète, ancienne ou pointer vers une route qui n'existe plus."
+      },
+      "home": {
+        "title": "Repartir de l'accueil",
+        "body": "Utilisez la page principale pour revenir vers la bonne zone publique, d'authentification ou protégée."
+      },
+      "retry": {
+        "title": "Réessayer",
+        "body": "Si ce lien vient d'un autre écran, reprenez votre navigation puis ouvrez de nouveau la page visée."
+      }
+    }
+  },
+  "metadata": {
+    "pages": {
+      "home": {
+        "title": "MyRelay",
+        "description": "Le produit repose sur une seule application, un seul backend et une seule base de données, mais chaque utilisateur voit les espaces et actions adaptés à son rôle."
+      },
+      "about": {
+        "title": "À propos | MyRelay",
+        "description": "Découvrez comment MyRelay transforme les opérations de support grâce à des workflows de tickets structurés, des conversations en temps réel et une collaboration par rôle."
+      },
+      "login": {
+        "title": "Connexion | MyRelay",
+        "description": "Connectez-vous pour accéder à votre espace MyRelay, à vos tickets et aux actions de support liées à votre rôle."
+      },
+      "register": {
+        "title": "Créer un compte | MyRelay",
+        "description": "Créez un compte MyRelay pour commencer à soumettre des tickets et poursuivre dans l'espace de support adapté à votre rôle."
+      },
+      "newTicket": {
+        "title": "Nouveau ticket | MyRelay",
+        "description": "Créez un nouveau ticket de support dans MyRelay et ajoutez le contexte nécessaire à votre équipe."
+      },
+      "profile": {
+        "title": "Profil | MyRelay",
+        "description": "Consultez les détails de votre compte MyRelay, votre état de vérification et vos actions de profil au même endroit."
+      },
+      "security": {
+        "title": "Sécurité | MyRelay",
+        "description": "Gérez les paramètres d'accès et de protection de votre compte dans l'espace de travail MyRelay."
+      },
+      "test": {
+        "title": "Test | MyRelay",
+        "description": "Page de test interne MyRelay utilisée pour vérifier le rendu et le comportement des routes publiques."
+      }
+    }
+  },
   "validation": {
+    "first_name_required": "Le prénom est requis",
+    "last_name_required": "Le nom de famille est requis",
+
     "username_required": "Le nom d'utilisateur est requis",
     "username_min": "Le nom d'utilisateur doit contenir au moins 3 caractères",
     "username_taken": "Ce nom d'utilisateur est déjà pris",
@@ -21,11 +82,14 @@
     "subject_min": "Le sujet doit contenir au moins 3 caractères",
     "description_required": "La description est requise",
     "description_min": "La description doit contenir au moins 3 caractères",
-    "login_required": "La connexion est requise"
+    "login_required": "La connexion est requise",
+    "missing_values": "Valeurs manquantes"
   },
   "forms": {
     "identifier": "Nom d'utilisateur ou e-mail",
     "username": "Nom d'utilisateur",
+    "first_name": "Prénom",
+    "last_name": "Nom de famille",
     "email": "E-mail",
     "password": "Mot de passe",
     "confirm_password": "Confirmer le mot de passe",

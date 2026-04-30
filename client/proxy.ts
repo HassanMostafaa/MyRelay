@@ -7,19 +7,18 @@ const nextIntlMiddleware = createMiddleware(routing);
 export default function middleware(req: NextRequest) {
   const url = req.nextUrl.clone();
 
-  // Handle root path
-  if (url.pathname === "/") {
-    const response = NextResponse.next();
-    response.cookies.set("NEXT_LOCALE", defaultLocale, {
-      path: "/",
-      sameSite: "lax",
-    });
-    return response;
+  const localePrefixedWellKnown = new RegExp(
+    `^/(${routing.locales.join("|")})/\\.well-known/`,
+  );
+
+  if (localePrefixedWellKnown.test(url.pathname)) {
+    url.pathname = url.pathname.replace(localePrefixedWellKnown, "/.well-known/");
+    return NextResponse.rewrite(url);
   }
 
-  // Handle default locale explicitly
-  if (url.pathname === `/${defaultLocale}`) {
-    const response = NextResponse.next();
+  // Handle root path
+  if (url.pathname === "/" || url.pathname === `/${defaultLocale}`) {
+    const response = nextIntlMiddleware(req);
     response.cookies.set("NEXT_LOCALE", defaultLocale, {
       path: "/",
       sameSite: "lax",

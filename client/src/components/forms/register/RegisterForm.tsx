@@ -8,22 +8,23 @@ import { UsernameInput } from "./components/username-input/UsernameInput";
 import { EmailInput } from "./components/email-input/EmailInput";
 import { PasswordInput } from "./components/password-input/PasswordInput";
 import { ConfirmPasswordInput } from "./components/confirm-password-input/ConfirmPasswordInput";
+import { FirstNameInput } from "./components/first-name-input/FirstNameInput";
+import { LastNameInput } from "./components/last-name-input/LastNameInput";
 import {
   useUsernameAvailability,
   UsernameAvailabilityStatus,
 } from "./utils/useUsernameAvailability";
-import { ApiStatus } from "@/src/services/users/utils/types";
 
-import { FormStatusMessage } from "@/src/components/form-status-message/FormStatusMessage";
+import {
+  FormStatus,
+  FormStatusMessage,
+} from "@/src/components/form-status-message/FormStatusMessage";
 
 const RegisterFormFields = ({
   onUsernameStatusChange,
   formStatus,
 }: {
-  formStatus: {
-    status: ApiStatus;
-    message: string;
-  } | null;
+  formStatus: FormStatus;
   onUsernameStatusChange: (status: UsernameAvailabilityStatus) => void;
 }) => {
   const t = useTranslations("forms");
@@ -39,6 +40,10 @@ const RegisterFormFields = ({
       <Form className="grid w-full p-4 border grid-cols-1 gap-4 md:grid-cols-2">
         {/* <FormikWatcher /> DEBUGGING COMPONTNE */}
         <FormStatusMessage formStatus={formStatus} />
+
+        <FirstNameInput />
+
+        <LastNameInput />
 
         <UsernameInput status={status} />
 

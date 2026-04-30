@@ -3,10 +3,11 @@ import { useTranslations } from "next-intl";
 import { handleRegisterService } from "@/src/services/users/register/register.service";
 import { useState } from "react";
 import { useAuthStore } from "@/src/store/useAuthStore";
-import { ApiStatus } from "@/src/services/users/utils/types";
-import { useRouter } from "next/navigation";
+import { FormStatus } from "@/src/components/form-status-message/FormStatusMessage";
 
 export interface RegisterFormValues {
+  first_name: string;
+  last_name: string;
   email: string;
   password: string;
   passwordConfirm: string;
@@ -14,6 +15,8 @@ export interface RegisterFormValues {
 }
 
 export const initialValues: RegisterFormValues = {
+  first_name: "",
+  last_name: "",
   email: "",
   password: "",
   passwordConfirm: "",
@@ -22,15 +25,10 @@ export const initialValues: RegisterFormValues = {
 
 export const useRegisterForm = () => {
   const t = useTranslations();
-  const router = useRouter();
-  const [formStatus, setFormStatus] = useState<{
-    status: ApiStatus;
-    message: string;
-  } | null>(null);
+  const [formStatus, setFormStatus] = useState<FormStatus>(null);
 
   const { setUser } = useAuthStore((s) => ({
     setUser: s.setUser,
-    user: s.user,
   }));
 
   const handleSubmitRegister = async (values: RegisterFormValues) => {
@@ -38,7 +36,11 @@ export const useRegisterForm = () => {
     try {
       const results = await handleRegisterService(values);
 
-      setFormStatus({ message: results.message, status: results.status });
+      setFormStatus({
+        message: results.message,
+        status: results.status,
+        missing: results.data?.missing,
+      });
 
       // AUTO LOGIN LOGIC
       if (
@@ -46,8 +48,6 @@ export const useRegisterForm = () => {
         results?.loginResponse?.user
       ) {
         setUser(results?.loginResponse?.user);
-
-        // router.replace("/");
       }
     } catch (error) {
       console.error("ERROR SUBMITTING REGISTER FORM", error);
@@ -55,6 +55,14 @@ export const useRegisterForm = () => {
   };
 
   const validationSchema = Yup.object({
+    first_name: Yup.string()
+      .trim()
+      .required(t("validation.first_name_required")),
+
+    last_name: Yup.string()
+      .trim()
+      .required(t("validation.last_name_required")),
+
     username: Yup.string()
       .trim()
       .min(3, t("validation.username_min"))

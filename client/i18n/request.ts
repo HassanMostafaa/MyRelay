@@ -1,6 +1,7 @@
 import { hasLocale } from "next-intl";
 import { getRequestConfig } from "next-intl/server";
 import { routing } from "./routing";
+import { getLocaleMessages } from "./messages";
 
 export default getRequestConfig(async ({ requestLocale }) => {
   // Static for now, we'll change this later
@@ -11,9 +12,6 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
   return {
     locale,
-    messages: (await import(`./messages/${locale}.json`)).default,
-
-    // Content translations will come from CMS here we will store the fixed collection types titles
-    // messages: (await import(`./messages/${locale}.json`)).default,
+    messages: getLocaleMessages(locale),
   };
 });
