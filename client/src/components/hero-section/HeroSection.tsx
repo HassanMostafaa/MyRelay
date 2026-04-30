@@ -9,7 +9,7 @@ export const HeroSection = async () => {
   const t = await getTranslations("heroSection");
 
   return (
-    <section className="relative isolate overflow-hidden py-6 lg:py-10">
+    <section className="relative border-y isolate overflow-hidden py-6 lg:py-10">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.18),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.14),transparent_30%)]" />
       <div className="my-container">
         <div className="relative space-y-4 bg-card/40 ">

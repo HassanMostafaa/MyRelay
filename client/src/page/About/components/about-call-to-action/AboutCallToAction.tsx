@@ -11,7 +11,7 @@ export const AboutCallToAction = () => {
     <section className="relative isolate overflow-hidden border border-border bg-card/50 p-5 sm:p-6 lg:p-8">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.16),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.12),transparent_30%)]" />
 
-      <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <div className="relative flex my-container flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-3xl space-y-4">
           <div className="space-y-3">
             <p className="text-primary text-xs font-semibold uppercase tracking-[0.3em]">

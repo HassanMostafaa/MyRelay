@@ -28,7 +28,7 @@ export const AboutTransformationSection = () => {
   const t = useTranslations("aboutPage");
 
   return (
-    <section className="space-y-5">
+    <section className="space-y-5 my-container ">
       <div className="max-w-3xl space-y-3">
         <p className="text-primary text-xs font-semibold uppercase tracking-[0.3em]">
           {t("pillarsEyebrow")}

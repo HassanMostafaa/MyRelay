@@ -9,7 +9,7 @@ export const AboutHeader = () => {
     <header className="relative isolate overflow-hidden border border-border bg-card/40 p-5 sm:p-6 lg:p-8">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.12),transparent_30%)]" />
 
-      <div className="relative grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)] lg:items-start">
+      <div className="relative my-container  grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)] lg:items-start">
         <div className="space-y-4">
           <p className="text-primary text-xs font-semibold uppercase tracking-[0.3em]">
             {t("eyebrow")}

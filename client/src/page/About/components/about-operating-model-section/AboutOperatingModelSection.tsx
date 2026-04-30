@@ -30,7 +30,7 @@ export const AboutOperatingModelSection = () => {
   const t = useTranslations("aboutPage");
 
   return (
-    <section className="grid gap-4 xl:grid-cols-[minmax(0,1.05fr)_minmax(18rem,0.95fr)]">
+    <section className="grid my-container gap-4 xl:grid-cols-[minmax(0,1.05fr)_minmax(18rem,0.95fr)]">
       <article className="space-y-5 border border-border bg-background/75 p-5 sm:p-6">
         <div className="space-y-2">
           <p className="text-primary text-xs font-semibold uppercase tracking-[0.3em]">

@@ -5,7 +5,7 @@ import { AboutTransformationSection } from "./components/about-transformation-se
 
 export const AboutPage = () => {
   return (
-    <div className="my-container space-y-6 py-6 lg:space-y-8 lg:py-12">
+    <div className="space-y-6 lg:space-y-8">
       <AboutHeader />
       <AboutTransformationSection />
       <AboutOperatingModelSection />
