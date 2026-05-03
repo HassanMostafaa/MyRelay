@@ -74,6 +74,9 @@ coverage
 *.dump
 *.bak
 
+# but allow these
+!schema.sql
+
 # =========================
 # MongoDB / Postgres local data dirs
 # =========================
