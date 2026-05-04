@@ -26,7 +26,6 @@ export default async function RootLayout({
       className={cn(
         "h-full",
         "antialiased",
-        "font-sans",
         ibmPlexSans.variable,
         playfairDisplayHeading.variable,
       )}

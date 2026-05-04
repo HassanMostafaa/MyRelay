@@ -12,7 +12,7 @@ export const HeroSection = async () => {
     <section className="relative border-y isolate overflow-hidden py-6 lg:py-10">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.18),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.14),transparent_30%)]" />
       <div className="my-container">
-        <div className="relative space-y-4 bg-card/40 ">
+        <div className="relative space-y-4">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)] lg:items-center">
             <div className="space-y-8">
               <div className="inline-flex items-center gap-2 border border-border bg-background/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-primary">

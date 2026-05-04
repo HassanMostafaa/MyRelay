@@ -1,6 +1,6 @@
 import { ApiResponse, ApiStatus, User } from "../utils/types";
 
-const fullEndpoint = `${process.env.NEXT_PUBLIC_API_URL}/login`;
+const fullEndpoint = `/api/backend/login`;
 
 export const handleLoginService = async (requestBody: {
   identifier: string;
