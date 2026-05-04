@@ -9,6 +9,7 @@ import { useState } from "react";
 import { DeleteAccountConfirmationModal } from "../delete-account-confirmation-modal/DeleteAccountConfirmationModal";
 import { AvatarImage } from "@/src/components/avatar-image/AvatarImage";
 import { deleteUserService } from "@/src/services/users/delete/delete.service";
+import { UpdateAvatarSection } from "./components/UpdateAvatarSection";
 
 const formatValue = (value: string | null | undefined, fallback: string) => {
   if (value === null || value === undefined) {
@@ -79,7 +80,7 @@ export const ProfileSummaryAside = ({ user }: { user: User }) => {
     <div className="space-y-4">
       <aside className="space-y-4 border border-border bg-card p-5 sm:p-6">
         {/* AVATAR */}
-        <AvatarImage />
+        <UpdateAvatarSection />
 
         <div className="space-y-2">
           <p className="text-primary text-xs font-semibold uppercase tracking-[0.26em]">

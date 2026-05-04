@@ -302,6 +302,15 @@
         "confirm": "Confirm deletion",
         "close": "Close delete account modal"
       }
+    },
+    "updateAvatar": {
+      "title": "Update profile picture",
+      "description": "Upload a new profile picture to personalize your account and make it easier for your team to recognize you in the workspace.",
+      "upload": "Upload new picture",
+      "uploading": "Uploading new picture...",
+      "uploadFailed": "Couldn't upload new picture right now",
+      "cancel": "Cancel",
+      "select": "Select image"
     }
   }
 }

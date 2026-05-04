@@ -18,6 +18,9 @@ import { createTicketRoute } from "./tickets/create";
 import { deleteTicketRoute } from "./tickets/delete";
 import { saveRoute } from "./save";
 
+// ASSETS ROUTE IMPORT
+import { assetsRoute } from "./assets";
+
 export const routes = {
   // HEALTH CHECK ROUTE
   "/health": cors(healthRoute),
@@ -37,4 +40,7 @@ export const routes = {
 
   // TESTING FILE SAVE
   "/save": cors(saveRoute),
+
+  // ASSETS ROUTE
+  "/assets/:fileName": cors(assetsRoute),
 };
