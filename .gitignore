@@ -91,3 +91,7 @@ mongo_data
 postgres_data
 pgdata
 data/db
+
+
+
+/assets
