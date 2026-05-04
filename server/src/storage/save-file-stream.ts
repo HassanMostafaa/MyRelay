@@ -1,6 +1,8 @@
 import path from "node:path";
 import { mkdir } from "node:fs/promises";
 import { createWriteStream } from "node:fs";
+import { pipeline } from "node:stream/promises";
+import { Transform } from "node:stream";
 import type { SavedAsset } from "./utils/types";
 
 const ASSETS_ROOT =
@@ -11,6 +13,8 @@ type SaveFileStreamInput = {
   fileId: string;
   fileName: string;
   mimeType: string;
+  onChunk?: (chunk: Buffer) => void;
+  onComplete?: () => void;
 };
 
 export const saveFileStream = async ({
@@ -18,6 +22,8 @@ export const saveFileStream = async ({
   fileId,
   fileName,
   mimeType,
+  onChunk,
+  onComplete,
 }: SaveFileStreamInput): Promise<SavedAsset> => {
   const extension = fileName.includes(".")
     ? fileName.split(".").pop()?.toLowerCase() || "bin"
@@ -28,25 +34,28 @@ export const saveFileStream = async ({
 
   await mkdir(path.dirname(storagePath), { recursive: true });
 
-  const writeStream = createWriteStream(storagePath);
+  let sizeBytes = 0;
 
-  return new Promise((resolve, reject) => {
-    stream.pipe(writeStream);
-
-    stream.on("error", reject);
-    writeStream.on("error", reject);
-
-    writeStream.on("finish", () => {
-      resolve({
-        fileId,
-        fileName: finalFileName,
-        originalName: fileName,
-        storagePath,
-        publicPath: `/assets/${finalFileName}`,
-        mimeType,
-        sizeBytes: 0, // we will calculate this next
-        extension,
-      });
-    });
+  const trackAndCount = new Transform({
+    transform(chunk: Buffer, _encoding, callback) {
+      sizeBytes += chunk.length;
+      onChunk?.(chunk);
+      callback(null, chunk);
+    },
   });
+
+  await pipeline(stream, trackAndCount, createWriteStream(storagePath));
+
+  onComplete?.();
+
+  return {
+    fileId,
+    fileName: finalFileName,
+    originalName: fileName,
+    storagePath,
+    publicPath: `/assets/${finalFileName}`,
+    mimeType,
+    sizeBytes,
+    extension,
+  };
 };

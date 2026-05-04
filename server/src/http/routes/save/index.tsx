@@ -32,15 +32,13 @@ export const saveRoute = async (req: Request): Promise<Response> => {
               totalBytes,
             });
 
-            fileStream.on("data", tracker.onChunk);
-
-            fileStream.on("end", tracker.onComplete);
-
             savePromise = saveFileStream({
               stream: fileStream,
               fileId: crypto.randomUUID(),
               fileName,
               mimeType,
+              onChunk: tracker.onChunk,
+              onComplete: tracker.onComplete,
             });
           },
         );
