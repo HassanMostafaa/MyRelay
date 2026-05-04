@@ -1,6 +1,6 @@
 import { ApiResponse, ApiStatus, User } from "../utils/types";
 
-const fullEndpoint = `/api/backend/login`;
+const fullEndpoint = `${process.env.NEXT_PUBLIC_API_URL}/login`;
 
 export const handleLoginService = async (requestBody: {
   identifier: string;
@@ -9,6 +9,9 @@ export const handleLoginService = async (requestBody: {
   try {
     const body = JSON.stringify(requestBody);
     const results = await fetch(fullEndpoint, {
+      headers: {
+        "Content-Type": "application/json",
+      },
       credentials: "include",
       method: "POST",
       body,

@@ -17,8 +17,7 @@ export type User = {
   created_at: string;
   updated_at: string;
   first_name: string;
-  last_name: string;
-  last_mame?: string;
+  last_name?: string;
 };
 
 export type PublicUser = Omit<User, "password_hash">;

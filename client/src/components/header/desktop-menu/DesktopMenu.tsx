@@ -4,6 +4,7 @@ import { Button } from "@/src/components/button/Button";
 import { useAuthStore } from "@/src/store/useAuthStore";
 import { UserMenu } from "../user-menu/UserMenu";
 import { Link } from "@/i18n/navigations";
+import { AvatarImage } from "../../avatar-image/AvatarImage";
 
 export const DesktopMenu = () => {
   const publicLinks = useGlobalLinks({
@@ -56,7 +57,10 @@ export const DesktopMenu = () => {
 
       {/* LOGGED IN */}
       {user && state !== "loading" && loggedInLinks?.length > 0 && (
-        <UserMenu user={user} links={loggedInLinks} />
+        <>
+          <UserMenu user={user} links={loggedInLinks} />
+          <AvatarImage size={35} />
+        </>
       )}
     </div>
   );

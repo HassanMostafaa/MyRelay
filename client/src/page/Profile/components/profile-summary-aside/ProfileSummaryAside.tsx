@@ -1,11 +1,13 @@
 "use client";
 
 import { Button } from "@/src/components/button/Button";
+import { useGlobalLinks } from "@/src/hooks/useGlobalLinks";
 import { User } from "@/src/services/users/utils/types";
 import { Ticket, Trash } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { DeleteAccountConfirmationModal } from "../delete-account-confirmation-modal/DeleteAccountConfirmationModal";
+import { AvatarImage } from "@/src/components/avatar-image/AvatarImage";
 
 const formatValue = (value: string | null | undefined, fallback: string) => {
   if (value === null || value === undefined) {
@@ -42,7 +44,8 @@ export const ProfileSummaryAside = ({ user }: { user: User }) => {
   const locale = useLocale();
   const emptyValue = t("emptyValue");
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const lastName = user.last_name || user.last_mame;
+  const [logoutLink] = useGlobalLinks({ include: ["logout"] });
+  const lastName = user.last_name || "";
   const fullName = [user.first_name, lastName]
     .map((value) => value?.trim() ?? "")
     .filter(Boolean)
@@ -73,6 +76,9 @@ export const ProfileSummaryAside = ({ user }: { user: User }) => {
   return (
     <div className="space-y-4">
       <aside className="space-y-4 border border-border bg-card p-5 sm:p-6">
+        {/* AVATAR */}
+        <AvatarImage />
+
         <div className="space-y-2">
           <p className="text-primary text-xs font-semibold uppercase tracking-[0.26em]">
             {t("summaryEyebrow")}
@@ -81,9 +87,9 @@ export const ProfileSummaryAside = ({ user }: { user: User }) => {
             {formatValue(fullName, user.username)}
           </h2>
           <div className="space-y-1">
-            <p className="text-sm text-muted-foreground">
+            {/* <p className="text-sm text-muted-foreground">
               {formatValue(user.username, emptyValue)}
-            </p>
+            </p> */}
             <p className="text-sm leading-6 text-muted-foreground">
               {user.email}
             </p>
@@ -155,6 +161,14 @@ export const ProfileSummaryAside = ({ user }: { user: User }) => {
         <p className="text-sm leading-6 text-muted-foreground">
           {t("danger.description")}
         </p>
+        <Button
+          variant="danger"
+          className="w-full"
+          onClick={() => void logoutLink.onClick?.()}
+        >
+          {logoutLink.startIcon}
+          {logoutLink.label}
+        </Button>
         <Button
           variant="danger"
           className="w-full"

@@ -1,3 +1,4 @@
+// client/app/[locale]/layout.tsx
 import { routing, rtlLocales } from "@/i18n/routing";
 import { getLocaleMessages } from "@/i18n/messages";
 import { AuthInit } from "@/src/components/auth-init/AuthInit";
@@ -22,9 +23,14 @@ function LocaleLayoutContent({
   const rtl = rtlLocales.includes(locale);
 
   return (
-    <NextIntlClientProvider locale={locale} messages={getLocaleMessages(locale)}>
+    <NextIntlClientProvider
+      locale={locale}
+      messages={getLocaleMessages(locale)}
+    >
       <ThemeProvider />
+
       <AuthInit />
+
       <div dir={rtl ? "rtl" : "ltr"}>
         <MainLayout>{children}</MainLayout>
       </div>
@@ -47,9 +53,5 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
 
-  return (
-    <Suspense fallback={null}>
-      <LocaleLayoutContent locale={locale}>{children}</LocaleLayoutContent>
-    </Suspense>
-  );
+  return <LocaleLayoutContent locale={locale}>{children}</LocaleLayoutContent>;
 }

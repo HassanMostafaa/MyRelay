@@ -37,7 +37,7 @@ export const ProfileDetailsCard = ({ user }: { user: User }) => {
   const t = useTranslations("profilePage");
   const locale = useLocale();
   const emptyValue = t("emptyValue");
-  const lastName = user.last_name || user.last_mame;
+  const lastName = user?.last_name ?? "";
 
   const sections = [
     {

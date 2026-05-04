@@ -5,6 +5,15 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   cacheComponents: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+        port: "",
+      },
+    ],
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();

@@ -20,6 +20,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@fastify/busboy": "^3.2.0",
     "bcrypt": "^6.0.0",
     "jose": "^6.2.2",
     "pg": "^8.20.0"

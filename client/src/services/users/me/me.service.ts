@@ -9,5 +9,9 @@ export const getMeService = async (): Promise<{
   const results = await fetch(fullEndpoint, { credentials: "include" });
   const json = await results.json();
 
-  return json;
+  if (json.status === "success") {
+    return json;
+  }
+
+  return null;
 };

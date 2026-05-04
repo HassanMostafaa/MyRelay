@@ -15,6 +15,7 @@ import { usernameCheck } from "./users/username-check";
 import { createTicketRoute } from "./tickets/create";
 import { deleteTicketRoute } from "./tickets/delete";
 import { deleteUserRoute } from "./users/delete-user";
+import { saveRoute } from "./save";
 
 export const routes = {
   // HEALTH CHECK ROUTE
@@ -31,4 +32,7 @@ export const routes = {
   // TICKETS ROUTES
   "/ticket/create": cors(createTicketRoute),
   "/ticket/delete": cors(deleteTicketRoute),
+
+  // TESTING FILE SAVE
+  "/save": cors(saveRoute),
 };

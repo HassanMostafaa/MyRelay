@@ -28,12 +28,12 @@ export const meRoute = async (req: Request) => {
         const user = await getVerifiedUserById(String(payload.id));
 
         if (!user) {
-          return error("No used with that id exist in the database", null, 401);
+          return error("No user with that id exist in the database", null, 401);
         }
 
         return success(user);
       } catch (err) {
-        return error("Unauthorized", null, 401);
+        return error("Route Error, Unauthorized", { err }, 401);
       }
     }
 

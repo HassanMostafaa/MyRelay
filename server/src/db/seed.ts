@@ -27,7 +27,7 @@ async function seed() {
   `,
     [email, username, passwordHash, "admin", "Admin", "Admin_l"],
   );
-  console.log("Admin user seeded with hashed password");
+
   await pool.end();
 }
 
