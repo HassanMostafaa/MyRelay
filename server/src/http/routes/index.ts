@@ -10,11 +10,12 @@ import { logoutRoute } from "./users/logout";
 import { meRoute } from "./users/me";
 import { registerRoute } from "./users/register";
 import { usernameCheck } from "./users/username-check";
+import { updateUserRoute } from "./users/update-user";
+import { deleteUserRoute } from "./users/delete-user";
 
 // TICKETS ROUTES IMPORTS
 import { createTicketRoute } from "./tickets/create";
 import { deleteTicketRoute } from "./tickets/delete";
-import { deleteUserRoute } from "./users/delete-user";
 import { saveRoute } from "./save";
 
 export const routes = {
@@ -28,6 +29,7 @@ export const routes = {
   "/username-check": cors(usernameCheck),
   "/me": cors(meRoute),
   "/delete-user": cors(deleteUserRoute),
+  "/update-user": cors(updateUserRoute),
 
   // TICKETS ROUTES
   "/ticket/create": cors(createTicketRoute),

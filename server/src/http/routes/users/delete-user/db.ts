@@ -8,20 +8,7 @@ export const deleteUserFromDB = async (
     `
     DELETE FROM users
     WHERE id = $1
-    RETURNING
-      id,
-      email,
-      username,
-      role,
-      phone,
-      country,
-      city,
-      date_of_birth,
-      address,
-      email_verified,
-      phone_verified,
-      created_at,
-      updated_at
+    RETURNING *
     `,
     [userId],
   );

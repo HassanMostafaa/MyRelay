@@ -18,6 +18,9 @@ export default async function NextjsPage() {
   return (
     <div>
       <h1>TEST</h1>
+
+      {/* save test */}
+      <input type="file" />
     </div>
   );
 }

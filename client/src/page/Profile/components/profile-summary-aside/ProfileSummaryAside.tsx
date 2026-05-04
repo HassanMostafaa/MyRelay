@@ -8,6 +8,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { DeleteAccountConfirmationModal } from "../delete-account-confirmation-modal/DeleteAccountConfirmationModal";
 import { AvatarImage } from "@/src/components/avatar-image/AvatarImage";
+import { deleteUserService } from "@/src/services/users/delete/delete.service";
 
 const formatValue = (value: string | null | undefined, fallback: string) => {
   if (value === null || value === undefined) {
@@ -45,6 +46,7 @@ export const ProfileSummaryAside = ({ user }: { user: User }) => {
   const emptyValue = t("emptyValue");
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [logoutLink] = useGlobalLinks({ include: ["logout"] });
+
   const lastName = user.last_name || "";
   const fullName = [user.first_name, lastName]
     .map((value) => value?.trim() ?? "")
@@ -183,6 +185,12 @@ export const ProfileSummaryAside = ({ user }: { user: User }) => {
         open={deleteModalOpen}
         onClose={() => setDeleteModalOpen(false)}
         user={user}
+        onConfirm={async () => {
+          const results = await deleteUserService(user?.id);
+          if (results?.status === "success") {
+            logoutLink?.onClick?.();
+          }
+        }}
       />
     </div>
   );

@@ -21,7 +21,8 @@ export const getVerifiedUserById = async (
       created_at,
       updated_at,
       first_name,
-      last_name
+      last_name,
+      avatar_url
     FROM users
     WHERE id = $1
     LIMIT 1

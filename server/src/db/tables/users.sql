@@ -19,6 +19,7 @@ CREATE TABLE users (
   city TEXT,
   date_of_birth DATE,
   address TEXT,
+  avatar_url TEXT,
 
   email_verified BOOLEAN NOT NULL DEFAULT FALSE,
   phone_verified BOOLEAN NOT NULL DEFAULT FALSE,

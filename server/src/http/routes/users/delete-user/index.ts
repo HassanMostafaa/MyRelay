@@ -14,11 +14,15 @@ export const deleteUserRoute = async (req: Request) => {
         const { searchParams } = new URL(req.url);
         const userIdToDelete = searchParams.get("userId");
 
+        console.log({ userIdToDelete });
+
         if (!userIdToDelete) {
-          return error("User ID is required", null, 400);
+          return error("User ID param is required", null, 400);
         }
 
         const token = getAuthTokenFromRequest(req);
+
+        console.log({ token });
 
         if (!token) {
           return error(
@@ -30,11 +34,13 @@ export const deleteUserRoute = async (req: Request) => {
 
         const payload = await verifyAuthToken(token);
 
+        console.log({ payload });
+
         if (!payload.id) {
           return error("Invalid token auth value", null, 401);
         }
 
-        const loggedInUser = await getVerifiedUserById(String(payload.sub));
+        const loggedInUser = await getVerifiedUserById(String(payload.id));
 
         if (!loggedInUser) {
           return error("Auth token user does not exist", null, 401);

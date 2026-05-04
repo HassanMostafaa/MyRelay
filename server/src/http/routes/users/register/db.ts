@@ -35,7 +35,8 @@ export const createUser = async ({
       created_at,
       updated_at,
       first_name,
-      last_name
+      last_name,
+      avatar_url
     `,
     [email, username, passwordHash, first_name, last_name],
   );

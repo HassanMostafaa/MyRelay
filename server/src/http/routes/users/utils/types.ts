@@ -17,6 +17,7 @@ export type User = {
   address: string | null;
   created_at: string;
   updated_at: string;
+  avatar_url: string | null;
 };
 
 export type PublicUser = Omit<User, "password_hash">;
