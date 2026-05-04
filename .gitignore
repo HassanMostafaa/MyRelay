@@ -76,6 +76,12 @@ coverage
 
 # but allow these
 !schema.sql
+!extensions.sql
+!user-role.sql
+!health.sql
+!tickets.sql
+!users.sql
+!set-updated-at.sql
 
 # =========================
 # MongoDB / Postgres local data dirs
