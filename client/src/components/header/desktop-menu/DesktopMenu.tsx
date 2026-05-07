@@ -59,7 +59,7 @@ export const DesktopMenu = () => {
       {user && state !== "loading" && loggedInLinks?.length > 0 && (
         <>
           <UserMenu user={user} links={loggedInLinks} />
-          <AvatarImage size={35} />
+          {/* <AvatarImage size={35} /> */}
         </>
       )}
     </div>

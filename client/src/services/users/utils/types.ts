@@ -20,6 +20,18 @@ export type User = {
   last_name?: string;
 };
 
+export type EditableUserFields = Omit<
+  User,
+  | "id"
+  | "email"
+  | "username"
+  | "role"
+  | "created_at"
+  | "updated_at"
+  | "email_verified"
+  | "phone_verified"
+>;
+
 export type PublicUser = Omit<User, "password_hash">;
 
 export type RegisterBody = {

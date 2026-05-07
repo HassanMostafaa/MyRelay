@@ -80,7 +80,7 @@ export const ProfileSummaryAside = ({ user }: { user: User }) => {
     <div className="space-y-4">
       <aside className="space-y-4 border border-border bg-card p-5 sm:p-6">
         {/* AVATAR */}
-        <UpdateAvatarSection />
+        {/* <UpdateAvatarSection /> */}
 
         <div className="space-y-2">
           <p className="text-primary text-xs font-semibold uppercase tracking-[0.26em]">

@@ -54,6 +54,10 @@
         "title": "Profil | MyRelay",
         "description": "Consultez les détails de votre compte MyRelay, votre état de vérification et vos actions de profil au même endroit."
       },
+      "profileEditDetails": {
+        "title": "Modifier les détails du profil | MyRelay",
+        "description": "Mettez à jour les informations personnelles, de contact et de localisation liées à votre profil MyRelay."
+      },
       "security": {
         "title": "Sécurité | MyRelay",
         "description": "Gérez les paramètres d'accès et de protection de votre compte dans l'espace de travail MyRelay."
@@ -83,7 +87,8 @@
     "description_required": "La description est requise",
     "description_min": "La description doit contenir au moins 3 caractères",
     "login_required": "La connexion est requise",
-    "missing_values": "Valeurs manquantes"
+    "missing_values": "Valeurs manquantes",
+    "date_of_birth_max": "La date de naissance ne peut pas être dans le futur"
   },
   "forms": {
     "identifier": "Nom d'utilisateur ou e-mail",
@@ -91,6 +96,11 @@
     "first_name": "Prénom",
     "last_name": "Nom de famille",
     "email": "E-mail",
+    "phone": "Téléphone",
+    "country": "Pays",
+    "city": "Ville",
+    "date_of_birth": "Date de naissance",
+    "address": "Adresse",
     "password": "Mot de passe",
     "confirm_password": "Confirmer le mot de passe",
     "submit": "Envoyer",
@@ -239,6 +249,7 @@
     "description": "Consultez les informations liées à votre compte MyRelay, y compris votre rôle, vos coordonnées, votre état de vérification et l'historique du compte.",
     "loading": "Chargement des détails de votre profil...",
     "emptyValue": "Non renseigné",
+    "edit": "Modifier",
     "summaryEyebrow": "Résumé du compte",
     "sections": {
       "account": "Détails du compte",
@@ -280,18 +291,67 @@
       "description": "Créez une nouvelle demande de support lorsque vous avez besoin d'aide ou souhaitez signaler un problème.",
       "createTicket": "Créer un ticket"
     },
-  "danger": {
-    "description": "Supprimer votre compte supprimera votre accès et les données de votre compte de cet espace de travail.",
-    "deleteAccount": "Supprimer le compte",
-    "modal": {
-      "title": "Supprimer ce compte ?",
-      "subtitle": "Cette action est définitive et ne peut pas être annulée.",
-      "description": "Si vous continuez, vous perdrez l'accès à MyRelay et les données de profil liées à ce compte seront supprimées.",
-      "accountLabel": "Compte à supprimer",
-      "cancel": "Conserver le compte",
-      "confirm": "Confirmer la suppression",
-      "close": "Fermer la fenêtre de suppression du compte"
+    "danger": {
+      "description": "Supprimer votre compte supprimera votre accès et les données de votre compte de cet espace de travail.",
+      "deleteAccount": "Supprimer le compte",
+      "modal": {
+        "title": "Supprimer ce compte ?",
+        "subtitle": "Cette action est définitive et ne peut pas être annulée.",
+        "description": "Si vous continuez, vous perdrez l'accès à MyRelay et les données de profil liées à ce compte seront supprimées.",
+        "accountLabel": "Compte à supprimer",
+        "cancel": "Conserver le compte",
+        "confirm": "Confirmer la suppression",
+        "close": "Fermer la fenêtre de suppression du compte"
+      }
+    },
+    "editDetails": {
+      "eyebrow": "Éditeur de profil",
+      "title": "Gardez les détails de votre compte à jour",
+      "description": "Mettez à jour les informations personnelles, de contact et de localisation liées à votre profil MyRelay. Seuls les champs modifiés sont envoyés lors de l'enregistrement.",
+      "loading": "Chargement des détails modifiables de votre profil...",
+      "form": {
+        "title": "Modifier les informations enregistrées",
+        "description": "Utilisez ce formulaire pour mettre à jour les informations de profil affichées dans le résumé de votre compte et l'espace de support.",
+        "sections": {
+          "account": "Ces informations vous identifient dans l'espace de travail.",
+          "contact": "Gardez vos coordonnées directes prêtes pour le suivi.",
+          "location": "Ajoutez des détails de localisation pour compléter le dossier de votre compte."
+        }
+      },
+      "actions": {
+        "cancel": "Annuler",
+        "submit": "Enregistrer les modifications",
+        "submitting": "Enregistrement des modifications..."
+      },
+      "readonlyCard": {
+        "title": "Champs de compte protégés",
+        "description": "Le nom d'utilisateur, l'adresse e-mail et le rôle sont affichés ici à titre informatif et restent en lecture seule sur cet écran."
+      },
+      "notes": {
+        "title": "Fonctionnement des mises à jour",
+        "description": "Cette page met à jour uniquement les champs de profil pris en charge par le service de mise à jour du compte.",
+        "items": {
+          "changedOnly": "Seules les valeurs que vous modifiez sont envoyées dans la requête de mise à jour.",
+          "cancel": "Annuler rétablit le formulaire avec les détails actuellement enregistrés de votre profil.",
+          "live": "Les mises à jour réussies rafraîchissent immédiatement les données de profil stockées dans votre session active."
+        }
+      },
+      "feedback": {
+        "success": "Les détails de votre profil ont été mis à jour avec succès.",
+        "error": "Nous n'avons pas pu mettre à jour les détails de votre profil pour le moment."
+      }
+    },
+    "updateAvatar": {
+      "title": "Mettre à jour la photo de profil",
+      "description": "Téléversez une nouvelle photo de profil pour personnaliser votre compte et permettre à votre équipe de vous reconnaître plus facilement dans l'espace de travail.",
+      "upload": "Téléverser une nouvelle photo",
+      "uploading": "Téléversement de la nouvelle photo...",
+      "uploadFailed": "Impossible de téléverser la nouvelle photo pour le moment",
+      "cancel": "Annuler",
+      "select": "Sélectionner une image",
+      "validation": {
+        "avatar_required": "Une image de profil est requise"
+      }
     }
   }
-}
 }

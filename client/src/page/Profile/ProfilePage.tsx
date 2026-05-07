@@ -28,7 +28,7 @@ export const ProfilePage = () => {
     <div className="my-container space-y-6 py-6 lg:space-y-8 lg:py-12">
       <ProfileHeader />
 
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-start xl:gap-10">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
         <div className="w-full">
           <ProfileDetailsCard user={user} />
         </div>

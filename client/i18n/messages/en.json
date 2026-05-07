@@ -54,6 +54,10 @@
         "title": "Profile | MyRelay",
         "description": "Review your MyRelay account details, verification status, and profile actions in one place."
       },
+      "profileEditDetails": {
+        "title": "Edit Profile Details | MyRelay",
+        "description": "Update the personal, contact, and location details connected to your MyRelay profile."
+      },
       "security": {
         "title": "Security | MyRelay",
         "description": "Manage security access and protection settings for your MyRelay workspace account."
@@ -92,7 +96,8 @@
 
     "login_required": "Login is required",
 
-    "missing_values": "Missing values"
+    "missing_values": "Missing values",
+    "date_of_birth_max": "Date of birth cannot be in the future"
   },
 
   "forms": {
@@ -101,6 +106,11 @@
     "first_name": "First name",
     "last_name": "Last name",
     "email": "Email",
+    "phone": "Phone",
+    "country": "Country",
+    "city": "City",
+    "date_of_birth": "Date of birth",
+    "address": "Address",
     "password": "Password",
     "confirm_password": "Confirm Password",
     "submit": "Submit",
@@ -249,6 +259,7 @@
     "description": "Review the information attached to your MyRelay account, including your role, contact details, verification state, and account history.",
     "loading": "Loading your profile details...",
     "emptyValue": "Not provided",
+    "edit": "Edit",
     "summaryEyebrow": "Account summary",
     "sections": {
       "account": "Account details",
@@ -303,6 +314,43 @@
         "close": "Close delete account modal"
       }
     },
+    "editDetails": {
+      "eyebrow": "Profile editor",
+      "title": "Keep your account details current",
+      "description": "Update the personal, contact, and location details connected to your MyRelay profile. Only edited fields are sent when you save.",
+      "loading": "Loading your editable profile details...",
+      "form": {
+        "title": "Edit saved details",
+        "description": "Use this form to update the profile information shown across your account summary and support workspace.",
+        "sections": {
+          "account": "These details identify you across the workspace.",
+          "contact": "Keep your direct contact information ready for follow-up.",
+          "location": "Add location details that help keep your account record complete."
+        }
+      },
+      "actions": {
+        "cancel": "Cancel",
+        "submit": "Save changes",
+        "submitting": "Saving changes..."
+      },
+      "readonlyCard": {
+        "title": "Protected account fields",
+        "description": "Username, email address, and role are shown here for reference and stay read-only on this screen."
+      },
+      "notes": {
+        "title": "How updates work",
+        "description": "This page only updates profile fields supported by the account update service.",
+        "items": {
+          "changedOnly": "Only the values you edit are sent in the update request.",
+          "cancel": "Cancel restores the form to your current saved profile details.",
+          "live": "Successful updates refresh the profile data stored in your active session."
+        }
+      },
+      "feedback": {
+        "success": "Your profile details were updated successfully.",
+        "error": "We couldn't update your profile details right now."
+      }
+    },
     "updateAvatar": {
       "title": "Update profile picture",
       "description": "Upload a new profile picture to personalize your account and make it easier for your team to recognize you in the workspace.",
@@ -310,7 +358,11 @@
       "uploading": "Uploading new picture...",
       "uploadFailed": "Couldn't upload new picture right now",
       "cancel": "Cancel",
-      "select": "Select image"
+      "select": "Select image",
+
+      "validation": {
+        "avatar_required": "An avatar image is required"
+      }
     }
   }
 }

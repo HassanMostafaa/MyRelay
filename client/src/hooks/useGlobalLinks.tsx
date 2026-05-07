@@ -1,4 +1,11 @@
-import { Info, LogIn, LogOut, UserRound, UserRoundPlus } from "lucide-react";
+import {
+  Info,
+  LogIn,
+  LogOut,
+  Ticket,
+  UserRound,
+  UserRoundPlus,
+} from "lucide-react";
 import { useMemo } from "react";
 import type { ReactNode } from "react";
 import { useLogout } from "./useLogout";
@@ -73,7 +80,7 @@ export const useGlobalLinks = (options?: UseGlobalLinksOptions) => {
         key: "create_ticket",
         label: t("forms.create_ticket"),
         href: "/new-ticket",
-        startIcon: <UserRoundPlus size={16} />,
+        startIcon: <Ticket size={16} />,
       },
     };
 

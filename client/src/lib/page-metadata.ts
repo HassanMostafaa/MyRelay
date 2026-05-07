@@ -11,6 +11,7 @@ type MetadataPageKey =
   | "register"
   | "newTicket"
   | "profile"
+  | "profileEditDetails"
   | "security"
   | "test";
 

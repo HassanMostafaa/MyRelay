@@ -8,6 +8,7 @@ export const FormikField = ({
   placeholder,
   label,
   wrapperClassName,
+  inputClassName,
   startIcon,
   endIcon,
 }: {
@@ -18,6 +19,7 @@ export const FormikField = ({
   wrapperClassName?: string;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
+  inputClassName?: string;
 }) => {
   const [field, meta] = useField(name);
 
@@ -58,6 +60,7 @@ export const FormikField = ({
             hasError
               ? "border-red-400 focus:ring-red-400"
               : "border-border focus:ring-primary",
+            inputClassName,
           )}
         />
 

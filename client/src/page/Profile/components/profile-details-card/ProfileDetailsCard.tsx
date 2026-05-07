@@ -1,6 +1,8 @@
 "use client";
 
+import { Button } from "@/src/components/button/Button";
 import { User } from "@/src/services/users/utils/types";
+import { Link } from "@/i18n/navigations";
 import { useLocale, useTranslations } from "next-intl";
 
 const formatValue = (value: string | null | undefined, fallback: string) => {
@@ -112,6 +114,10 @@ export const ProfileDetailsCard = ({ user }: { user: User }) => {
           </div>
         </div>
       ))}
+
+      <Link href="/profile/edit-details">
+        <Button variant="primary">{t("edit")}</Button>
+      </Link>
     </section>
   );
 };

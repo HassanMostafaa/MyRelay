@@ -23,58 +23,119 @@ export const updateUserInDB = async ({
   body: UpdateUserBody;
   canUpdateRole: boolean;
 }): Promise<PublicUser | null> => {
+  const returningFields = `
+    id,
+    email,
+    username,
+    first_name,
+    last_name,
+    role,
+    phone,
+    email_verified,
+    phone_verified,
+    country,
+    city,
+    date_of_birth,
+    address,
+    avatar_url,
+    created_at,
+    updated_at
+  `;
+  const values: unknown[] = [body.id];
+  const setClauses: string[] = [];
+  const hasOwnProperty = (key: keyof UpdateUserBody) =>
+    Object.prototype.hasOwnProperty.call(body, key);
+  const addSetClause = (column: string, value: unknown, cast?: string) => {
+    values.push(value);
+
+    const placeholder = `$${values.length}${cast ? `::${cast}` : ""}`;
+
+    setClauses.push(`${column} = ${placeholder}`);
+  };
+  const normalizeText = (value: string | null | undefined) => {
+    if (value === undefined) {
+      return undefined;
+    }
+
+    if (value === null) {
+      return null;
+    }
+
+    const normalized = value.trim();
+
+    return normalized.length > 0 ? normalized : null;
+  };
+
+  if (hasOwnProperty("email")) {
+    addSetClause("email", normalizeText(body.email));
+  }
+
+  if (hasOwnProperty("username")) {
+    addSetClause("username", normalizeText(body.username));
+  }
+
+  if (hasOwnProperty("first_name")) {
+    addSetClause("first_name", normalizeText(body.first_name));
+  }
+
+  if (hasOwnProperty("last_name")) {
+    addSetClause("last_name", normalizeText(body.last_name));
+  }
+
+  if (hasOwnProperty("phone")) {
+    addSetClause("phone", normalizeText(body.phone));
+  }
+
+  if (hasOwnProperty("country")) {
+    addSetClause("country", normalizeText(body.country));
+  }
+
+  if (hasOwnProperty("city")) {
+    addSetClause("city", normalizeText(body.city));
+  }
+
+  if (hasOwnProperty("date_of_birth")) {
+    addSetClause("date_of_birth", normalizeText(body.date_of_birth));
+  }
+
+  if (hasOwnProperty("address")) {
+    addSetClause("address", normalizeText(body.address));
+  }
+
+  if (hasOwnProperty("avatar_url")) {
+    addSetClause("avatar_url", normalizeText(body.avatar_url));
+  }
+
+  if (canUpdateRole && body.role) {
+    addSetClause("role", body.role, "user_role");
+  }
+
+  if (setClauses.length === 0) {
+    const currentUserResult = await pool.query<PublicUser>(
+      `
+      SELECT
+        ${returningFields}
+      FROM users
+      WHERE id = $1
+      `,
+      [body.id],
+    );
+
+    return currentUserResult.rows[0] ?? null;
+  }
+
+  setClauses.push("updated_at = NOW()");
+
   const result = await pool.query<PublicUser>(
     `
     UPDATE users
     SET
-      email = COALESCE($2, email),
-      username = COALESCE($3, username),
-      first_name = COALESCE($4, first_name),
-      last_name = COALESCE($5, last_name),
-      phone = COALESCE($6, phone),
-      country = COALESCE($7, country),
-      city = COALESCE($8, city),
-      date_of_birth = COALESCE($9, date_of_birth),
-      address = COALESCE($10, address),
-      avatar_url = COALESCE($11, avatar_url),
-      role = CASE
-        WHEN $12::boolean THEN COALESCE($13::user_role, role)
-        ELSE role
-      END
+      ${setClauses.join(",\n      ")}
     WHERE id = $1
     RETURNING
-      id,
-      email,
-      username,
-      first_name,
-      last_name,
-      role,
-      phone,
-      email_verified,
-      phone_verified,
-      country,
-      city,
-      date_of_birth,
-      address,
-      avatar_url,
-      created_at,
-      updated_at
+      ${returningFields}
     `,
-    [
-      body.id,
-      body.email?.trim() || null,
-      body.username?.trim() || null,
-      body.first_name ?? null,
-      body.last_name ?? null,
-      body.phone ?? null,
-      body.country ?? null,
-      body.city ?? null,
-      body.date_of_birth ?? null,
-      body.address ?? null,
-      body.avatar_url ?? null,
-      canUpdateRole,
-      body.role ?? null,
-    ],
+    values,
   );
 
   return result.rows[0] ?? null;

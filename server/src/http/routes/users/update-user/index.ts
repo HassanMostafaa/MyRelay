@@ -3,6 +3,7 @@ import { getAuthTokenFromRequest } from "../utils/getTokenFromRequest";
 import { verifyAuthToken } from "../utils/verifyAuthToken";
 import { getVerifiedUserById } from "../me/db";
 import { updateUserInDB, type UpdateUserBody } from "./db";
+import { parseUpdateUserFormData } from "./utils/parse-update-user-form-data";
 
 const METHOD = "PATCH";
 
@@ -10,12 +11,23 @@ export const updateUserRoute = async (req: Request) => {
   switch (req.method) {
     case METHOD: {
       try {
+        const contentType = req.headers.get("content-type") || "";
+
         let body: UpdateUserBody;
 
-        try {
-          body = (await req.json()) as UpdateUserBody;
-        } catch {
-          return error("Invalid body JSON", null, 400);
+        if (contentType.includes("multipart/form-data")) {
+          const formData = await parseUpdateUserFormData(req);
+
+          body = formData.body;
+
+          console.log("Parsed form body:", body);
+          console.log("Parsed avatar:", formData.avatar);
+        } else {
+          try {
+            body = (await req.json()) as UpdateUserBody;
+          } catch {
+            return error("Invalid body JSON", null, 400);
+          }
         }
 
         if (!body.id) {
@@ -64,7 +76,7 @@ export const updateUserRoute = async (req: Request) => {
           return error("User to be updated failed, or not found", null, 404);
         }
 
-        return success({ user: updatedUser });
+        return success(updatedUser);
       } catch (err) {
         console.error("updateUserRoute error:", { err });
         return error("Internal Server Error", null, 500);

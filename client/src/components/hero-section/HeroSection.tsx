@@ -1,6 +1,7 @@
 import { Link } from "@/i18n/navigations";
 import { ArrowRight, MessageSquare, ShieldCheck, Ticket } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { HeroCTA } from "./components/HeroCTA";
 
 const lifecycleKeys = ["open", "assigned", "resolved", "closed"] as const;
 const roleKeys = ["user", "agent", "admin"] as const;
@@ -29,21 +30,8 @@ export const HeroSection = async () => {
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  href="/register"
-                  className="inline-flex items-center justify-center gap-2 border border-primary bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-all hover:scale-[1.03] hover:opacity-90 active:scale-95"
-                >
-                  {t("primaryCta")}
-                  <ArrowRight size={16} />
-                </Link>
-                <Link
-                  href="/login"
-                  className="inline-flex items-center justify-center gap-2 border border-border bg-background/70 px-5 py-2 text-sm font-semibold text-foreground transition-all hover:scale-[1.03] hover:bg-muted active:scale-95"
-                >
-                  {t("secondaryCta")}
-                </Link>
-              </div>
+              {/* CALL TO ACTION BUTTONS */}
+              <HeroCTA />
             </div>
 
             <aside className="space-y-5 border border-border bg-background/85 p-5 backdrop-blur sm:p-6">
@@ -87,6 +75,7 @@ export const HeroSection = async () => {
               </div>
             </aside>
           </div>
+
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
             <article className="space-y-3 border border-border bg-background/75 p-4">
               <Ticket size={18} className="text-primary" />

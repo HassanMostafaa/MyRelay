@@ -1,8 +1,11 @@
-import { Button } from "@/src/components/button/Button";
 import { Modal } from "@/src/components/modal/Modal";
-import { ImagePlus, Upload } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useRef } from "react";
+import { UpdateAvatarModalHeader } from "./UpdateAvatarModalHeader";
+import { UpdateAvatarModalFooter } from "./UpdateAvatarModalFooter";
+import { Form, Formik } from "formik";
+import { useUpdateAvatar } from "../utils/useUpdateAvatar";
+import { FormikField } from "@/src/components/formil-field/FormikField";
+import { FormikWatcher } from "@/src/components/forms/register/components/formik-watcher/FormikWatcher";
 
 interface IUpdateAvatarModalProps {
   open: boolean;
@@ -14,49 +17,34 @@ export const UpdateAvatarModal = ({
   onClose,
 }: IUpdateAvatarModalProps) => {
   const t = useTranslations("profilePage.updateAvatar");
-  const editAvatarRef = useRef<HTMLInputElement>(null);
+  const { initialValues, updateAvatar, validationSchema } = useUpdateAvatar();
 
   return (
     <Modal
       open={open}
       onClose={onClose}
-      header={
-        <div className="flex gap-4  items-start">
-          <ImagePlus
-            size={40}
-            className="max-md:hidden text-muted-foreground"
-          />
-          <div className="space-y-2">
-            <p className="text-lg">{t("title")}</p>
-            <p className="text-muted-foreground text-sm">{t("description")}</p>
-          </div>
-        </div>
-      }
+      header={<UpdateAvatarModalHeader />}
       content={
-        <div className="space-y-4">
-          <Button onClick={() => editAvatarRef?.current?.click()}>
-            <Upload size={16} /> {t("select")}
-          </Button>
-          {/* HIDDEN INPUT */}
-          <input
-            type="file"
-            accept=".jpg, .jpeg, .png"
-            className="w-full cursor-pointer file:hidden "
-            placeholder={t("select")}
-            ref={editAvatarRef}
-          />
-        </div>
+        <Formik
+          onSubmit={updateAvatar}
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+        >
+          <Form className="space-y-4">
+            <FormikWatcher />
+            <FormikField
+              name="avatar"
+              type="file"
+              inputClassName="file:hidden! cursor-pointer!"
+              key={"avatar"}
+              label={t("select")}
+            />
+
+            <UpdateAvatarModalFooter onClose={onClose} />
+          </Form>
+        </Formik>
       }
-      footer={
-        <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
-          <Button variant="secondary" onClick={onClose}>
-            {t("cancel")}
-          </Button>
-          <Button variant="primary" onClick={() => {}}>
-            {t("upload")}
-          </Button>
-        </div>
-      }
+      footer={null}
     />
   );
 };
