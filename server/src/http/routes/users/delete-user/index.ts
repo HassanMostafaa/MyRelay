@@ -22,8 +22,6 @@ export const deleteUserRoute = async (req: Request) => {
 
         const token = getAuthTokenFromRequest(req);
 
-        console.log({ token });
-
         if (!token) {
           return error(
             "Missing auth token, must be logged in to delete account",
@@ -33,8 +31,6 @@ export const deleteUserRoute = async (req: Request) => {
         }
 
         const payload = await verifyAuthToken(token);
-
-        console.log({ payload });
 
         if (!payload.id) {
           return error("Invalid token auth value", null, 401);

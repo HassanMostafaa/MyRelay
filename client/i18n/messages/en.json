@@ -4,6 +4,7 @@
   "login": "Login",
   "logout": "Logout",
   "profile": "Profile",
+  "my_tickets": "My tickets",
   "register": "Register",
   "locale": "Locale",
   "notFoundPage": {
@@ -49,6 +50,10 @@
       "newTicket": {
         "title": "New Ticket | MyRelay",
         "description": "Create a new support ticket in MyRelay and capture the issue with the context your team needs."
+      },
+      "myTickets": {
+        "title": "My Tickets | MyRelay",
+        "description": "Review the support tickets created from your MyRelay account with paginated history, status visibility, and localized timestamps."
       },
       "profile": {
         "title": "Profile | MyRelay",
@@ -252,6 +257,94 @@
     "registerTitle": "Need an account first?",
     "registerBody": "Create a new account to start submitting tickets and continue into the product with your own workspace access.",
     "registerCta": "Create account"
+  },
+  "newTicketPage": {
+    "eyebrow": "Ticket intake",
+    "title": "Create a support ticket with the context your team needs",
+    "description": "Use this protected form to capture a clear subject and description for the issue tied to your signed-in account.",
+    "guideTitle": "What this feature needs",
+    "guideItem1": "You need an active signed-in session because the ticket is created for the current account.",
+    "guideItem2": "A clear subject and description make it easier to route, prioritize, and resolve the issue.",
+    "guideItem3": "After submission, the ticket is available in your personal ticket history for follow-up.",
+    "nextTitle": "After submission",
+    "nextBody": "Open My Tickets to review the latest requests returned by your account-specific ticket endpoint.",
+    "nextCta": "View my tickets",
+    "form": {
+      "title": "Ticket details",
+      "description": "Add the core context the support team needs before they pick up the request.",
+      "subjectDescription": "Write a short, direct subject that explains the issue or request.",
+      "descriptionHelp": "Use the description to explain what happened, what you need, and any details that help the follow-up."
+    },
+    "actions": {
+      "submit": "Create ticket",
+      "submitting": "Creating ticket..."
+    },
+    "feedback": {
+      "error": "We couldn't create the ticket right now."
+    }
+  },
+  "myTicketsPage": {
+    "eyebrow": "Personal ticket history",
+    "title": "Track the support tickets created from your account",
+    "description": "This page loads the protected ticket history endpoint for the signed-in user and presents paginated results in newest-first order.",
+    "loading": "Loading your tickets...",
+    "updating": "Refreshing your tickets...",
+    "emptyValue": "Not provided",
+    "untitledTicket": "Untitled ticket",
+    "listTitle": "Your submitted tickets",
+    "listDescription": "Use the pagination controls to request additional result pages from the same endpoint.",
+    "partialError": "We couldn't refresh the requested page, so you're still seeing the most recent results that loaded successfully.",
+    "errorTitle": "We couldn't load your tickets right now",
+    "errorDescription": "Check your session and try again. This endpoint only works for authenticated users.",
+    "retry": "Try again",
+    "emptyTitle": "No tickets yet",
+    "emptyDescription": "Create your first support ticket to start building a personal request history.",
+    "createCta": "Create a ticket",
+    "referenceLabel": "Reference",
+    "createdLabel": "Created",
+    "updatedLabel": "Updated",
+    "openDetails": "Open full ticket details",
+    "pagination": {
+      "summary": "Page {page} of {totalPages}",
+      "description": "Use the page controls to move through your ticket history.",
+      "previous": "Previous page",
+      "next": "Next page"
+    },
+    "stats": {
+      "title": "Response snapshot",
+      "description": "These totals reflect the current paginated payload returned by the protected my-tickets endpoint.",
+      "totalTickets": "Total tickets",
+      "perPage": "Results per page",
+      "totalPages": "Result pages"
+    },
+    "requirements": {
+      "title": "What this endpoint requires",
+      "description": "The feature depends on the same protected session and pagination rules used by the backend route.",
+      "items": {
+        "auth": "You must be signed in so the request can read your auth token from the current session.",
+        "pagination": "The request sends page and pageSize to fetch the part of your ticket history you want to inspect.",
+        "ownership": "The response is limited to tickets created by your own account."
+      }
+    },
+    "featureNotes": {
+      "title": "What this view gives you",
+      "description": "The page turns the raw endpoint response into a readable history for follow-up and self-service tracking.",
+      "items": {
+        "newest": "Newest tickets appear first so recent requests stay visible.",
+        "timestamps": "Each ticket shows its current status plus created and updated timestamps.",
+        "history": "Use the page controls to move through your personal ticket history without leaving the workspace."
+      }
+    },
+    "cta": {
+      "title": "Need to open something new?",
+      "description": "Create another ticket when you have a new issue, request, or follow-up that needs a separate support record.",
+      "button": "Create a new ticket"
+    },
+    "modal": {
+      "eyebrow": "Ticket details",
+      "descriptionLabel": "Full description",
+      "close": "Close ticket details modal"
+    }
   },
   "profilePage": {
     "eyebrow": "Profile overview",

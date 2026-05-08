@@ -8,15 +8,15 @@ import React, { FunctionComponent, useState } from "react";
 import { Button } from "../../button/Button";
 import { LangSwitcher } from "../../lang-switcher/LangSwitcher";
 import { ThemeSwitcher } from "../../theme-switcher/ThemeSwitcher";
-import { useTranslations } from "next-intl";
 
 export const MobileMenu: FunctionComponent = () => {
   const [open, setOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
   const publicLinks = useGlobalLinks({ include: ["about"] });
   const loggedOutLinks = useGlobalLinks({ include: ["login", "register"] });
-  const loggedInLinks = useGlobalLinks({ include: ["profile", "logout"] });
-  const t = useTranslations();
+  const loggedInLinks = useGlobalLinks({
+    include: ["profile", "my_tickets", "create_ticket", "logout"],
+  });
 
   const { user, state } = useAuthStore((s) => ({
     user: s.user,
@@ -57,7 +57,7 @@ export const MobileMenu: FunctionComponent = () => {
                   onClick={handleCloseMenu}
                   className="inline-flex w-full items-center gap-2 border border-border bg-card px-4 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-foreground"
                 >
-                  {t(link.key)}
+                  {link.label}
                 </Link>
               ) : null,
             )}
@@ -75,7 +75,7 @@ export const MobileMenu: FunctionComponent = () => {
                       className="w-full justify-start"
                     >
                       {link.startIcon}
-                      {t(link.key)}
+                      {link.label}
                     </Button>
                   ))}
                 </div>
@@ -117,7 +117,7 @@ export const MobileMenu: FunctionComponent = () => {
                             className="inline-flex items-center gap-2 bg-background px-3 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-foreground"
                           >
                             {link.startIcon}
-                            {t(link.key)}
+                            {link.label}
                           </Link>
                         ) : (
                           <button
@@ -130,7 +130,7 @@ export const MobileMenu: FunctionComponent = () => {
                             className="inline-flex items-center gap-2 bg-background px-3 py-2 text-start text-xs font-semibold uppercase tracking-[0.22em] text-foreground"
                           >
                             {link.startIcon}
-                            {t(link.key)}
+                            {link.label}
                           </button>
                         ),
                       )}

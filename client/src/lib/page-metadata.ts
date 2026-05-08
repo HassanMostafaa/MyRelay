@@ -10,6 +10,7 @@ type MetadataPageKey =
   | "login"
   | "register"
   | "newTicket"
+  | "myTickets"
   | "profile"
   | "profileEditDetails"
   | "security"

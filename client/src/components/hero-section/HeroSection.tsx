@@ -1,5 +1,4 @@
-import { Link } from "@/i18n/navigations";
-import { ArrowRight, MessageSquare, ShieldCheck, Ticket } from "lucide-react";
+import { MessageSquare, ShieldCheck, Ticket } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { HeroCTA } from "./components/HeroCTA";
 

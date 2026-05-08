@@ -53,5 +53,9 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
 
-  return <LocaleLayoutContent locale={locale}>{children}</LocaleLayoutContent>;
+  return (
+    <Suspense fallback={null}>
+      <LocaleLayoutContent locale={locale}>{children}</LocaleLayoutContent>
+    </Suspense>
+  );
 }

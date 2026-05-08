@@ -15,6 +15,6 @@ export async function generateMetadata({
   });
 }
 
-export default async function NextjsPage() {
+export default function NextjsNewTicketPage() {
   return <NewTicketPage />;
 }

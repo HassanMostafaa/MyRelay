@@ -7,9 +7,7 @@ import { Ticket, Trash } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { DeleteAccountConfirmationModal } from "../delete-account-confirmation-modal/DeleteAccountConfirmationModal";
-import { AvatarImage } from "@/src/components/avatar-image/AvatarImage";
 import { deleteUserService } from "@/src/services/users/delete/delete.service";
-import { UpdateAvatarSection } from "./components/UpdateAvatarSection";
 
 const formatValue = (value: string | null | undefined, fallback: string) => {
   if (value === null || value === undefined) {
@@ -46,7 +44,9 @@ export const ProfileSummaryAside = ({ user }: { user: User }) => {
   const locale = useLocale();
   const emptyValue = t("emptyValue");
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [logoutLink] = useGlobalLinks({ include: ["logout"] });
+  const [logoutLink, myTicketsLink] = useGlobalLinks({
+    include: ["logout", "my_tickets"],
+  });
 
   const lastName = user.last_name || "";
   const fullName = [user.first_name, lastName]
@@ -155,6 +155,16 @@ export const ProfileSummaryAside = ({ user }: { user: User }) => {
           <Ticket size={16} />
           {t("ticketActions.createTicket")}
         </Button>
+        {myTicketsLink?.href ? (
+          <Button
+            variant="secondary"
+            href={myTicketsLink.href}
+            className="w-full"
+          >
+            {myTicketsLink.startIcon}
+            {myTicketsLink.label}
+          </Button>
+        ) : null}
       </section>
 
       <section className="space-y-3 border border-border bg-card p-5 sm:p-6">

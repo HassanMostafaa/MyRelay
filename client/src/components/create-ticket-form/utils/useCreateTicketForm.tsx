@@ -1,6 +1,7 @@
 import { createTicketService } from "@/src/services/tickets/create/createTicket.service";
 import { ApiStatus } from "@/src/services/users/utils/types";
 import { useAuthStore } from "@/src/store/useAuthStore";
+import { FormikHelpers } from "formik";
 import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 import * as Yup from "yup";
@@ -19,7 +20,9 @@ interface ICreateTicketFormValues {
 }
 
 export const useCreateTicketForm = () => {
-  const t = useTranslations("validation");
+  const validationT = useTranslations("validation");
+  const formsT = useTranslations("forms");
+  const pageT = useTranslations("newTicketPage");
 
   const [formStatus, setFormStatus] = useState<{
     message: string;
@@ -39,23 +42,25 @@ export const useCreateTicketForm = () => {
       Yup.object({
         description: Yup.string()
           .trim()
-          .min(3, t("description_min"))
-          .required(t("description_required")),
+          .min(3, validationT("description_min"))
+          .required(validationT("description_required")),
         subject: Yup.string()
           .trim()
-          .min(3, t("subject_min"))
-          .required(t("subject_required")),
+          .min(3, validationT("subject_min"))
+          .required(validationT("subject_required")),
       }),
-    [t],
+    [validationT],
   );
 
-  //   const submit = useCallback(() => {}, []);
-  const submit = async (value: ICreateTicketFormValues) => {
+  const submit = async (
+    value: ICreateTicketFormValues,
+    { resetForm }: FormikHelpers<ICreateTicketFormValues>,
+  ) => {
     try {
       if (!userId) {
         setFormStatus({
           status: "error",
-          message: t("login_required"),
+          message: validationT("login_required"),
         });
         return;
       }
@@ -68,13 +73,21 @@ export const useCreateTicketForm = () => {
       if (results?.status === "success" && results?.ticket) {
         setFormStatus({
           status: "success",
-          message: t("ticket_created_successfully"),
+          message: formsT("ticket_created_successfully"),
         });
+        resetForm();
+        return;
       }
 
-      console.log("CREATE TICKET SERVICE RESULTS", { results });
-    } catch (error) {
-      console.error({ error });
+      setFormStatus({
+        status: "error",
+        message: results?.message ?? pageT("feedback.error"),
+      });
+    } catch {
+      setFormStatus({
+        status: "error",
+        message: pageT("feedback.error"),
+      });
     }
   };
 

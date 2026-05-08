@@ -20,6 +20,7 @@ import { saveRoute } from "./save";
 
 // ASSETS ROUTE IMPORT
 import { assetsRoute } from "./assets";
+import { myTicketsRoute } from "./users/my-tickets";
 
 export const routes = {
   // HEALTH CHECK ROUTE
@@ -33,6 +34,7 @@ export const routes = {
   "/me": cors(meRoute),
   "/delete-user": cors(deleteUserRoute),
   "/update-user": cors(updateUserRoute),
+  "/my-tickets": cors(myTicketsRoute),
 
   // TICKETS ROUTES
   "/ticket/create": cors(createTicketRoute),

@@ -4,7 +4,6 @@ import { Button } from "@/src/components/button/Button";
 import { useAuthStore } from "@/src/store/useAuthStore";
 import { UserMenu } from "../user-menu/UserMenu";
 import { Link } from "@/i18n/navigations";
-import { AvatarImage } from "../../avatar-image/AvatarImage";
 
 export const DesktopMenu = () => {
   const publicLinks = useGlobalLinks({
@@ -16,7 +15,7 @@ export const DesktopMenu = () => {
   });
 
   const loggedInLinks = useGlobalLinks({
-    include: ["profile", "create_ticket", "logout"],
+    include: ["profile", "my_tickets", "create_ticket", "logout"],
   });
 
   const { user, state } = useAuthStore((s) => ({
@@ -59,7 +58,6 @@ export const DesktopMenu = () => {
       {user && state !== "loading" && loggedInLinks?.length > 0 && (
         <>
           <UserMenu user={user} links={loggedInLinks} />
-          {/* <AvatarImage size={35} /> */}
         </>
       )}
     </div>

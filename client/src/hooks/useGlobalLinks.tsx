@@ -1,5 +1,6 @@
 import {
   Info,
+  List,
   LogIn,
   LogOut,
   Ticket,
@@ -17,6 +18,7 @@ export type GlobalLinkKey =
   | "register"
   | "login"
   | "logout"
+  | "my_tickets"
   | "create_ticket";
 
 type UseGlobalLinksOptions =
@@ -81,6 +83,12 @@ export const useGlobalLinks = (options?: UseGlobalLinksOptions) => {
         label: t("forms.create_ticket"),
         href: "/new-ticket",
         startIcon: <Ticket size={16} />,
+      },
+      my_tickets: {
+        key: "my_tickets",
+        label: t("my_tickets"),
+        href: "/my-tickets",
+        startIcon: <List size={16} />,
       },
     };
 

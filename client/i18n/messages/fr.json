@@ -4,6 +4,7 @@
   "login": "Connexion",
   "logout": "Déconnexion",
   "profile": "Profil",
+  "my_tickets": "Mes tickets",
   "register": "Créer un compte",
   "locale": "Langue",
   "notFoundPage": {
@@ -49,6 +50,10 @@
       "newTicket": {
         "title": "Nouveau ticket | MyRelay",
         "description": "Créez un nouveau ticket de support dans MyRelay et ajoutez le contexte nécessaire à votre équipe."
+      },
+      "myTickets": {
+        "title": "Mes tickets | MyRelay",
+        "description": "Consultez les tickets de support créés depuis votre compte MyRelay avec un historique paginé, des statuts visibles et des horodatages localisés."
       },
       "profile": {
         "title": "Profil | MyRelay",
@@ -242,6 +247,94 @@
     "registerTitle": "Besoin d'un compte d'abord ?",
     "registerBody": "Créez un nouveau compte pour commencer à soumettre des tickets et continuer dans le produit avec votre propre accès.",
     "registerCta": "Créer un compte"
+  },
+  "newTicketPage": {
+    "eyebrow": "Entrée ticket",
+    "title": "Créez un ticket de support avec le contexte utile à votre équipe",
+    "description": "Utilisez ce formulaire protégé pour saisir un sujet clair et une description liée à votre compte actuellement connecté.",
+    "guideTitle": "Ce dont cette fonctionnalité a besoin",
+    "guideItem1": "Vous devez disposer d'une session active, car le ticket est créé pour le compte courant.",
+    "guideItem2": "Un sujet clair et une description précise facilitent l'affectation, la priorisation et la résolution du sujet.",
+    "guideItem3": "Après l'envoi, le ticket rejoint votre historique personnel pour le suivi.",
+    "nextTitle": "Après l'envoi",
+    "nextBody": "Ouvrez Mes tickets pour consulter les demandes récentes renvoyées par votre endpoint de tickets lié au compte.",
+    "nextCta": "Voir mes tickets",
+    "form": {
+      "title": "Détails du ticket",
+      "description": "Ajoutez le contexte essentiel dont l'équipe de support a besoin avant de prendre en charge la demande.",
+      "subjectDescription": "Rédigez un sujet court et direct qui explique le problème ou la demande.",
+      "descriptionHelp": "Utilisez la description pour préciser ce qui s'est passé, ce dont vous avez besoin et les détails utiles au suivi."
+    },
+    "actions": {
+      "submit": "Créer le ticket",
+      "submitting": "Création du ticket..."
+    },
+    "feedback": {
+      "error": "Nous n'avons pas pu créer le ticket pour le moment."
+    }
+  },
+  "myTicketsPage": {
+    "eyebrow": "Historique personnel des tickets",
+    "title": "Suivez les tickets de support créés depuis votre compte",
+    "description": "Cette page charge l'endpoint protégé d'historique des tickets pour l'utilisateur connecté et présente des résultats paginés du plus récent au plus ancien.",
+    "loading": "Chargement de vos tickets...",
+    "updating": "Actualisation de vos tickets...",
+    "emptyValue": "Non renseigné",
+    "untitledTicket": "Ticket sans titre",
+    "listTitle": "Vos tickets envoyés",
+    "listDescription": "Utilisez les contrôles de pagination pour demander d'autres pages de résultats au même endpoint.",
+    "partialError": "La page demandée n'a pas pu être rechargée, vous voyez donc encore les derniers résultats chargés avec succès.",
+    "errorTitle": "Nous n'avons pas pu charger vos tickets pour le moment",
+    "errorDescription": "Vérifiez votre session puis réessayez. Cet endpoint fonctionne uniquement pour les utilisateurs authentifiés.",
+    "retry": "Réessayer",
+    "emptyTitle": "Aucun ticket pour le moment",
+    "emptyDescription": "Créez votre premier ticket de support pour commencer à constituer votre historique personnel de demandes.",
+    "createCta": "Créer un ticket",
+    "referenceLabel": "Référence",
+    "createdLabel": "Créé",
+    "updatedLabel": "Mis à jour",
+    "openDetails": "Ouvrir les détails complets du ticket",
+    "pagination": {
+      "summary": "Page {page} sur {totalPages}",
+      "description": "Utilisez les contrôles de page pour parcourir votre historique de tickets.",
+      "previous": "Page précédente",
+      "next": "Page suivante"
+    },
+    "stats": {
+      "title": "Vue de la réponse",
+      "description": "Ces totaux reflètent la charge utile paginée actuellement renvoyée par l'endpoint protégé my-tickets.",
+      "totalTickets": "Total des tickets",
+      "perPage": "Résultats par page",
+      "totalPages": "Pages de résultats"
+    },
+    "requirements": {
+      "title": "Ce que cet endpoint exige",
+      "description": "La fonctionnalité dépend de la même session protégée et des mêmes règles de pagination que la route backend.",
+      "items": {
+        "auth": "Vous devez être connecté pour que la requête puisse lire votre jeton d'authentification depuis la session courante.",
+        "pagination": "La requête envoie page et pageSize pour récupérer la partie de votre historique de tickets que vous voulez consulter.",
+        "ownership": "La réponse est limitée aux tickets créés par votre propre compte."
+      }
+    },
+    "featureNotes": {
+      "title": "Ce que cette vue vous apporte",
+      "description": "La page transforme la réponse brute de l'endpoint en historique lisible pour le suivi et l'auto-service.",
+      "items": {
+        "newest": "Les tickets les plus récents apparaissent en premier pour garder les nouvelles demandes visibles.",
+        "timestamps": "Chaque ticket affiche son statut actuel ainsi que ses dates de création et de mise à jour.",
+        "history": "Utilisez les contrôles de page pour parcourir votre historique personnel sans quitter l'espace de travail."
+      }
+    },
+    "cta": {
+      "title": "Besoin d'ouvrir quelque chose de nouveau ?",
+      "description": "Créez un autre ticket lorsque vous avez un nouveau problème, une nouvelle demande ou un suivi qui nécessite un dossier de support distinct.",
+      "button": "Créer un nouveau ticket"
+    },
+    "modal": {
+      "eyebrow": "Détails du ticket",
+      "descriptionLabel": "Description complète",
+      "close": "Fermer la fenêtre des détails du ticket"
+    }
   },
   "profilePage": {
     "eyebrow": "Vue du profil",
