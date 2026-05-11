@@ -8,8 +8,15 @@ import { Button } from "../button/Button";
 import { FormStatusMessage } from "../form-status-message/FormStatusMessage";
 
 export const CreateTicketForm = () => {
-  const { initialValues, submit, validationSchema, formStatus } =
-    useCreateTicketForm();
+  const {
+    initialValues,
+    submit,
+    validationSchema,
+    formStatus,
+    isRedirecting,
+    redirectProgress,
+    redirectSecondsRemaining,
+  } = useCreateTicketForm();
   const formsT = useTranslations("forms");
   const pageT = useTranslations("newTicketPage");
 
@@ -48,6 +55,7 @@ export const CreateTicketForm = () => {
               name={"subject"}
               placeholder={formsT("subject")}
               inputClassName="bg-background/65 text-sm"
+              disabled={isSubmitting || isRedirecting}
             />
           </section>
 
@@ -69,13 +77,49 @@ export const CreateTicketForm = () => {
               name={"description"}
               placeholder={formsT("description")}
               inputClassName="bg-background/65 text-sm"
+              disabled={isSubmitting || isRedirecting}
             />
           </section>
 
+          {isRedirecting ? (
+            <div
+              className="space-y-3 border border-primary/20 bg-primary/5 p-4"
+              aria-live="polite"
+            >
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-sm font-semibold text-foreground">
+                  {pageT("redirect.title")}
+                </p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
+                  {pageT("redirect.countdown", {
+                    seconds: redirectSecondsRemaining,
+                  })}
+                </p>
+              </div>
+
+              <p className="text-sm leading-6 text-muted-foreground">
+                {pageT("redirect.description")}
+              </p>
+
+              <div className="h-2 overflow-hidden border border-primary/15 bg-background/80">
+                <div
+                  className="h-full bg-primary transition-[width] duration-100 ease-linear"
+                  style={{ width: `${redirectProgress}%` }}
+                />
+              </div>
+            </div>
+          ) : null}
+
           <div className="flex justify-end border-t border-border pt-5">
-            <Button disabled={isSubmitting} variant="primary" type="submit">
+            <Button
+              disabled={isSubmitting || isRedirecting}
+              variant="primary"
+              type="submit"
+            >
               {isSubmitting
                 ? pageT("actions.submitting")
+                : isRedirecting
+                  ? pageT("actions.redirecting")
                 : pageT("actions.submit")}
             </Button>
           </div>

@@ -277,7 +277,13 @@
     },
     "actions": {
       "submit": "Create ticket",
-      "submitting": "Creating ticket..."
+      "submitting": "Creating ticket...",
+      "redirecting": "Redirecting..."
+    },
+    "redirect": {
+      "title": "Redirecting to My Tickets",
+      "description": "Your new ticket was created successfully. You'll be taken to your ticket history in a few seconds so you can review it there.",
+      "countdown": "{seconds}s"
     },
     "feedback": {
       "error": "We couldn't create the ticket right now."
@@ -343,7 +349,11 @@
     "modal": {
       "eyebrow": "Ticket details",
       "descriptionLabel": "Full description",
-      "close": "Close ticket details modal"
+      "close": "Close ticket details modal",
+      "closeAction": "Close",
+      "delete": "Delete",
+      "deleting": "Deleting...",
+      "deleteError": "We couldn't delete this ticket right now."
     }
   },
   "profilePage": {
@@ -423,6 +433,7 @@
       },
       "actions": {
         "cancel": "Cancel",
+        "reset": "Reset",
         "submit": "Save changes",
         "submitting": "Saving changes..."
       },
@@ -435,7 +446,7 @@
         "description": "This page only updates profile fields supported by the account update service.",
         "items": {
           "changedOnly": "Only the values you edit are sent in the update request.",
-          "cancel": "Cancel restores the form to your current saved profile details.",
+          "reset": "Reset restores the form to your current saved profile details.",
           "live": "Successful updates refresh the profile data stored in your active session."
         }
       },

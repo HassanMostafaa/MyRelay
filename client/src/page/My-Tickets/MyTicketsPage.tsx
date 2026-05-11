@@ -82,6 +82,16 @@ export const MyTicketsPage = () => {
   const fallbackDate = t("emptyValue");
   const numberFormatter = new Intl.NumberFormat(locale);
   const hasTickets = tickets.length > 0;
+  const handleTicketDeleted = (deletedTicketId: string) => {
+    setSelectedTicket((currentTicket) =>
+      currentTicket?.id === deletedTicketId ? null : currentTicket,
+    );
+
+    const nextPage =
+      tickets.length === 1 && currentPage > 1 ? currentPage - 1 : currentPage;
+
+    goToPage(nextPage);
+  };
 
   const stats = [
     {
@@ -297,9 +307,11 @@ export const MyTicketsPage = () => {
       </div>
 
       <MyTicketDetailsModal
+        key={selectedTicket?.id ?? "ticket-details-modal"}
         ticket={selectedTicket}
         open={selectedTicket !== null}
         onClose={() => setSelectedTicket(null)}
+        onDeleteSuccess={handleTicketDeleted}
       />
     </div>
   );

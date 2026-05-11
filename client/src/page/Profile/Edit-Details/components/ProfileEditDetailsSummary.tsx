@@ -24,7 +24,7 @@ export const ProfileEditDetailsSummary = ({ user }: { user: User }) => {
 
   const notes = [
     t("notes.items.changedOnly"),
-    t("notes.items.cancel"),
+    t("notes.items.reset"),
     t("notes.items.live"),
   ];
 

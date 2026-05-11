@@ -3,23 +3,26 @@ import { ApiStatus } from "@/src/services/users/utils/types";
 import { useAuthStore } from "@/src/store/useAuthStore";
 import { FormikHelpers } from "formik";
 import { useTranslations } from "next-intl";
-import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import * as Yup from "yup";
 
-// {
-//   "ticket": {
-//     "description": "hassan2 ticket desc",
-//     "subject": "ticket subject"
-//   },
-//   "userId": "0a7ac2fc-0630-4aab-a6a3-bac2a1decdf4"
-// }
+const REDIRECT_DELAY_MS = 5000;
+const REDIRECT_PROGRESS_INTERVAL_MS = 100;
 
 interface ICreateTicketFormValues {
   description: string;
   subject: string;
 }
 
+const getInitialRedirectState = () => ({
+  isActive: false,
+  progress: 0,
+  secondsRemaining: Math.ceil(REDIRECT_DELAY_MS / 1000),
+});
+
 export const useCreateTicketForm = () => {
+  const router = useRouter();
   const validationT = useTranslations("validation");
   const formsT = useTranslations("forms");
   const pageT = useTranslations("newTicketPage");
@@ -28,6 +31,11 @@ export const useCreateTicketForm = () => {
     message: string;
     status: ApiStatus;
   } | null>(null);
+  const [redirectState, setRedirectState] = useState(getInitialRedirectState);
+  const redirectTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const redirectIntervalRef = useRef<ReturnType<typeof setInterval> | null>(
+    null,
+  );
 
   const user = useAuthStore((s) => s.user);
   const userId = user?.id || null;
@@ -52,11 +60,66 @@ export const useCreateTicketForm = () => {
     [validationT],
   );
 
+  const clearRedirectTimers = useCallback(() => {
+    if (redirectTimeoutRef.current !== null) {
+      clearTimeout(redirectTimeoutRef.current);
+      redirectTimeoutRef.current = null;
+    }
+
+    if (redirectIntervalRef.current !== null) {
+      clearInterval(redirectIntervalRef.current);
+      redirectIntervalRef.current = null;
+    }
+  }, []);
+
+  const resetRedirectState = useCallback(() => {
+    setRedirectState(getInitialRedirectState());
+  }, []);
+
+  const startRedirectCountdown = useCallback(() => {
+    clearRedirectTimers();
+
+    const startedAt = Date.now();
+
+    setRedirectState({
+      isActive: true,
+      progress: 0,
+      secondsRemaining: Math.ceil(REDIRECT_DELAY_MS / 1000),
+    });
+
+    redirectIntervalRef.current = setInterval(() => {
+      const elapsed = Date.now() - startedAt;
+      const remainingMs = Math.max(REDIRECT_DELAY_MS - elapsed, 0);
+
+      setRedirectState({
+        isActive: true,
+        progress: Math.min((elapsed / REDIRECT_DELAY_MS) * 100, 100),
+        secondsRemaining: Math.max(1, Math.ceil(remainingMs / 1000)),
+      });
+    }, REDIRECT_PROGRESS_INTERVAL_MS);
+
+    redirectTimeoutRef.current = setTimeout(() => {
+      setRedirectState({
+        isActive: true,
+        progress: 100,
+        secondsRemaining: 0,
+      });
+      clearRedirectTimers();
+      router.push("/my-tickets");
+    }, REDIRECT_DELAY_MS);
+  }, [clearRedirectTimers, router]);
+
+  useEffect(() => clearRedirectTimers, [clearRedirectTimers]);
+
   const submit = async (
     value: ICreateTicketFormValues,
     { resetForm }: FormikHelpers<ICreateTicketFormValues>,
   ) => {
     try {
+      clearRedirectTimers();
+      resetRedirectState();
+      setFormStatus(null);
+
       if (!userId) {
         setFormStatus({
           status: "error",
@@ -76,6 +139,7 @@ export const useCreateTicketForm = () => {
           message: formsT("ticket_created_successfully"),
         });
         resetForm();
+        startRedirectCountdown();
         return;
       }
 
@@ -91,5 +155,13 @@ export const useCreateTicketForm = () => {
     }
   };
 
-  return { submit, initialValues, validationSchema, formStatus };
+  return {
+    submit,
+    initialValues,
+    validationSchema,
+    formStatus,
+    isRedirecting: redirectState.isActive,
+    redirectProgress: redirectState.progress,
+    redirectSecondsRemaining: redirectState.secondsRemaining,
+  };
 };

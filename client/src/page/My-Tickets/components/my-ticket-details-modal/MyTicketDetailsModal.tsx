@@ -1,8 +1,15 @@
 "use client";
 
+import { Button } from "@/src/components/button/Button";
+import {
+  FormStatusMessage,
+  type FormStatus,
+} from "@/src/components/form-status-message/FormStatusMessage";
 import { Modal } from "@/src/components/modal/Modal";
+import { deleteTicketService } from "@/src/services/tickets/delete/deleteTicket.service";
 import type { PublicTicket } from "@/src/services/tickets/utils/types";
 import { useLocale, useTranslations } from "next-intl";
+import { useState } from "react";
 
 const formatDateTime = (
   value: string | null | undefined,
@@ -41,27 +48,74 @@ type MyTicketDetailsModalProps = {
   open: boolean;
   onClose: () => void;
   ticket: PublicTicket | null;
+  onDeleteSuccess: (deletedTicketId: string) => void | Promise<void>;
 };
 
 export const MyTicketDetailsModal = ({
   open,
   onClose,
   ticket,
+  onDeleteSuccess,
 }: MyTicketDetailsModalProps) => {
   const t = useTranslations("myTicketsPage");
   const statusT = useTranslations("heroSection");
   const locale = useLocale();
   const fallbackDate = t("emptyValue");
+  const [deleteStatus, setDeleteStatus] = useState<FormStatus>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   if (!ticket) {
     return null;
   }
 
+  const handleClose = () => {
+    if (isDeleting) {
+      return;
+    }
+
+    setDeleteStatus(null);
+    setIsDeleting(false);
+    onClose();
+  };
+
+  const handleDelete = async () => {
+    if (isDeleting) {
+      return;
+    }
+
+    setIsDeleting(true);
+    setDeleteStatus(null);
+
+    try {
+      const result = await deleteTicketService(ticket.id);
+
+      if (result.status === "success" && result.deleted) {
+        await onDeleteSuccess(ticket.id);
+        return;
+      }
+
+      setDeleteStatus({
+        status: "error",
+        message: result.message ?? t("modal.deleteError"),
+      });
+    } catch (error) {
+      console.error("Error deleting ticket:", error);
+
+      setDeleteStatus({
+        status: "error",
+        message: t("modal.deleteError"),
+      });
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
   return (
     <Modal
       open={open}
-      onClose={onClose}
+      onClose={handleClose}
       closeLabel={t("modal.close")}
+      closeOnOverlayClick={!isDeleting}
       header={
         <div className="space-y-2">
           <p className="text-primary text-xs font-semibold uppercase tracking-[0.24em]">
@@ -79,6 +133,8 @@ export const MyTicketDetailsModal = ({
       }
       content={
         <div className="space-y-5">
+          <FormStatusMessage formStatus={deleteStatus} />
+
           <div className="flex flex-wrap gap-3">
             <div className="inline-flex items-center gap-2 border border-primary/30 bg-primary/10 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
               <span className="size-2 rounded-full bg-current" />
@@ -116,7 +172,27 @@ export const MyTicketDetailsModal = ({
           </div>
         </div>
       }
-      footer={null}
+      footer={
+        <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+          <Button
+            type="button"
+            variant="secondary"
+            onClick={handleClose}
+            disabled={isDeleting}
+          >
+            {t("modal.closeAction")}
+          </Button>
+
+          <Button
+            type="button"
+            variant="danger"
+            onClick={handleDelete}
+            disabled={isDeleting}
+          >
+            {isDeleting ? t("modal.deleting") : t("modal.delete")}
+          </Button>
+        </div>
+      }
     />
   );
 };

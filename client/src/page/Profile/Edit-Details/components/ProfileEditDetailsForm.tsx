@@ -154,16 +154,25 @@ export const ProfileEditDetailsForm = ({ user }: { user: User }) => {
               <Button
                 type="button"
                 variant="secondary"
+                disabled={isSubmitting}
+                onClick={() => {
+                  clearFormStatus();
+                  router.push("/profile");
+                }}
+              >
+                {t("actions.cancel")}
+              </Button>
+
+              <Button
+                type="button"
+                variant="secondary"
                 disabled={isSubmitting || !hasChanges}
                 onClick={() => {
                   resetForm();
                   clearFormStatus();
-                  setTimeout(() => {
-                    router.push("/profile");
-                  }, 0);
                 }}
               >
-                {t("actions.cancel")}
+                {t("actions.reset")}
               </Button>
 
               <Button

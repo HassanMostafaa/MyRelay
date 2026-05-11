@@ -267,7 +267,13 @@
     },
     "actions": {
       "submit": "Créer le ticket",
-      "submitting": "Création du ticket..."
+      "submitting": "Création du ticket...",
+      "redirecting": "Redirection..."
+    },
+    "redirect": {
+      "title": "Redirection vers Mes tickets",
+      "description": "Votre nouveau ticket a bien été créé. Vous serez redirigé vers votre historique de tickets dans quelques secondes pour le consulter.",
+      "countdown": "{seconds}s"
     },
     "feedback": {
       "error": "Nous n'avons pas pu créer le ticket pour le moment."
@@ -333,7 +339,11 @@
     "modal": {
       "eyebrow": "Détails du ticket",
       "descriptionLabel": "Description complète",
-      "close": "Fermer la fenêtre des détails du ticket"
+      "close": "Fermer la fenêtre des détails du ticket",
+      "closeAction": "Fermer",
+      "delete": "Supprimer",
+      "deleting": "Suppression...",
+      "deleteError": "Nous n'avons pas pu supprimer ce ticket pour le moment."
     }
   },
   "profilePage": {
@@ -413,6 +423,7 @@
       },
       "actions": {
         "cancel": "Annuler",
+        "reset": "Réinitialiser",
         "submit": "Enregistrer les modifications",
         "submitting": "Enregistrement des modifications..."
       },
@@ -425,7 +436,7 @@
         "description": "Cette page met à jour uniquement les champs de profil pris en charge par le service de mise à jour du compte.",
         "items": {
           "changedOnly": "Seules les valeurs que vous modifiez sont envoyées dans la requête de mise à jour.",
-          "cancel": "Annuler rétablit le formulaire avec les détails actuellement enregistrés de votre profil.",
+          "reset": "Réinitialiser rétablit le formulaire avec les détails actuellement enregistrés de votre profil.",
           "live": "Les mises à jour réussies rafraîchissent immédiatement les données de profil stockées dans votre session active."
         }
       },
