@@ -11,6 +11,8 @@ export const FormikField = ({
   inputClassName,
   startIcon,
   endIcon,
+  as,
+  ...props
 }: {
   type: string;
   name: string;
@@ -20,6 +22,9 @@ export const FormikField = ({
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   inputClassName?: string;
+  as?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
 }) => {
   const [field, meta] = useField(name);
 
@@ -50,9 +55,11 @@ export const FormikField = ({
 
         <Field
           {...field}
+          {...props}
           id={name}
           type={type}
           placeholder={placeholder}
+          as={as}
           className={cn(
             "w-full border px-4 py-3 text-xs transition-colors",
             startIcon && "ps-9",

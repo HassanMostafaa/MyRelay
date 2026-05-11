@@ -8,6 +8,7 @@ import { Form, Formik } from "formik";
 import { useTranslations } from "next-intl";
 import { hasProfileEditDetailsChanges } from "../utils/profileEditDetailsForm";
 import { useProfileEditDetailsForm } from "../utils/useProfileEditDetailsForm";
+import { useRouter } from "next/navigation";
 
 type FieldConfig = {
   name:
@@ -24,9 +25,15 @@ type FieldConfig = {
 
 export const ProfileEditDetailsForm = ({ user }: { user: User }) => {
   const t = useTranslations("profilePage.editDetails");
+  const router = useRouter();
   const profileT = useTranslations("profilePage");
-  const { clearFormStatus, formStatus, initialValues, submit, validationSchema } =
-    useProfileEditDetailsForm(user);
+  const {
+    clearFormStatus,
+    formStatus,
+    initialValues,
+    submit,
+    validationSchema,
+  } = useProfileEditDetailsForm(user);
 
   const sections: Array<{
     title: string;
@@ -133,7 +140,9 @@ export const ProfileEditDetailsForm = ({ user }: { user: User }) => {
                       name={field.name}
                       type={field.type}
                       label={field.label}
-                      placeholder={field.type === "date" ? undefined : field.label}
+                      placeholder={
+                        field.type === "date" ? undefined : field.label
+                      }
                       inputClassName="bg-background/65 text-sm"
                     />
                   ))}
@@ -149,6 +158,9 @@ export const ProfileEditDetailsForm = ({ user }: { user: User }) => {
                 onClick={() => {
                   resetForm();
                   clearFormStatus();
+                  setTimeout(() => {
+                    router.push("/profile");
+                  }, 0);
                 }}
               >
                 {t("actions.cancel")}

@@ -63,6 +63,8 @@ export const CreateTicketForm = () => {
 
             <FormikField
               type="text"
+              as="textarea"
+              rows={6}
               label={formsT("description")}
               name={"description"}
               placeholder={formsT("description")}

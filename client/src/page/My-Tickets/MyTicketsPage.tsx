@@ -44,7 +44,8 @@ const formatValue = (value: string | null | undefined, fallback: string) => {
   return normalized.length > 0 ? normalized : fallback;
 };
 
-const formatReference = (ticketId: string) => `#${ticketId.slice(0, 8).toUpperCase()}`;
+const formatReference = (ticketId: string) =>
+  `#${ticketId.slice(0, 8).toUpperCase()}`;
 
 const getStatusClasses = (status: PublicTicket["status"]) => {
   switch (status) {
@@ -65,7 +66,9 @@ export const MyTicketsPage = () => {
   const t = useTranslations("myTicketsPage");
   const statusT = useTranslations("heroSection");
   const locale = useLocale();
-  const [selectedTicket, setSelectedTicket] = useState<PublicTicket | null>(null);
+  const [selectedTicket, setSelectedTicket] = useState<PublicTicket | null>(
+    null,
+  );
   const { data, errorMessage, isFetching, isLoading, goToPage, retry } =
     useMyTickets({
       pageSize: PAGE_SIZE,
@@ -96,10 +99,10 @@ export const MyTicketsPage = () => {
   ];
 
   return (
-    <div className="my-container space-y-6 py-6 lg:space-y-8 lg:py-12">
+    <div className=" space-y-6 py-6 lg:space-y-8 lg:py-12">
       <MyTicketsHeader stats={stats} />
 
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-start xl:gap-10">
+      <div className="my-container flex flex-col gap-4 lg:flex-row lg:items-start">
         <div className="w-full">
           <section className="space-y-5 border border-border bg-card p-5 sm:p-6">
             <div className="flex flex-col gap-3 border-b border-border pb-4 sm:flex-row sm:items-end sm:justify-between">
@@ -184,12 +187,12 @@ export const MyTicketsPage = () => {
                   {tickets.map((ticket) => (
                     <article
                       key={ticket.id}
-                      className="border border-border bg-background/65 transition-colors hover:border-primary/30"
+                      className="border border-border bg-background/65 transition-colors hover:border-primary/60 cursor-pointer"
                     >
                       <button
                         type="button"
                         onClick={() => setSelectedTicket(ticket)}
-                        className="flex w-full flex-col gap-4 p-4 text-left"
+                        className="flex w-full flex-col gap-4 p-4 text-left cursor-pointer"
                       >
                         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                           <div className="space-y-2">
