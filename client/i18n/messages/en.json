@@ -353,7 +353,16 @@
       "closeAction": "Close",
       "delete": "Delete",
       "deleting": "Deleting...",
-      "deleteError": "We couldn't delete this ticket right now."
+      "deleteError": "We couldn't delete this ticket right now.",
+      "confirmDelete": {
+        "title": "Delete this ticket?",
+        "subtitle": "This ticket will be lost forever.",
+        "description": "If you continue, this ticket and its details will be removed permanently and you won't be able to recover them.",
+        "ticketLabel": "Ticket to delete",
+        "cancel": "Keep ticket",
+        "confirm": "Confirm deletion",
+        "close": "Close delete ticket modal"
+      }
     }
   },
   "profilePage": {

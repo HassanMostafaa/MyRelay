@@ -343,7 +343,16 @@
       "closeAction": "Fermer",
       "delete": "Supprimer",
       "deleting": "Suppression...",
-      "deleteError": "Nous n'avons pas pu supprimer ce ticket pour le moment."
+      "deleteError": "Nous n'avons pas pu supprimer ce ticket pour le moment.",
+      "confirmDelete": {
+        "title": "Supprimer ce ticket ?",
+        "subtitle": "Ce ticket sera perdu pour toujours.",
+        "description": "Si vous continuez, ce ticket et ses détails seront supprimés définitivement et vous ne pourrez pas les récupérer.",
+        "ticketLabel": "Ticket à supprimer",
+        "cancel": "Conserver le ticket",
+        "confirm": "Confirmer la suppression",
+        "close": "Fermer la fenêtre de suppression du ticket"
+      }
     }
   },
   "profilePage": {

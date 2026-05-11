@@ -1,15 +1,13 @@
 "use client";
 
 import { Button } from "@/src/components/button/Button";
-import {
-  FormStatusMessage,
-  type FormStatus,
-} from "@/src/components/form-status-message/FormStatusMessage";
+import type { FormStatus } from "@/src/components/form-status-message/FormStatusMessage";
 import { Modal } from "@/src/components/modal/Modal";
 import { deleteTicketService } from "@/src/services/tickets/delete/deleteTicket.service";
 import type { PublicTicket } from "@/src/services/tickets/utils/types";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
+import { DeleteTicketConfirmationModal } from "../delete-ticket-confirmation-modal/DeleteTicketConfirmationModal";
 
 const formatDateTime = (
   value: string | null | undefined,
@@ -63,19 +61,30 @@ export const MyTicketDetailsModal = ({
   const fallbackDate = t("emptyValue");
   const [deleteStatus, setDeleteStatus] = useState<FormStatus>(null);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isDeleteConfirmationOpen, setIsDeleteConfirmationOpen] =
+    useState(false);
 
   if (!ticket) {
     return null;
   }
 
   const handleClose = () => {
-    if (isDeleting) {
+    if (isDeleting || isDeleteConfirmationOpen) {
       return;
     }
 
     setDeleteStatus(null);
     setIsDeleting(false);
     onClose();
+  };
+
+  const handleDeleteConfirmationClose = () => {
+    if (isDeleting) {
+      return;
+    }
+
+    setDeleteStatus(null);
+    setIsDeleteConfirmationOpen(false);
   };
 
   const handleDelete = async () => {
@@ -111,88 +120,100 @@ export const MyTicketDetailsModal = ({
   };
 
   return (
-    <Modal
-      open={open}
-      onClose={handleClose}
-      closeLabel={t("modal.close")}
-      closeOnOverlayClick={!isDeleting}
-      header={
-        <div className="space-y-2">
-          <p className="text-primary text-xs font-semibold uppercase tracking-[0.24em]">
-            {t("modal.eyebrow")}
-          </p>
-          <div className="space-y-1">
-            <h2 className="font-heading text-2xl leading-tight text-foreground">
-              {formatValue(ticket.subject, t("untitledTicket"))}
-            </h2>
-            <p className="text-sm leading-6 text-muted-foreground">
-              {t("referenceLabel")} {formatReference(ticket.id)}
+    <>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        closeLabel={t("modal.close")}
+        closeOnOverlayClick={!isDeleting && !isDeleteConfirmationOpen}
+        header={
+          <div className="space-y-2">
+            <p className="text-primary text-xs font-semibold uppercase tracking-[0.24em]">
+              {t("modal.eyebrow")}
             </p>
-          </div>
-        </div>
-      }
-      content={
-        <div className="space-y-5">
-          <FormStatusMessage formStatus={deleteStatus} />
-
-          <div className="flex flex-wrap gap-3">
-            <div className="inline-flex items-center gap-2 border border-primary/30 bg-primary/10 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
-              <span className="size-2 rounded-full bg-current" />
-              {statusT(`status.${ticket.status}`)}
+            <div className="space-y-1">
+              <h2 className="font-heading text-2xl leading-tight text-foreground">
+                {formatValue(ticket.subject, t("untitledTicket"))}
+              </h2>
+              <p className="text-sm leading-6 text-muted-foreground">
+                {t("referenceLabel")} {formatReference(ticket.id)}
+              </p>
             </div>
           </div>
+        }
+        content={
+          <div className="space-y-5">
+            <div className="flex flex-wrap gap-3">
+              <div className="inline-flex items-center gap-2 border border-primary/30 bg-primary/10 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
+                <span className="size-2 rounded-full bg-current" />
+                {statusT(`status.${ticket.status}`)}
+              </div>
+            </div>
 
-          <section className="space-y-3 border border-border bg-background/65 p-4">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-              {t("modal.descriptionLabel")}
-            </p>
-            <p className="whitespace-pre-wrap text-sm leading-7 text-foreground">
-              {ticket.description}
-            </p>
-          </section>
-
-          <div className="grid gap-3 sm:grid-cols-2">
-            <div className="space-y-1 border border-border bg-background/65 px-3 py-3">
+            <section className="space-y-3 border border-border bg-background/65 p-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                {t("createdLabel")}
+                {t("modal.descriptionLabel")}
               </p>
-              <p className="text-sm text-foreground">
-                {formatDateTime(ticket.created_at, locale, fallbackDate)}
+              <p className="whitespace-pre-wrap text-sm leading-7 text-foreground">
+                {ticket.description}
               </p>
-            </div>
+            </section>
 
-            <div className="space-y-1 border border-border bg-background/65 px-3 py-3">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                {t("updatedLabel")}
-              </p>
-              <p className="text-sm text-foreground">
-                {formatDateTime(ticket.updated_at, locale, fallbackDate)}
-              </p>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="space-y-1 border border-border bg-background/65 px-3 py-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                  {t("createdLabel")}
+                </p>
+                <p className="text-sm text-foreground">
+                  {formatDateTime(ticket.created_at, locale, fallbackDate)}
+                </p>
+              </div>
+
+              <div className="space-y-1 border border-border bg-background/65 px-3 py-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                  {t("updatedLabel")}
+                </p>
+                <p className="text-sm text-foreground">
+                  {formatDateTime(ticket.updated_at, locale, fallbackDate)}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      }
-      footer={
-        <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
-          <Button
-            type="button"
-            variant="secondary"
-            onClick={handleClose}
-            disabled={isDeleting}
-          >
-            {t("modal.closeAction")}
-          </Button>
+        }
+        footer={
+          <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={handleClose}
+              disabled={isDeleting}
+            >
+              {t("modal.closeAction")}
+            </Button>
 
-          <Button
-            type="button"
-            variant="danger"
-            onClick={handleDelete}
-            disabled={isDeleting}
-          >
-            {isDeleting ? t("modal.deleting") : t("modal.delete")}
-          </Button>
-        </div>
-      }
-    />
+            <Button
+              type="button"
+              variant="danger"
+              onClick={() => {
+                setDeleteStatus(null);
+                setIsDeleteConfirmationOpen(true);
+              }}
+              disabled={isDeleting}
+            >
+              {t("modal.delete")}
+            </Button>
+          </div>
+        }
+      />
+
+      <DeleteTicketConfirmationModal
+        open={isDeleteConfirmationOpen}
+        onClose={handleDeleteConfirmationClose}
+        onConfirm={handleDelete}
+        ticket={ticket}
+        deleteStatus={deleteStatus}
+        isDeleting={isDeleting}
+      />
+    </>
   );
 };

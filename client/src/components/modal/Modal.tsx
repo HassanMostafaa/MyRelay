@@ -2,7 +2,7 @@
 
 import { cn } from "@/src/lib/utils";
 import { X } from "lucide-react";
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
 type ModalSlot = ReactNode;
@@ -19,6 +19,35 @@ type ModalProps = {
   overlayClassName?: string;
   panelClassName?: string;
   contentClassName?: string;
+};
+
+const MODAL_SCROLL_LOCK_COUNT = "modalScrollLockCount";
+const MODAL_PREVIOUS_OVERFLOW = "modalPreviousOverflow";
+
+const lockBodyScroll = () => {
+  const { body } = document;
+  const currentLockCount = Number(body.dataset[MODAL_SCROLL_LOCK_COUNT] ?? "0");
+
+  if (currentLockCount === 0) {
+    body.dataset[MODAL_PREVIOUS_OVERFLOW] = body.style.overflow;
+    body.style.overflow = "hidden";
+  }
+
+  body.dataset[MODAL_SCROLL_LOCK_COUNT] = String(currentLockCount + 1);
+};
+
+const unlockBodyScroll = () => {
+  const { body } = document;
+  const currentLockCount = Number(body.dataset[MODAL_SCROLL_LOCK_COUNT] ?? "0");
+
+  if (currentLockCount <= 1) {
+    body.style.overflow = body.dataset[MODAL_PREVIOUS_OVERFLOW] ?? "";
+    delete body.dataset[MODAL_SCROLL_LOCK_COUNT];
+    delete body.dataset[MODAL_PREVIOUS_OVERFLOW];
+    return;
+  }
+
+  body.dataset[MODAL_SCROLL_LOCK_COUNT] = String(currentLockCount - 1);
 };
 
 const renderSlot = (
@@ -57,27 +86,31 @@ export const Modal = ({
   panelClassName,
   contentClassName,
 }: ModalProps) => {
+  const onCloseRef = useRef(onClose);
+
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
+
   useEffect(() => {
     if (!open) {
       return;
     }
 
-    const handleEscape = (event: KeyboardEvent) => {
+    const handleEscapeKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        onClose();
+        onCloseRef.current();
       }
     };
 
-    const previousOverflow = document.body.style.overflow;
-
-    document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", handleEscape);
+    lockBodyScroll();
+    document.addEventListener("keydown", handleEscapeKey);
 
     return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", handleEscape);
+      unlockBodyScroll();
+      document.removeEventListener("keydown", handleEscapeKey);
     };
-  }, [open, onClose]);
+  }, [open]);
 
   if (typeof document === "undefined" || !open) {
     return null;
